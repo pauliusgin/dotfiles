@@ -1,0 +1,482 @@
+{
+    "Create Aggregate Root": {
+        "prefix": "agg",
+        "body": [
+            "import { AggregateRoot, Handle } from 'ddd';",
+            "import { v4 } from 'uuid';",
+            "",
+            "export interface $1Properties {",
+            "id: string;",
+            "  ${3:propType}",
+            "}",
+            "",
+            "export class ${1:AggregateRoot} extends AggregateRoot<$1Properties> {",
+            "  static restore(props: $1Properties) {",
+            "    return new $1(props);",
+            "}",
+            "static create(payload: {",
+            "  $3",
+            "}) {",
+            "const {",
+            "  ${4:propName}",
+            "} = payload;",
+            "",
+            "const ${2:variable} = new $1({",
+            "  id: v4(),",
+            "  $4",
+            "});",
+            "",
+            "$2.applyChange(",
+            "  new $1Created({",
+            "    $4",
+            "  })",
+            ");",
+            "",
+            "return $2;",
+            "}",
+            "",
+            "@Handle($1Created)",
+            "private apply$1Created(event: $1Created) {",
+            "  this.props.${5:propName} = event.props.$5;",
+            "  this.props.$6 = event.props.$6;",
+            "  this.props.$8 = event.props.$8;",
+            "  this.props.$9 = event.props.$9;",
+            "  this.props.$10 = event.props.$10;",
+            "  this.props.$11 = event.props.$11;",
+            "  this.props.$12 = event.props.$12;",
+            "  this.props.$13 = event.props.$13;",
+            "  this.props.$14 = event.props.$14;",
+            "  this.props.$15 = event.props.$15;",
+            "}",
+            "",
+            "update(payload: {",
+            "$3",
+            "}) {",
+            "  const {",
+            "    $4",
+            "  } = payload;",
+            "",
+            "this.applyChange(",
+            "  new $1Updated({",
+            "    $4",
+            "    })",
+            "  );",
+            "}",
+            "",
+            "@Handle($1Updated)",
+            "private apply$1Updated(event: $1Updated) {",
+            "  this.props.$5 = event.props.$5;",
+            "  this.props.$6 = event.props.$6;",
+            "  this.props.$8 = event.props.$8;",
+            "  this.props.$9 = event.props.$9;",
+            "  this.props.$10 = event.props.$10;",
+            "  this.props.$11 = event.props.$11;",
+            "  this.props.$12 = event.props.$12;",
+            "  this.props.$13 = event.props.$13;",
+            "  this.props.$14 = event.props.$14;",
+            "  this.props.$15 = event.props.$15;",
+            "}"
+        ],
+        "description": "Build a structure for creating and updating aggregate root"
+    },
+
+    "Create Aggregate Root Method": {
+        "prefix": "aggm",
+        "body": [
+            "${1:methodName}() {",
+            "  this.applyChange(",
+            "    new ${2:EventName}({",
+            "      ${3:newProperties}",
+            "    })",
+            "  )",
+            "}",
+            "",
+            "@Handle($2)",
+            "private apply$2(event: $2) {",
+            "  this.props.$3 = event.props.$3;",
+            "  this.props.$4 = event.props.$4;",
+            "  this.props.$5 = event.props.$5;",
+            "  this.props.$6 = event.props.$6;",
+            "  this.props.$7 = event.props.$7;",
+            "}"
+        ],
+        "description": "Add a new method to an aggregate root"
+    },
+
+    "Create a Usecase": {
+        "prefix": "use",
+        "body": [
+            "import { inject, injectable } from 'inversify';",
+            "import { EventDispatcher, Usecase } from 'ddd';",
+            "imoort { $2 }",
+            "import { $2Repository }",
+            "",
+            "export interface ${1:Method}${2:AggregateRoot}Input {",
+            "  ${3:propType}",
+            "}",
+            "",
+            "@injectable()",
+            "export class $1$2 implements Usecase<$1$2Input, $2> {",
+            "  constructor(",
+            "    @inject(${4:repository})",
+            "    private readonly _${5:repoVariable}: Repository,",
+            "    @inject(EventDispatcher)",
+            "    private readonly _eventDispatcher: EventDispatcher",
+            "  ) {}",
+            "",
+            "  async execute(request: $1$2Input): Promise<$2> {",
+            "",
+            "    $0",
+            "    const ${6:variable} = ",
+            "",
+            "    await this.$5.save($6);",
+            "    await this._eventDispatcher.dispatch($6);",
+            "",
+            "    return $6;",
+            "  }",
+            "}"
+        ],
+        "description": "Build a structure for creating a usecase"
+    },
+
+    "Inject a Repository": {
+        "prefix": "injr",
+        "body": [
+            "@inject(${1:Identifier}${2:name}Repository)",
+            "private readonly _$2Repository: ${3:AggregateRoot}Repository,"
+        ],
+        "description": "Add new repository to a usecase"
+    },
+
+    "Create a Repository": {
+        "prefix": "rep",
+        "body": [
+            "import { $1 }",
+            "",
+            "export interface ${1:AggregateRoot}Repository {",
+            "  save(${2:variable}: $1): Promise<void>;",
+            "",
+            "  getById(id: string): Promise<$1>;",
+            "}"
+        ],
+        "description": "Build an interface for write repository"
+    },
+
+    "Create a Postgres Repository": {
+        "prefix": "repp",
+        "body": [
+            "import { injectable } from 'inversify';",
+            "import { EntityManager } from 'typeorm';",
+            "import { $1, $1Repository }",
+            "import { $1Entity }",
+            "import { $1EntityMapper }",
+            "",
+            "@injectable()",
+            "export class Postgres${1:AggregateRoot}Repository implements $1Repository {",
+            "  private $2EntityMapper: $1EntityMapper;",
+            "",
+            "  constructor(private readonly entityManager: EntityMAnager) {",
+            "    this.$2EntityMapper = new $1EntityMapper(entityManager);",
+            "  }",
+            "",
+            "  async save(${2:variable}: $1): Promise<void> {",
+            "    const $2Repository = this.entityManager.getRepository($1Entity);",
+            "",
+            "    const $2Entity = this.$2EntityMapper.fromDomain($2);",
+            "",
+            "    await $2Repository.save($2Entity);",
+            "",
+            "    return;",
+            "  }",
+            "",
+            "  async getById(id: string): Promise<$1> {",
+            "    const $2Repository = this.enityManager.getRepository($1Entity);",
+            "",
+            "    const $2 = await $2Repository.findOne({",
+            "      where: {",
+            "        id,",
+            "      },",
+            "    });",
+            "",
+            "    return this.$2EntityMapper.toDomain($2);",
+            "  }",
+            "}"
+        ],
+        "description": "Build a structure for postgres write repository"
+    },
+
+    "Create an Entity": {
+        "prefix": "ent",
+        "body": [
+            "import {",
+            "  Entity,",
+            "  Column,",
+            "  PrimaryColumn",
+            "  CreateDateColumn,",
+            "  UpdateDateColumn,",
+            "} from 'typeorm';",
+            "",
+            "@Entity('${1:tableName}')",
+            "export class ${2:AggregateRoot}Entity {",
+            "  @PrimaryColumn({",
+            "    type: 'varchar',",
+            "  })",
+            "  id: string;",
+            "",
+            "  $0",
+            "",
+            "  @CreateDateColumn()",
+            "  createdAt?: Date;",
+            "",
+            "  @UpdateDateColumn()",
+            "  @UpdatedAt?: Date;",
+            "}"
+        ],
+        "description": "Build a structure for an Entity"
+    },
+
+    "Add a Column to Entity": {
+        "prefix": "col",
+        "body": [
+            "${4|@Index(), |}",
+            "@Column({",
+            "  nullable: ${2|true,false|},",
+            "  type: '${3|varchar,int,numeric,jsonb,boolean|}'",
+            "  ${5|length:, |}",
+            "  ${6|default:, |}",
+            "})",
+            "${1:property};",
+            ""
+        ],
+        "description": "Add a new column to the entity table"
+    },
+
+    "Create an Entity Mapper": {
+        "prefix": "mape",
+        "body": [
+            "import { Mapper } from 'ddd'",
+            "import { EntityManager } from 'typeorm'",
+            "import { $1 }",
+            "import { $1Entity }",
+            "",
+            "export class ${1:AggregateRoot}EntityMapper implements Mapper<$1Entity, $1> {",
+            "  constructor(private readonly entityManager: EntityManager) {}",
+            "",
+            "  fromDomain(t: $1): $1Entity {",
+            "    return this.entityManager.create($1Entity, {",
+            "      id: t.id",
+            "      ${$3:property}: t.props.$3,",
+            "      $4: t.props.$4",
+            "      $5: t.props.$5",
+            "      $6: t.props.$6",
+            "      $7: t.props.$7",
+            "      $8: t.props.$8",
+            "      $9: t.props.$9",
+            "      $10: t.props.$10",
+            "      $11: t.props.$11",
+            "    });",
+            "  }",
+            "",
+            "  toDomain(raw: $1Entity): $1 {",
+            "    const ${2:variable} = $1.restore({",
+            "      id: raw.id",
+            "      $3: raw.$3",
+            "      $4: raw.$4",
+            "      $5: raw.$5",
+            "      $6: raw.$6",
+            "      $7: raw.$7",
+            "      $8: raw.$8",
+            "      $9: raw.$9",
+            "      $10: raw.$10",
+            "      $11: raw.$11",
+            "    });",
+            "",
+            "    $2.createdAt = raw.createdAt;",
+            "    $2.updatedAt = raw.updatedAt;",
+            "",
+            "    return $2;",
+            "  }",
+            "}"
+        ],
+        "description": "Build a structure for your entity mapper"
+    },
+
+    "Add 'fromDomain()' property to a mapper": {
+        "prefix": "from",
+        "body": ["${1:propertyName}: t.props.$1,"],
+        "description": "Add a fromDomain() property to a mapper"
+    },
+
+    "Add 'toDomain() property to a mapper": {
+        "prefix": "to",
+        "body": ["${1:propertyName}: raw.$1,"],
+        "description": "Add a toDomain() property to a mapper"
+    },
+
+    "Create a Controller": {
+        "prefix": "ctrl",
+        "body": [
+            "import { inject, injectable } from 'inversify';",
+            "import { validateOrReject } from 'class-validator';",
+            "import { Response } from 'express';",
+            "import { AuthenticationMiddleware }",
+            "import {",
+            "  Post,",
+            "  Patch,",
+            "  Get,",
+            "  Delete,",
+            "  Req,",
+            "  Res,",
+            "  JsonController,",
+            "  UseBefore,",
+            "} from 'routing-controllers';",
+            "",
+            "@injectable()",
+            "@JsonController('/${1:controllerRoot}')",
+            "export class ${2:AggregateRoot}Controller {",
+            "  constructor(",
+            "    $0",
+            ") {}",
+            "  $0",
+            "}"
+        ],
+        "description": "Build a structure for your controller"
+    },
+
+    "Inject Usecase": {
+        "prefix": "inju",
+        "body": [
+            "@inject(${1:Usecase})",
+            "private readonly ${2:variable}: $1,"
+        ],
+        "description": "Inject a usecase into the controller"
+    },
+
+    "Add a method to the controller": {
+        "prefix": "ctrlm",
+        "body": [
+            "${1|@UseBefore(AuthenticationMiddleware), |}",
+            "@${2|Post,Patch,Put,Get,Delete|}('/${3:path}')",
+            "async ${4:methodName}(",
+            "  ${5|@Req() req: AuthenticatedUser, |}",
+            "  @Res() res: Response,",
+            "  @Body() cmd: ${6:Command}",
+            ") {",
+            "  const body = $6.setProperties(cmd);",
+            "",
+            "  await validateOrReject(body);",
+            "",
+            "  const {",
+            "    ${8:properties}",
+            "  } = body",
+            "",
+            "  const result = await this.${7:usecase}.execute({",
+            "    $8",
+            "  });",
+            "",
+            "  return res.status(200).send(result);",
+            "}"
+        ],
+        "description": "Add a method to the controller"
+    },
+
+    "Create a Command": {
+        "prefix": "cmd",
+        "body": [
+            "import { Expose, plainToClass } from 'class-transformer';",
+            "import { IsString } from 'class-validator'",
+            "",
+            "export class ${1:Usecase}Command {",
+            "",
+            "  $0",
+            "",
+            "  static setProperties(cmd: $1Command): $1Command {",
+            "    return plainToClass($1Command, cmd, {",
+            "      excludeExtraneousValues: true,",
+            "    });",
+            "  }",
+            "}"
+        ],
+        "description": "Create a structure for a Command"
+    },
+
+    "Add a Command Property": {
+        "prefix": "cp",
+        "body": ["@Expose()", "${1:property}"],
+        "description": "Add a new property to Command"
+    },
+
+    "Add a validator to a Command's Property": {
+        "prefix": "v",
+        "body": [
+            "@${1|IsString,IsNumber,IsOptional,IsEnum,IsUUID,IsBoolean,IsArray,Length,IsEmail,IsPhoneNumber|}()"
+        ],
+        "description": "Add a validator to Command's property"
+    },
+
+    "Create an InMemoryRepository for a unit test": {
+        "prefix": "testr",
+        "body": [
+            "import { $1 }",
+            "import { $1Repository }",
+            "",
+            "export class InMemory${1:AggregateRoot}Repository implements $1Repository {",
+            "  constructor(private readonly db: Map<string, $1>) {}",
+            "",
+            "  async save(${2:variable}: $1): Promise<void> {",
+            "    this.db.set($2.id, $2);",
+            "  }",
+            "",
+            "  async getById(id: string): Promise<$1> {",
+            "    return this.db.get(id);",
+            "  }",
+            "}"
+        ],
+        "description": "Create an InMemoryRepository for a unit test"
+    },
+
+    "Create a Unit Test": {
+        "prefix": "testu",
+        "body": [
+            "import { eventDispatcherMock }",
+            "import { ${1:AggregateRoot} }",
+            "import { ${2:UseCase} }",
+            "import { InMemory$1Repository}",
+            "",
+            "describe('Unit - $2', () => {",
+            "  let db: Map<string, $1>;",
+            "  let ${3:repoName}: InMemory$1Repository;",
+            "  let ${4:usecaseName}: $2;",
+            "",
+            "  beforeAll(() => {",
+            "    db = new Map();",
+            "    $3 = new InMemory$1Repository(db);",
+            "    $4 = new $2($3, eventDispatcherMock());",
+            "  });",
+            "",
+            "  it('${5:testName}', async () => {",
+            "    const result = await $4.execute({",
+            "      ${0:property: value}",
+            "  });",
+            "",
+            "    expect(result).toEqual();",
+            "  });",
+            "});"
+        ],
+        "description": "Create a structure for a unit test"
+    },
+
+    "Add a new method to a unit test": {
+        "prefix": "testum",
+        "body": [
+            "it('${1:testName}', async () => {",
+            "  const result = ${2:usecaseName}.execute({",
+            "    ${0:property: value}",
+            "  });",
+            "",
+            "  expect(result).toBe();",
+            "});"
+        ],
+        "description": "Add a new method to the unit test"
+    }
+}

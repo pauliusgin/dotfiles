@@ -1,0 +1,12 @@
+[user]
+	name = Paulius
+	email = paulius.giniunas@gmail.com
+[init]
+	default = branch
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-ls clean -- %f
+[core]
+	editor = nvim

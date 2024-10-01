@@ -1,0 +1,25 @@
+{
+    "flagWords": [],
+    "language": "en,lt",
+    "version": "0.2",
+    "words": [
+        "alacritty",
+        "coivoizz",
+        "dtos",
+        "foldmethod",
+        "inversify",
+        "Moula",
+        "Nonnullable",
+        "nvim",
+        "Postgress",
+        "prerequest",
+        "signup",
+        "typeorm",
+        "Usecase",
+        "usecases",
+        "vinted",
+        "Voizz",
+        "powermetrics"
+    ],
+    "ignorePaths": ["node_modules/**", ".config/nvim/**"]
+}

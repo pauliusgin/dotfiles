@@ -1,0 +1,34 @@
+{
+    "api documentation": {
+        "prefix": "api",
+        "body": [
+            "## ${1|POST,PATCH,PUT,GET,DELETE|} /${2:endpoint}",
+            "",
+            "- ### Description:",
+            "",
+            "    ${3:endpoint purpose}",
+            "",
+            "- ### Authorization:",
+            "",
+            "    ${4|Bearer token and identity,Bearer token,None.|}",
+            "",
+            "- ### Query Params:",
+            "",
+            "    ${5|None,Param|}",
+            "",
+            "- ### Types:",
+            "",
+            "${5|    None.,```typescript\n{\n\ttypes\n}\n```|}",
+            "",
+            "- ### Request Body:",
+            "",
+            "${6|    None.,```json\n{\n\tbody\n}\n```|}",
+            "",
+            "- ### Response:",
+            "",
+            "${7|    OK (200),```json\n{\n\tresponse\n}\n```|}",
+            "",
+            "---"
+        ]
+    }
+}
