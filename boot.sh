@@ -2,6 +2,8 @@
 
 echo "Setting up your Mac..."
 
+mkdir $HOME/Documents/Books
+
 # Check for Homebrew and install if we don't have it
 if ! command -v brew &> /dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
