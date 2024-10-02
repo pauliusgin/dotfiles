@@ -18,7 +18,7 @@ brew update
 
 # Install all our dependencies with bundle (See Brewfile)
 brew tap homebrew/bundle
-brew bundle --file ./Brewfile
+brew bundle --file $HOME/.dotfiles/Brewfile
 
 # Create directories
 mkdir $HOME/Documents/Books
@@ -26,6 +26,9 @@ mkdir $HOME/Documents/Learn\ To\ Code
 mkdir $HOME/Documents/Personal
 mkdir $HOME/Work
 mkdir $HOME/Pictures/Wallpapers
+mkdir $HOME/.config/nvim
+mkdir $HOME/.config/kitty
+mkdir $HOME/.vscode/extensions
 
 
 # Symlinks
@@ -41,7 +44,7 @@ sudo ln -sf $HOME/.dotfiles/wallpaper/kitty-gattsu.png $HOME/Pictures/Wallpapers
 npm i -g cspell @cspell/dict-lt-lt @cspell/dict-lua eslint prettier typescript typescript-language-server ts-node
 
 # Symlink the Mackup config file to the home directory
-# ln -s ./.mackup.cfg $HOME/.mackup.cfg
+# ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 
 # Set macOS preferences - we will run this last because this will reload the shell
-source ./.macos
+source $HOME/.dotfiles/.macos
