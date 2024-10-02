@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 echo "Setting up your Mac..."
 
@@ -25,15 +25,17 @@ mkdir $HOME/Documents/Books
 mkdir $HOME/Documents/Learn\ To\ Code
 mkdir $HOME/Documents/Personal
 mkdir $HOME/Work
+mkdir $HOME/Pictures/Wallpapers
 
 
-# Symlink configs
+# Symlinks
 ln -swf $HOME/.dotfiles/.zshrc $HOME/.zshrc
 ln -swf $HOME/.dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
 ln -swf $HOME/.dotfiles/init.lua $HOME/.config/nvim/init.lua
 ln -swf $HOME/.dotfiles/.gitconfig $HOME/.gitconfig
 ln -swf $HOME/.dotfiles/code/extensions.json $HOME/.vscode/extensions/extensions.json
 ln -swf $HOME/.dotfiles/.cspell.json $HOME/.cspell.json
+sudo ln -sf $HOME/.dotfiles/wallpaper/kitty-gattsu.png $HOME/Pictures/Wallpapers/gattsu_evil_01.png
 
 #Npm packs
 npm i -g cspell @cspell/dict-lt-lt @cspell/dict-lua eslint prettier typescript typescript-language-server ts-node

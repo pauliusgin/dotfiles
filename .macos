@@ -26,6 +26,9 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
+# Set theme to dark
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+
 # Disable transparency in the menu bar and elsewhere on Yosemite
 # defaults write com.apple.universalaccess reduceTransparency -bool true
 
@@ -187,13 +190,13 @@ sudo pmset -a autorestart 1
 sudo systemsetup -setrestartfreeze on
 
 # Sleep the display after 15 minutes
-sudo pmset -a displaysleep 15
+sudo pmset -a displaysleep 10
+
+# Set machine sleep to 5 minutes on battery
+sudo pmset -b sleep 15
 
 # Disable machine sleep while charging
 sudo pmset -c sleep 0
-
-# Set machine sleep to 5 minutes on battery
-sudo pmset -b sleep 5
 
 # Set standby delay to 24 hours (default is 1 hour)
 sudo pmset -a standbydelay 86400
@@ -217,6 +220,11 @@ sudo pmset -a hibernatemode 0
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
+
+# Set a custom wallpaper image. `DefaultDesktop.jpg` is already a symlink, and
+# all wallpapers are in `/Library/Desktop Pictures/`. The default is `Wave.jpg`.
+rm -rf ~/Library/Application Support/Dock/desktoppicture.db
+sudo ln -sf $HOME/.dotfiles/wallpaper/desktop-code.jpg /System/Library/CoreServices/DefaultDesktop.jpg
 
 # Re-enable subpixel antialiasing
 defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
@@ -363,6 +371,9 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
 
+# Dock always visible, except in full screen
+defaults write com.apple.dock autohide -bool false
+
 # Enable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 
@@ -436,6 +447,11 @@ sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (
 #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
 # Add a spacer to the right side of the Dock (where the Trash is)
 # defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
+
+# Add apps to Dock
+defaults write com.apple.dock persistent-apps -array-add '{"tile-data"={"file-data"={"_CFURLString"="/Applications/Google Chrome.app"; "_CFURLStringType"=0;};}; "tile-type"="file-tile";}'
+defaults write com.apple.dock persistent-apps -array-add '{"tile-data"={"file-data"={"_CFURLString"="/Applications/Visual Studio Code.app"; "_CFURLStringType"=0;};}; "tile-type"="file-tile";}'
+
 
 # Hot corners
 # Possible values:
