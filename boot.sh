@@ -26,8 +26,10 @@ mkdir $HOME/Documents/Learn\ To\ Code
 mkdir $HOME/Documents/Personal
 mkdir $HOME/Work
 mkdir $HOME/Pictures/Wallpapers
+mkdir $HOME/.config
 mkdir $HOME/.config/nvim
 mkdir $HOME/.config/kitty
+mkdir $HOME/.vscode
 mkdir $HOME/.vscode/extensions
 
 
@@ -38,7 +40,7 @@ ln -swf $HOME/.dotfiles/init.lua $HOME/.config/nvim/init.lua
 ln -swf $HOME/.dotfiles/.gitconfig $HOME/.gitconfig
 ln -swf $HOME/.dotfiles/code/extensions.json $HOME/.vscode/extensions/extensions.json
 ln -swf $HOME/.dotfiles/.cspell.json $HOME/.cspell.json
-sudo ln -sf $HOME/.dotfiles/wallpaper/kitty-gattsu.png $HOME/Pictures/Wallpapers/gattsu_evil_01.png
+sudo ln -sf $HOME/.dotfiles/wallpaper/kitty-gattsu.png $HOME/Pictures/Wallpapers/kitty-gattsu.png
 
 #Npm packs
 npm i -g cspell @cspell/dict-lt-lt @cspell/dict-lua eslint prettier typescript typescript-language-server ts-node
