@@ -45,7 +45,7 @@ ln -swf $HOME/.dotfiles/.cspell.json $HOME/.cspell.json
 npm i -g cspell @cspell/dict-lt-lt @cspell/dict-lua eslint prettier typescript typescript-language-server ts-node
 
 # Symlink the Mackup config file to the home directory
-# ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
+ln -s $HOME/.dotfiles/mac/.mackup.cfg $HOME/.mackup.cfg
 
 # Set macOS preferences - we will run this last because this will reload the shell
-source $HOME/.dotfiles/.macos
+source $HOME/.dotfiles/mac/.macos
