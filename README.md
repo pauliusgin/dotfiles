@@ -1,8 +1,8 @@
-### Get Git
+### git
 xcode-select --install
 
-### Get .dotfiles
-git clone --recursive https://github.com/pauliusgin/dotfiles.git ~/.dotfiles
+### .dotfiles
+git clone https://github.com/pauliusgin/dotfiles.git ~/.dotfiles
 
-### Install
+### run
 ~/.dotfiles/boot.sh
