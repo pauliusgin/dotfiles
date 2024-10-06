@@ -30,5 +30,47 @@
             "",
             "---"
         ]
+    },
+
+    "'todo' file template": {
+        "prefix": "todo",
+        "body": [
+            "## TO DO",
+            "",
+            "-   Add task here ...",
+            "",
+            "**------------------------------------------ OTHER THINGS -**",
+            "",
+            "-   thing other than work that I have to learn / do ...",
+            "",
+            "**---------------------------------------------------------**",
+            "",
+            "---",
+            "",
+            "## DONE"
+        ],
+        "description": "Generate a structure for a TODO file."
+    },
+
+    "'commands' file template": {
+        "prefix": "commands",
+        "body": [
+            "=================== START ===================",
+            "",
+            "-   git clone ...",
+            "",
+            "-   docker run ...",
+            "",
+            "-   etc",
+            "",
+            "=================== LAUNCH ===================",
+            "",
+            "-   project run command",
+            "",
+            "-   project test command",
+            "",
+            "=================== [placeholder] ==================="
+        ],
+        "description": "Generate a structure for a 'commands' file"
     }
 }

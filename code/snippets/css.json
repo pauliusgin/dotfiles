@@ -1,5 +1,5 @@
 {
-    "cssResetSnippet": {
+    "CSS Reset Snippet": {
         "prefix": "reset",
         "body": [
             "*, *::before, *::after {",
