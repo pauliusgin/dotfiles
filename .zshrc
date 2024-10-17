@@ -50,6 +50,7 @@ alias simulator="open -a Simulator.app"
 alias google="open https://www.google.lt"
 alias typing="open https://www.typing.com/student/typing-test/3-minute"
 alias torrents="open https://torrentgalaxy.to"
+alias gpt="open https://chatgpt.com/"
 
 
 

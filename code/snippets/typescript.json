@@ -6,7 +6,7 @@
             "import { v4 } from 'uuid';",
             "",
             "export interface $1Properties {",
-            "id: string;",
+            "  id: string;",
             "  ${3:propType}",
             "}",
             "",
@@ -19,16 +19,46 @@
             "}) {",
             "const {",
             "  ${4:propName}",
+            "  $5",
+            "  $6",
+            "  $7",
+            "  $8",
+            "  $9",
+            "  $10",
+            "  $11",
+            "  $12",
+            "  $13",
+            "  $14",
             "} = payload;",
             "",
             "const ${2:variable} = new $1({",
             "  id: v4(),",
             "  $4",
+            "  $5",
+            "  $6",
+            "  $7",
+            "  $8",
+            "  $9",
+            "  $10",
+            "  $11",
+            "  $12",
+            "  $13",
+            "  $14",
             "});",
             "",
             "$2.applyChange(",
             "  new $1Created({",
             "    $4",
+            "    $5",
+            "    $6",
+            "    $7",
+            "    $8",
+            "    $9",
+            "    $10",
+            "    $11",
+            "    $12",
+            "    $13",
+            "    $14",
             "  })",
             ");",
             "",
@@ -37,7 +67,8 @@
             "",
             "@Handle($1Created)",
             "private apply$1Created(event: $1Created) {",
-            "  this.props.${5:propName} = event.props.$5;",
+            "  this.props.$4 = event.props.$4;",
+            "  this.props.$5 = event.props.$5;",
             "  this.props.$6 = event.props.$6;",
             "  this.props.$8 = event.props.$8;",
             "  this.props.$9 = event.props.$9;",
@@ -46,7 +77,6 @@
             "  this.props.$12 = event.props.$12;",
             "  this.props.$13 = event.props.$13;",
             "  this.props.$14 = event.props.$14;",
-            "  this.props.$15 = event.props.$15;",
             "}",
             "",
             "update(payload: {",
@@ -103,6 +133,45 @@
         "description": "Add a new method to an aggregate root"
     },
 
+    "Agrregate event props": {
+        "prefix": "ev",
+        "body": [
+            "this.props.$1 = event.props.$1;",
+        ],
+        "description": "Add an event property in the aggregate."
+    },
+
+    "Create an event": {
+        "prefix": "event",
+        "body": [
+            "import { v4 } from 'uuid';",
+            "import { DecoratedEvent } from 'messages-core';",
+            "import { DomainEvent, DomainEventMetadata } from 'ddd';",
+            "",
+            "export interface ${1:AggregateRoot}Properties {",
+            "  ${2:propType}",
+            "}",
+            "",
+            "@DecoratedEvent({",
+            "  name: '${3:EVENT_NAME}',",
+            "  namespace: '@dermis/b2b',",
+            "  version: 1,",
+            "})",
+            "",
+            "export class $1 implements DomainEvent {",
+            "  id = v4();",
+            "  props: $1Properties;",
+            "  timestamp = +new Date();",
+            "  metadata: DomainEventMetadata;",
+            "",
+            "constructor(props: $1Properties) {",
+            "  this.props = props;",
+            "  }",
+            "}"
+        ],
+        "description": "Create a structure for an event."
+    },
+
     "Create a Usecase": {
         "prefix": "use",
         "body": [
@@ -119,7 +188,7 @@
             "export class $1$2 implements Usecase<$1$2Input, $2> {",
             "  constructor(",
             "    @inject(${4:repository})",
-            "    private readonly _${5:repoVariable}: Repository,",
+            "    private readonly _${5:repoVariable}: $2Repository,",
             "    @inject(EventDispatcher)",
             "    private readonly _eventDispatcher: EventDispatcher",
             "  ) {}",
@@ -139,17 +208,42 @@
         "description": "Build a structure for creating a usecase"
     },
 
+    "Create a Query": {
+        "prefix": "query",
+        "body": [
+            "import { inject, injectable } from 'inversify';",
+            "import { Query } from 'ddd';",
+            "",
+            "export interface $1Input {",
+            "  ${8:InputTypes}",
+            "}",
+            "",
+            "@injectable()",
+            "export class ${1:QueryName} implements Query<, ${2:outputType}> {",
+            "  constructor(",
+            "    @inject(${3:Identifier}.${4:repositoryName})",
+            "    private readonly _$4: ${5:RepositoryName}",
+            "  ) {}",
+            "",
+            "  async execute(${7:variable}: $1): Promise<$2> {",
+            "    return await this._$4.${6:method}($7);",
+            "  }",
+            "}"
+        ],
+        "description": "Create a structure for a query"
+    },
+
     "Inject a Repository": {
         "prefix": "injr",
         "body": [
-            "@inject(${1:Identifier}${2:name}Repository)",
+            "@inject(${1:Identifier}.${2:name}Repository)",
             "private readonly _$2Repository: ${3:AggregateRoot}Repository,"
         ],
         "description": "Add new repository to a usecase"
     },
 
     "Create a Repository": {
-        "prefix": "rep",
+        "prefix": "repo",
         "body": [
             "import { $1 }",
             "",
@@ -163,7 +257,7 @@
     },
 
     "Create a Postgres Repository": {
-        "prefix": "repp",
+        "prefix": "repop",
         "body": [
             "import { injectable } from 'inversify';",
             "import { EntityManager } from 'typeorm';",
@@ -175,7 +269,7 @@
             "export class Postgres${1:AggregateRoot}Repository implements $1Repository {",
             "  private $2EntityMapper: $1EntityMapper;",
             "",
-            "  constructor(private readonly entityManager: EntityMAnager) {",
+            "  constructor(private readonly entityManager: EntityManager) {",
             "    this.$2EntityMapper = new $1EntityMapper(entityManager);",
             "  }",
             "",
@@ -190,7 +284,7 @@
             "  }",
             "",
             "  async getById(id: string): Promise<$1> {",
-            "    const $2Repository = this.enityManager.getRepository($1Entity);",
+            "    const $2Repository = this.entityManager.getRepository($1Entity);",
             "",
             "    const $2 = await $2Repository.findOne({",
             "      where: {",
@@ -211,7 +305,7 @@
             "import {",
             "  Entity,",
             "  Column,",
-            "  PrimaryColumn",
+            "  PrimaryColumn,",
             "  CreateDateColumn,",
             "  UpdateDateColumn,",
             "} from 'typeorm';",
@@ -229,7 +323,7 @@
             "  createdAt?: Date;",
             "",
             "  @UpdateDateColumn()",
-            "  @UpdatedAt?: Date;",
+            "  updatedAt?: Date;",
             "}"
         ],
         "description": "Build a structure for an Entity"
@@ -241,7 +335,7 @@
             "${4|@Index(), |}",
             "@Column({",
             "  nullable: ${2|true,false|},",
-            "  type: '${3|varchar,int,numeric,jsonb,boolean|}'",
+            "  type: '${3|varchar,int,numeric,jsonb,boolean,timestamp|}'",
             "  ${5|length:, |}",
             "  ${6|default:, |}",
             "})",
@@ -252,7 +346,7 @@
     },
 
     "Create an Entity Mapper": {
-        "prefix": "mape",
+        "prefix": "mappe",
         "body": [
             "import { Mapper } from 'ddd'",
             "import { EntityManager } from 'typeorm'",
@@ -264,31 +358,31 @@
             "",
             "  fromDomain(t: $1): $1Entity {",
             "    return this.entityManager.create($1Entity, {",
-            "      id: t.id",
-            "      ${$3:property}: t.props.$3,",
-            "      $4: t.props.$4",
-            "      $5: t.props.$5",
-            "      $6: t.props.$6",
-            "      $7: t.props.$7",
-            "      $8: t.props.$8",
-            "      $9: t.props.$9",
-            "      $10: t.props.$10",
-            "      $11: t.props.$11",
+            "      id: t.id,",
+            "      ${3:property}: t.props.$3,",
+            "      $4: t.props.$4,",
+            "      $5: t.props.$5,",
+            "      $6: t.props.$6,",
+            "      $7: t.props.$7,",
+            "      $8: t.props.$8,",
+            "      $9: t.props.$9,",
+            "      $10: t.props.$10,",
+            "      $11: t.props.$11,",
             "    });",
             "  }",
             "",
             "  toDomain(raw: $1Entity): $1 {",
             "    const ${2:variable} = $1.restore({",
-            "      id: raw.id",
-            "      $3: raw.$3",
-            "      $4: raw.$4",
-            "      $5: raw.$5",
-            "      $6: raw.$6",
-            "      $7: raw.$7",
-            "      $8: raw.$8",
-            "      $9: raw.$9",
-            "      $10: raw.$10",
-            "      $11: raw.$11",
+            "      id: raw.id,",
+            "      $3: raw.$3,",
+            "      $4: raw.$4,",
+            "      $5: raw.$5,",
+            "      $6: raw.$6,",
+            "      $7: raw.$7,",
+            "      $8: raw.$8,",
+            "      $9: raw.$9,",
+            "      $10: raw.$10,",
+            "      $11: raw.$11,",
             "    });",
             "",
             "    $2.createdAt = raw.createdAt;",
@@ -303,13 +397,13 @@
 
     "Add 'fromDomain()' property to a mapper": {
         "prefix": "from",
-        "body": ["${1:propertyName}: t.props.$1,"],
+        "body": ["$1: t.props.$1,"],
         "description": "Add a fromDomain() property to a mapper"
     },
 
     "Add 'toDomain() property to a mapper": {
         "prefix": "to",
-        "body": ["${1:propertyName}: raw.$1,"],
+        "body": ["$1: raw.$1,"],
         "description": "Add a toDomain() property to a mapper"
     },
 
@@ -358,7 +452,7 @@
             "${1|@UseBefore(AuthenticationMiddleware), |}",
             "@${2|Post,Patch,Put,Get,Delete|}('/${3:path}')",
             "async ${4:methodName}(",
-            "  ${5|@Req() req: AuthenticatedUser, |}",
+            "  ${5|@Req() req: AuthenticatedUser, |},",
             "  @Res() res: Response,",
             "  @Body() cmd: ${6:Command}",
             ") {",
@@ -478,5 +572,36 @@
             "});"
         ],
         "description": "Add a new method to the unit test"
+    },
+
+    "Create a handler": {
+        "prefix": "handle",
+        "body": [
+            "import { inject, injectable } from 'inversify';",
+            "import { DomainEventHandler } from 'ddd';",
+            "",
+            "@injectable()",
+            "export class Handle${1:EventName})",
+            "  implements DomainEventHandler<$1>",
+            "{",
+            "  constructor(",
+            "  @inject(${2:Usecase}",
+            "  private readonly _${3:usecase}: $2",
+            ") {}",
+            "",
+            "  async handle(domainEvent: $1): Promise<${4:result}> {",
+            "    handler logic goes here $0",
+            "  }",
+            "}"
+        ],
+        "description": "Create a structure for a handler."
+    },
+
+    "Create an identifier": {
+        "prefix": "ident",
+        "body": [
+            "static readonly ${1:repoName} = Symbol.for('$1');"
+        ], 
+        "description": "Create an identifier"
     }
 }
