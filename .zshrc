@@ -37,7 +37,7 @@ export NVM_DIR="$HOME/.nvm"
 ########## ALIASES
 
 # NAVIGATIONAL
-alias projects="cd documents/personal/projects"
+alias nvcon="nvim .config/nvim/init.lua"
 alias ltc="cd documents/learn\ to\ code"
 alias work="cd documents/work"
 
@@ -51,6 +51,9 @@ alias google="open https://www.google.lt"
 alias typing="open https://www.typing.com/student/typing-test/3-minute"
 alias torrents="open https://torrentgalaxy.to"
 alias gpt="open https://chatgpt.com/"
+alias render="open https://dashboard.render.com/web/srv-cr0s0ubqf0us73ferd6g/events"
+alias stripe-dash="open https://dashboard.stripe.com/test/dashboard"
+alias hopp="open https://hoppscotch.io/"
 
 
 

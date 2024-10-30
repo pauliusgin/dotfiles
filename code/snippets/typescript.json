@@ -188,7 +188,7 @@
             "export class $1$2 implements Usecase<$1$2Input, $2> {",
             "  constructor(",
             "    @inject(${4:repository})",
-            "    private readonly _${5:repoVariable}: $2Repository,",
+            "    private readonly ${5:repoVariable}: $2Repository,",
             "    @inject(EventDispatcher)",
             "    private readonly _eventDispatcher: EventDispatcher",
             "  ) {}",
@@ -495,7 +495,7 @@
     },
 
     "Add a Command Property": {
-        "prefix": "cp",
+        "prefix": "cmdp",
         "body": ["@Expose()", "${1:property}"],
         "description": "Add a new property to Command"
     },
@@ -581,11 +581,11 @@
             "import { DomainEventHandler } from 'ddd';",
             "",
             "@injectable()",
-            "export class Handle${1:EventName})",
+            "export class Handle${1:EventName}",
             "  implements DomainEventHandler<$1>",
             "{",
             "  constructor(",
-            "  @inject(${2:Usecase}",
+            "  @inject(${2:Usecase})",
             "  private readonly _${3:usecase}: $2",
             ") {}",
             "",
@@ -603,5 +603,33 @@
             "static readonly ${1:repoName} = Symbol.for('$1');"
         ], 
         "description": "Create an identifier"
+    },
+
+    "Create authorization check": {
+        "prefix": "auth",
+        "body": [
+            "const isAuthorized = await this.$1.canExecute(",
+            "  req.identity",
+            ");",
+            "",
+            "if (!isAuthorized) {",
+            "  return UnAuthorizedAction(res);",
+            "};"
+        ],
+        "description": "Create an authorization check for canExecute"
+    },
+
+    "Create spyOn method for test": {
+        "prefix": "testspy",
+        "body": [
+            "jest",
+            "  .spyOn(${1:repository}, '${2:method}')",
+            "  .mockImplementation(",
+            "    async (${3:request}): Promise<${4:response}> => {",
+            "      return $0",
+            "    }",
+            "  );"
+        ],
+        "description": "Create a spyOn method in a test"
     }
 }
