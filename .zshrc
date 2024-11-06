@@ -39,7 +39,7 @@ export NVM_DIR="$HOME/.nvm"
 # NAVIGATIONAL
 alias nvcon="nvim .config/nvim/init.lua"
 alias ltc="cd documents/learn\ to\ code"
-alias work="cd documents/work"
+alias dermis="cd documents/work/GettingApp/Dermis"
 
 # COMMANDS
 alias temperature="sudo powermetrics | grep -i -e 'temperature' -e 'fan' "
