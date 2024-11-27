@@ -39,7 +39,8 @@ export NVM_DIR="$HOME/.nvm"
 # NAVIGATIONAL
 alias nvcon="nvim .config/nvim/init.lua"
 alias ltc="cd documents/learn\ to\ code"
-alias dermis="cd documents/work/GettingApp/Dermis"
+alias dermis="cd work/GettingApp/Dermis"
+alias projects="cd Coding/personal_projects"
 
 # COMMANDS
 alias temperature="sudo powermetrics | grep -i -e 'temperature' -e 'fan' "
@@ -52,8 +53,15 @@ alias typing="open https://www.typing.com/student/typing-test/3-minute"
 alias torrents="open https://torrentgalaxy.to"
 alias gpt="open https://chatgpt.com/"
 alias render="open https://dashboard.render.com/web/srv-cr0s0ubqf0us73ferd6g/events"
-alias stripe-dash="open https://dashboard.stripe.com/test/dashboard"
 alias hopp="open https://hoppscotch.io/"
+alias stripe-dash="open https://dashboard.stripe.com/test/dashboard"
+alias stripe-api="open https://docs.stripe.com/api"
+alias stripe-cli="open https://docs.stripe.com/cli"
+alias trello-dermis="open https://trello.com/b/f0HJHLVz/dermis"
+alias music-lofi="open https://tinyurl.com/lofig"
+alias music-retro="openhttps://tinyurl.com/retr0synth"
+alias music-rock="open https://tinyurl.com/rock2000s"
+alias music-house="open https://tinyurl.com/d33phouse"
 
 
 

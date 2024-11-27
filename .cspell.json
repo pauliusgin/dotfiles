@@ -8,19 +8,23 @@
         "dotfiles",
         "dtos",
         "foldmethod",
+        "Giniunas",
         "inversify",
         "Moula",
         "Nonnullable",
         "nvim",
         "Postgress",
+        "powermetrics",
         "prerequest",
         "signup",
         "typeorm",
         "Usecase",
         "usecases",
         "vinted",
-        "Voizz",
-        "powermetrics"
+        "Voizz"
     ],
-    "ignorePaths": ["node_modules/**", ".config/nvim/**"]
+    "ignorePaths": [
+        "node_modules/**",
+        ".config/nvim/**"
+    ]
 }
