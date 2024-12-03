@@ -645,5 +645,12 @@
             "  );"
         ],
         "description": "Create a spyOn method in a test"
+    },
+
+    "console.log()": {
+        "prefix": "cl",
+        "body": [
+            "console.log('$1', $2);"
+        ]
     }
 }
