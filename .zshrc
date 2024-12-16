@@ -37,10 +37,14 @@ export NVM_DIR="$HOME/.nvm"
 ########## ALIASES
 
 # NAVIGATIONAL
-alias nvcon="nvim .config/nvim/init.lua"
 alias ltc="cd documents/learn\ to\ code"
 alias dermis="cd work/GettingApp/Dermis"
 alias projects="cd Coding/personal_projects"
+
+# FILES
+alias nvcon="nvim .config/nvim/init.lua"
+alias todo="nvim ~/Documents/Personal/TODO.md"
+
 
 # COMMANDS
 alias temperature="sudo powermetrics | grep -i -e 'temperature' -e 'fan' "
@@ -59,7 +63,7 @@ alias stripe-api="open https://docs.stripe.com/api"
 alias stripe-cli="open https://docs.stripe.com/cli"
 alias trello-dermis="open https://trello.com/b/f0HJHLVz/dermis"
 alias music-lofi="open https://tinyurl.com/lofig"
-alias music-retro="open https://tinyurl.com/retr0synth"
+alias music-retro="open https://tinyurl.com/80s-retro"
 alias music-rock="open https://tinyurl.com/rock2000s"
 alias music-house="open https://tinyurl.com/d33phouse"
 
