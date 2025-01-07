@@ -294,7 +294,7 @@ require("lazy").setup({
     {
         "neovim/nvim-lspconfig",
         config = function()
-            require'lspconfig'.tsserver.setup{
+            require'lspconfig'.ts_ls.setup{
                 init_options = {
                     hostInfo = "neovim"
                 },
@@ -321,7 +321,7 @@ require("lazy").setup({
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
-                    "tsserver",
+                    "ts_ls",
                     "html",
                     "cssls",
                 },
