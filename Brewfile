@@ -24,10 +24,10 @@ brew 'tree-sitter'
 brew 'nvm'
 
 # Utils
-cask 'rectangle'
 cask 'karabiner-elements'
 cask 'maccy'
 cask 'ngrok'
+cask 'raycast'
 
 # Apps
 cask 'google-chrome'
