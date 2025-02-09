@@ -3,7 +3,7 @@
     email = paulius.giniunas@gmail.com
 
 [init]
-    default = main
+    defaultBranch = main
 
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
