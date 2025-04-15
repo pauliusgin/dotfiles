@@ -1,0 +1,437 @@
+{
+    //* ======================= [COLOR THEME] ==================================
+    "workbench.colorTheme": "Minimal Fedu Ext",
+    "workbench.iconTheme": "vs-nomo-dark",
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#1f1f1f",
+        "activityBar.border": "#00000000",
+        "breadcrumb.foreground": "#595959",
+        "commandCenter.background": "#1f1f1f",
+        "commandCenter.foreground": "#1f1f1f",
+        "commandCenter.activeBbackground": "#1f1f1f",
+        "commandCenter.border": "#141414",
+        "editorRuler.foreground": "#FCB65020",
+        "editorWidget.foreground": "#9DA9B1",
+        "editorWidget.background": "#1f1f1f",
+        "editorGroup.emptyBackground": "#1f1f1f",
+        "editorGroup.border": "#292929",
+        "editorGroupHeader.tabsBackground": "#1f1f1f",
+        "editorLineNumber.foreground": "#6e6e6e",
+        "editorLineNumber.activeForeground": "#f0f0f0",
+        "editor.background": "#1f1f1f",
+        "editor.findMatchHighlightBackground": "#3e5469",
+        "editor.selectionBackground": "#3e5469",
+        "editor.selectionHighlightBackground": "#1f1f1f",
+        "editor.wordHighlightBackground": "#65656580",
+        "editorUnnecessaryCode.border": "#CD5359",
+        "icon.foreground": "#595959",
+        "inputOption.activeBorder": "#E7A74D",
+        "list.activeSelectionBackground": "#1f1f1f",
+        "list.inactiveSelectionBackground": "#1f1f1f",
+        "list.activeSelectionForeground": "#E7A74D",
+        "list.inactiveSelectionForeground": "#E7A74D95",
+        "list.focusBackground": "#1f1f1f",
+        "list.focusOutline": "#E7A74D90",
+        "list.inactiveFocusOutline": "#E7A74D90",
+        "panel.background": "#1f1f1f",
+        "panel.border": "#292929",
+        "quickInput.background": "#1f1f1f",
+        "titleBar.activeBackground": "#1f1f1f",
+        "titleBar.inactiveBackground": "#1f1f1f",
+        "titleBar.activeForeground": "#1f1f1f",
+        "titleBar.inactiveForeground": "#1f1f1f",
+        "scrollbarSlider.background": "#30303090",
+        "sideBar.background": "#1f1f1f",
+        "sideBar.border": "#292929",
+        "sideBarSectionHeader.foreground": "#595959",
+        "statusBar.background": "#1f1f1f",
+        "statusBar.foreground": "#595959",
+        "statusBar.border": "#00000000",
+        "statusBar.noFolderBackground": "#1f1f1f",
+        "tab.inactiveBackground": "#1f1f1f",
+        "tab.activeBorder": "#E7A74D",
+        "tab.activeBorderTop": "#1f1f1f",
+        "tab.unfocusedActiveBorder": "#1f1f1f"
+    },
+    "material-icon-theme.folders.color": "#90a4ae",
+    "vscode_custom_css.imports": [
+        "file:///Users/paulius/.vscode-custom-styles/custom-styles.css"
+    ],
+
+    //* ======================= [TEXT COLORS] ==================================
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    //* comment green
+                    "punctuation.definition.comment.ts",
+                    "comment.line.double-slash.ts",
+                    "comment.line.number-sign.git-commit",
+                    "comment.line.number-sign.ini",
+                    "punctuation.definition.comment.ini",
+                    "punctuation.definition.comment.sql",
+                    "comment.line.double-dash.sql"
+                ],
+                "settings": {
+                    "foreground": "#6A9955"
+                }
+            },
+            {
+                "scope": [
+                    //* string red
+                    "string.quoted.single.ts",
+                    "string.quoted.double.ts",
+                    "string.template.ts",
+                    "string.quoted.double.json.comments",
+                    "punctuation.definition.string.template.begin.ts",
+                    "punctuation.definition.string.template.end.ts",
+                    "string.quoted.single.sql",
+                    "string.quoted.single.yaml",
+                    "punctuation.definition.string.begin.yaml"
+                ],
+                "settings": {
+                    "foreground": "#CE9178"
+                }
+            },
+            {
+                "scope": [
+                    //* markdown blue
+                    "punctuation.definition.list.begin.markdown",
+                    "punctuation.definition.heading.markdown",
+                    "punctuation.definition.bold.markdown",
+                    "entity.name.section.markdown",
+                    "markup.bold.markdown",
+                    "keyword.other.definition.ini",
+                    "keyword.other.DML.sql",
+                    "keyword.other.DDL.create.II.sql",
+                    "keyword.other.sql"
+                ],
+                "settings": {
+                    "foreground": "#6796E6"
+                }
+            },
+            {
+                "scope": ["meta.object-literal.key.ts"],
+                "settings": {
+                    "foreground": "#FAFAFA"
+                }
+            },
+            {
+                "scope": [
+                    "variable.other.object.ts",
+                    "support.type.primitive.ts",
+                    "entity.other.inherited-class.ts",
+                    "variable.language.relations.prisma"
+                ],
+                "settings": {
+                    "foreground": "#9DA9B1"
+                }
+            },
+            {
+                "scope": [
+                    "constant.other.table-name.sql",
+                    "constant.other.database-name.sql",
+                    "meta.embedded.block.sql"
+                ],
+                "settings": {
+                    "foreground": "#BBBBBB"
+                }
+            },
+            {
+                "scope": [
+                    "entity.name.function.ts",
+                    "entity.name.type.ts",
+                    "punctuation.definition.string.end.sql",
+                    "punctuation.definition.string.begin.sql"
+                ],
+                "settings": {
+                    "foreground": "#E7A74D"
+                }
+            }
+        ]
+    },
+
+    //* ========================= [BACKGROUND] =================================
+    "background.enabled": true,
+    "background.fullscreen": {
+        "images": [
+            "file:///Users/paulius/Pictures/Wallpapers/retro_grid_7.jpg"
+        ],
+        "opacity": 0.1,
+        "size": "cover",
+        "position": "center"
+    },
+
+    //* =========================== [EDITOR] ===================================
+    "breadcrumbs.symbolPath": "off",
+    "chat.commandCenter.enabled": false,
+    "editor.renderWhitespace": "none",
+    "editor.hover.delay": 3000,
+    "editor.parameterHints.enabled": false,
+    "editor.fontFamily": "\"Terminus (TTF)\", Iosevka, Monaco, Menlo, 'Courier New', monospace",
+    "editor.fontLigatures": false,
+    "editor.fontSize": 15,
+    "editor.cursorSurroundingLines": 8,
+    "editor.formatOnSave": false,
+    "editor.accessibilitySupport": "off",
+    "editor.lineHeight": 1.1,
+    "editor.stickyScroll.enabled": false,
+    "editor.stickyScroll.scrollWithEditor": false,
+    "editor.guides.bracketPairs": "active",
+    "editor.guides.highlightActiveBracketPair": false,
+    "editor.rulers": [80],
+    "editor.smoothScrolling": true,
+    "editor.cursorSurroundingLinesStyle": "all",
+    "editor.colorDecoratorsActivatedOn": "click",
+    "editor.minimap.enabled": false,
+    "editor.renderControlCharacters": false,
+    "editor.minimap.showSlider": "always",
+    "editor.quickSuggestions": {
+        "other": "off"
+    },
+    "explorer.compactFolders": false,
+    "makefile.configureOnOpen": false,
+    "notebook.lineNumbers": "on",
+    "search.useIgnoreFiles": false,
+    "search.quickOpen.includeHistory": false,
+    "search.showLineNumbers": true,
+    "task.quickOpen.history": 0,
+    "window.commandCenter": false,
+    "window.customTitleBarVisibility": "never",
+    "window.title": "${folderName}/${activeFolderMedium} [${activeRepositoryBranchName}]",
+    "workbench.startupEditor": "none",
+    "workbench.tree.enableStickyScroll": false,
+    "workbench.editor.titleScrollbarSizing": "large",
+    "workbench.sideBar.location": "right",
+    "workbench.editor.centeredLayoutAutoResize": false,
+    "workbench.list.defaultFindMatchType": "contiguous",
+    "workbench.commandPalette.history": 0,
+    "workbench.activityBar.location": "hidden",
+    "workbench.layoutControl.enabled": false,
+    "zenMode.restore": false,
+    "zenMode.silentNotifications": false,
+
+    //* ============================ [COMMENTS] =====================================
+    "better-comments.tags": [
+        {
+            "tag": "!",
+            "color": "#FF2D00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "?",
+            "color": "#3498DB",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "//",
+            "color": "#474747",
+            "strikethrough": true,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "todo",
+            "color": "#FF8C00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "*",
+            "color": "#FFC300",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        }
+    ],
+
+    //* ============================ [VIM] =====================================
+    "vim.leader": "<Space>",
+    "vim.useSystemClipboard": true,
+    "vim.highlightedyank.enable": true,
+    "vim.easymotion": false,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [],
+    "vim.commandLineModeKeyBindingsNonRecursive": [],
+    "vim.visualModeKeyBindingsNonRecursive": [],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["c", "i", "e"],
+            "commands": []
+        },
+        {
+            "before": ["n"],
+            "after": ["n", "z", "z"]
+        },
+        {
+            "before": ["N"],
+            "after": ["N", "z", "z"]
+        },
+        {
+            "before": ["{"],
+            "after": ["{", "z", "z"]
+        },
+        {
+            "before": ["}"],
+            "after": ["}", "z", "z"]
+        },
+        {
+            "before": ["("],
+            "after": ["(", "z", "z"]
+        },
+        {
+            "before": [")"],
+            "after": [")", "z", "z"]
+        },
+        {
+            "before": ["<C-u>"],
+            "after": ["<C-u>", "z", "z"]
+        },
+        {
+            "before": ["<C-d>"],
+            "after": ["<C-d>", "z", "z"]
+        },
+        {
+            "before": ["<leader>", "g", "b"],
+            "commands": []
+        },
+        {
+            "before": ["g", "b"],
+            "commands": []
+        },
+        {
+            "before": ["p"],
+            "after": ["g", "p", "k", "w"]
+        },
+        {
+            "before": ["P"],
+            "after": ["g", "P", "k", "w"]
+        },
+        {
+            "before": ["<C-End>"],
+            "commands": [":noh"]
+        }
+    ],
+
+    //* ============================ [GIT] =====================================
+    "diffEditor.hideUnchangedRegions.enabled": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "git.openRepositoryInParentFolders": "never",
+    "git.inputValidation": true,
+    "git.decorations.enabled": false,
+    "git.suggestSmartCommit": false,
+    "gitlens.views.commits.files.layout": "list",
+    "gitlens.views.repositories.showContributors": false,
+    "gitlens.views.repositories.showWorktrees": false,
+    "gitlens.views.repositories.showTags": false,
+    "window.density.editorTabHeight": "compact",
+
+    //* ========================== [TERMINAL] ==================================
+    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.env.osx": {},
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.enableImages": true,
+    "terminal.integrated.tabs.showActions": "never",
+    "terminal.external.osxExec": "Kitty.app",
+
+    //* ========================= [FORMATTING] =================================
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.bracketSameLine": true,
+    "prettier.tabWidth": 4,
+    "eslint.codeActionsOnSave.rules": null,
+    "files.associations": {
+        ".env": "properties"
+    },
+    "[properties]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[dotenv]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format",
+        "editor.semanticHighlighting.enabled": "configuredByTheme"
+    },
+    "[prisma]": {
+        "editor.defaultFormatter": "Prisma.prisma"
+    },
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "shellformat.effectLanguages": [
+        ".env",
+        "shellscript",
+        "dockerfile",
+        "dotenv",
+        "hosts",
+        "jvmoptions",
+        "ignore",
+        "gitignore",
+        "properties",
+        "spring-boot-properties",
+        "azcli",
+        "bats"
+    ],
+
+    //* ========================= [TYPESCRIPT] =================================
+    "typescript.inlayHints.enumMemberValues.enabled": true,
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "javascript.preferences.importModuleSpecifier": "relative",
+    "markdown.preview.markEditorSelection": false,
+
+    //* =========================== [CSPELL] ===================================
+    "cSpell.dictionaryDefinitions": [],
+    "cSpell.language": "en,lt",
+    "cSpell.languageSettings": [],
+    "cSpell.userWords": [
+        "Alpaka",
+        "dotfiles",
+        "easymotion",
+        "esbenp",
+        "factorialize",
+        "fileutils",
+        "fullscreen",
+        "hlsearch",
+        "htmx",
+        "nodenext",
+        "OWASP",
+        "Pingvinukas",
+        "vinted"
+    ],
+
+    //* ============================= [MISC] ===================================
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.renderLineHighlight": "none",
+    "editor.lightbulb.enabled": "off",
+    "gitlens.views.scm.grouped.views": {
+        "commits": true,
+        "branches": true,
+        "remotes": true,
+        "stashes": true,
+        "tags": true,
+        "worktrees": true,
+        "contributors": true,
+        "repositories": true,
+        "searchAndCompare": false,
+        "launchpad": false
+    },
+    "window.newWindowProfile": "Default",
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "chat.extensionTools.enabled": false,
+    "chat.focusWindowOnConfirmation": false,
+    "chat.setupFromDialog": false
+}

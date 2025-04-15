@@ -3,10 +3,10 @@
 echo "Setting up your Mac..."
 
 # Check for Homebrew and install if we don't have it
-if ! command -v brew &> /dev/null; then
+if ! command -v brew &>/dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>$HOME/.zprofile
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
@@ -32,13 +32,18 @@ mkdir $HOME/.config/kitty
 mkdir $HOME/.vscode
 mkdir $HOME/.vscode/extensions
 
-
 # Symlinks
 ln -swf $HOME/.dotfiles/.zshrc $HOME/.zshrc
 ln -swf $HOME/.dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
 ln -swf $HOME/.dotfiles/init.lua $HOME/.config/nvim/init.lua
 ln -swf $HOME/.dotfiles/.gitconfig $HOME/.gitconfig
 ln -swf $HOME/.dotfiles/code/extensions.json $HOME/.vscode/extensions/extensions.json
+ln -swf $HOME/.dotfiles/code/keybindings.json $HOME/Library/Application\ Support/Code/User/keybindings.json
+ln -swf $HOME/.dotfiles/code/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
+ln -swf $HOME/.dotfiles/code/snippets/typescript.json $HOME/Library/Application\ Support/Code/User/snippets/typescript.json
+ln -swf $HOME/.dotfiles/code/snippets/markdown.json $HOME/Library/Application\ Support/Code/User/snippets/markdown.json
+ln -swf $HOME/.dotfiles/code/snippets/css.json $HOME/Library/Application\ Support/Code/User/snippets/css.json
+ln -swf $HOME/.dotfiles/code/snippets/scss.json $HOME/Library/Application\ Support/Code/User/snippets/scss.json
 ln -swf $HOME/.dotfiles/.cspell.json $HOME/.cspell.json
 
 #Npm packs

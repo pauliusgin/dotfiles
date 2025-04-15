@@ -44,7 +44,7 @@
             "      $13,",
             "    });",
             "",
-                "$2.applyChange(",
+            "$2.applyChange(",
             "      new $1Created({",
             "        $4,",
             "        $5,",
@@ -120,8 +120,7 @@
             "    this.props.$11 = event.props.$11;",
             "    this.props.$12 = event.props.$12;",
             "    this.props.$13 = event.props.$13;",
-            "  }",
-
+            "  }"
         ],
         "description": "Build a structure for creating and updating aggregate root"
     },
@@ -149,11 +148,9 @@
         "description": "Add a new method to an aggregate root"
     },
 
-    "Agrregate event props": {
+    "Aggregate event props": {
         "prefix": "ev",
-        "body": [
-            "this.props.$1 = event.props.$1;",
-        ],
+        "body": ["this.props.$1 = event.props.$1;"],
         "description": "Add an event property in the aggregate."
     },
 
@@ -613,9 +610,7 @@
 
     "Create an identifier": {
         "prefix": "ident",
-        "body": [
-            "static readonly ${1:repoName} = Symbol.for('$1');"
-        ], 
+        "body": ["static readonly ${1:repoName} = Symbol.for('$1');"],
         "description": "Create an identifier"
     },
 
@@ -649,8 +644,6 @@
 
     "console.log()": {
         "prefix": "cl",
-        "body": [
-            "console.log('$1', $2);"
-        ]
+        "body": ["console.log('$1', $2);"]
     }
 }

@@ -23,6 +23,7 @@
         "prerequest",
         "SENDGRID",
         "signup",
+        "sslmode",
         "typeorm",
         "unmark",
         "Usecase",
