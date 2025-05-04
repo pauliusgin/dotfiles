@@ -18,7 +18,7 @@
             "  $3",
             "  }) {",
             "    const {",
-            "      ${4:propName}",
+            "      ${4:propName},",
             "      $5,",
             "      $6,",
             "      $7,",
@@ -80,7 +80,7 @@
             "  $3",
             "  }) {",
             "    const {",
-            "      $4",
+            "      $4,",
             "      $5,",
             "      $6,",
             "      $7,",
@@ -94,7 +94,7 @@
             "",
             "  this.applyChange(",
             "    new $1Updated({",
-            "      $4",
+            "      $4,",
             "      $5,",
             "      $6,",
             "      $7,",
@@ -120,7 +120,8 @@
             "    this.props.$11 = event.props.$11;",
             "    this.props.$12 = event.props.$12;",
             "    this.props.$13 = event.props.$13;",
-            "  }"
+            "  }",
+            "}"
         ],
         "description": "Build a structure for creating and updating aggregate root"
     },
@@ -167,7 +168,7 @@
             "",
             "@DecoratedEvent({",
             "  name: '${3:EVENT_NAME}',",
-            "  namespace: '@dermis/b2b',",
+            "  namespace: '${4:namespace}',",
             "  version: 1,",
             "})",
             "",
@@ -190,7 +191,7 @@
         "body": [
             "import { inject, injectable } from 'inversify';",
             "import { EventDispatcher, Usecase } from 'ddd';",
-            "imoort { $2 }",
+            "import { $2 }",
             "import { $2Repository }",
             "",
             "export interface ${1:Method}${2:AggregateRoot}Input {",
@@ -208,8 +209,7 @@
             "",
             "  async execute(request: $1$2Input): Promise<$2> {",
             "",
-            "    $0",
-            "    const ${6:variable} = ",
+            "    const ${6:variable} = $0",
             "",
             "    await this.$5.save($6);",
             "    await this._eventDispatcher.dispatch($6);",
@@ -252,7 +252,16 @@
             "@inject(${1:Identifier}.${2:name}Repository)",
             "private readonly _$2Repository: ${3:AggregateRoot}Repository,"
         ],
-        "description": "Add new repository to a usecase"
+        "description": "Add new repository"
+    },
+
+    "Inject a Gateway": {
+        "prefix": "injg",
+        "body": [
+            "@inject(${1:Identifier}.${2:name}Gateway)",
+            "private readonly _$2Gateway: ${3:AggregateRoot}Gateway,"
+        ],
+        "description": "Add a new gateway"
     },
 
     "Create a Repository": {
@@ -274,13 +283,13 @@
         "body": [
             "import { injectable } from 'inversify';",
             "import { EntityManager } from 'typeorm';",
-            "import { $1, $1Repository }",
+            "import { $1, $1Repository } from '';",
             "import { $1Entity }",
             "import { $1EntityMapper }",
             "",
             "@injectable()",
             "export class Postgres${1:AggregateRoot}Repository implements $1Repository {",
-            "  private $2EntityMapper: $1EntityMapper;",
+            "  private readonly $2EntityMapper: $1EntityMapper;",
             "",
             "  constructor(private readonly entityManager: EntityManager) {",
             "    this.$2EntityMapper = new $1EntityMapper(entityManager);",
@@ -292,8 +301,6 @@
             "    const $2Entity = this.$2EntityMapper.fromDomain($2);",
             "",
             "    await $2Repository.save($2Entity);",
-            "",
-            "    return;",
             "  }",
             "",
             "  async getById(id: string): Promise<$1> {",
@@ -305,11 +312,66 @@
             "      },",
             "    });",
             "",
+            "    if (!$2) {",
+            "      return null;",
+            "    };",
+            "",
             "    return this.$2EntityMapper.toDomain($2);",
             "  }",
             "}"
         ],
         "description": "Build a structure for postgres write repository"
+    },
+
+    "Create a Postgres Read Model Repository": {
+        "prefix": "reporm",
+        "body": [
+            "import { injectable } from 'inversify';",
+            "import { EntityManager } from 'typeorm';",
+            "import { $1ReadModel, $1ReadModelRepository } from ''",
+            "import { $1ReadModelMapper }",
+            "",
+            "@injectable()",
+            "export class Postgres${1:AggregateRoot}ReadModelRepository implements $1ReadModelRepository {",
+            "  private readonly _$2ReadModelMapper: $1ReadModelMapper;",
+            "",
+            "  constructor(private readonly _entityManager: EntityManager) {",
+            "    this._$2ReadModelMapper = new $1ReadModelMapper();",
+            "  }",
+            "",
+            "  async getById($2Id: string): Promise<$1ReadModel> {",
+            "    const result: $1ReadModel[] = await this._entityManager.query(",
+            "      `",
+            "       SELECT",
+            "         -- query goes here",
+            "      `,",
+            "      [$2Id]",
+            "    );",
+            "",
+            "    if (!result.length) {",
+            "      return null;",
+            "    }",
+            "",
+            "    return this._$2ReadModelMapper.toDomain(result[0]);",
+            "  }",
+            "",
+            "  async getAll(): Promise<$1ReadModel[]> {",
+            "    const result: $1ReadModel[] = await this._entityManager.query(",
+            "      `",
+            "       SELECT",
+            "         -- query goes here",
+            "      `,",
+            "    );",
+            "",
+            "    if (!result.length) {",
+            "      return null;",
+            "    }",
+            "",
+            "    return result.map(($2) => this._$2ReadModelMapper.toDomain($2));",
+            "  }",
+            "}"
+        ],
+        "description": "Build a structure for postgres read model repository"
     },
 
     "Create an Entity": {
@@ -406,6 +468,32 @@
         "description": "Build a structure for your entity mapper"
     },
 
+    "Create a Read Model Mapper": {
+        "prefix": "mapprm",
+        "body": [
+            "import { Mapper } from 'ddd'",
+            "import { $1ReadModel }",
+            "",
+            "export class ${1:AggregateRoot}ReadModelMapper implements Mapper<any, $1ReadModel> {",
+            "  toDomain(raw: any): $1ReadModel {",
+            "    return {",
+            "      id: raw.id,",
+            "      $2: raw.$2,",
+            "      $3: raw.$3,",
+            "      $4: raw.$4,",
+            "      $5: raw.$5,",
+            "      $6: raw.$6,",
+            "      $7: raw.$7,",
+            "      $8: raw.$8,",
+            "      $9: raw.$9,",
+            "      $10: raw.$10,",
+            "    }",
+            "  }",
+            "}"
+        ],
+        "description": "Build a structure for your read model mapper"
+    },
+
     "Add 'fromDomain()' property to a mapper": {
         "prefix": "from",
         "body": ["$1: t.props.$1,"],
@@ -440,12 +528,27 @@
             "@JsonController('/${1:controllerRoot}')",
             "export class ${2:AggregateRoot}Controller {",
             "  constructor(",
-            "    $0",
+            "    inju$0",
             ") {}",
-            "  $0",
+            "  // methods go here",
             "}"
         ],
         "description": "Build a structure for your controller"
+    },
+
+    "Create a controller module": {
+        "prefix": "module",
+        "body": [
+            "import { Container } from 'inversify';",
+            "import { $1Controller } from './$1Controller';",
+            "",
+            "export class ${1:AggregateRoot}Module {",
+            "  configure(container: Container) {",
+            "    container.bind($1Controller).toSelf();",
+            "  }",
+            "}"
+        ],
+        "description": "Create a module for a controller"
     },
 
     "Inject Usecase": {
@@ -454,7 +557,7 @@
             "@inject(${1:Usecase})",
             "private readonly ${2:variable}: $1,"
         ],
-        "description": "Inject a usecase into the controller"
+        "description": "Inject a usecase"
     },
 
     "Add a method to the controller": {
@@ -506,7 +609,7 @@
     },
 
     "Add a Command Property": {
-        "prefix": "cmdp",
+        "prefix": "pr",
         "body": ["@Expose()", "${1:property}"],
         "description": "Add a new property to Command"
     },
@@ -514,9 +617,33 @@
     "Add a validator to a Command's Property": {
         "prefix": "v",
         "body": [
-            "@${1|IsString,IsNumber,IsOptional,IsEnum,IsUUID,IsBoolean,IsArray,Length,IsEmail,IsPhoneNumber|}()"
+            "@${1|IsString,IsNumber,IsEnum,IsBoolean,IsArray,IsOptional,Length,Min,Max,Type,ValidateNested,IsUUID,IsISO8601,IsUrl,IsEmail,IsPhoneNumber|}()"
         ],
         "description": "Add a validator to Command's property"
+    },
+
+    "@IsString()": {
+        "prefix": "vs",
+        "body": [
+            "@IsString()"
+        ],
+        "description": "Add a string validator to Command's property"
+    },
+
+    "@IsNumber()": {
+        "prefix": "vn",
+        "body": [
+            "@IsNumber()"
+        ],
+        "description": "Add a number validator to Command's property"
+    },
+
+    "@IsOptional()": {
+        "prefix": "vo",
+        "body": [
+            "@IsOptional()"
+        ],
+        "description": "Add an optional validator to Command's property"
     },
 
     "Create an InMemoryRepository for a unit test": {
@@ -553,7 +680,7 @@
             "  let ${3:repoName}: InMemory$1Repository;",
             "  let ${4:usecaseName}: $2;",
             "",
-            "  beforeAll(() => {",
+            "  beforeEach(() => {",
             "    db = new Map();",
             "    $3 = new InMemory$1Repository(db);",
             "    $4 = new $2($3, eventDispatcherMock());",
@@ -564,7 +691,7 @@
             "      ${0:property: value}",
             "  });",
             "",
-            "    expect(result).toEqual();",
+            "    expect(result).toBe();",
             "  });",
             "});"
         ],
@@ -601,7 +728,7 @@
             ") {}",
             "",
             "  async handle(domainEvent: $1): Promise<${4:result}> {",
-            "    handler logic goes here $0",
+            "    // handler logic goes here $0",
             "  }",
             "}"
         ],
@@ -628,8 +755,18 @@
         "description": "Create an authorization check for canExecute"
     },
 
-    "Create spyOn method for test": {
-        "prefix": "testspy",
+    "Return a set value for a spyOn method for test": {
+        "prefix": "test-spy",
+        "body": [
+            "jest",
+            "  .spyOn(${1:repository}, '${2:method}')",
+            "  .${3|mockResolvedValue, mockReturnValue|}(${4:value});"
+        ],
+        "description": "Return a set value for a spyOn method in a test"
+    },
+
+    "Create async spyOn method for test": {
+        "prefix": "test-spy-async",
         "body": [
             "jest",
             "  .spyOn(${1:repository}, '${2:method}')",
@@ -639,11 +776,89 @@
             "    }",
             "  );"
         ],
-        "description": "Create a spyOn method in a test"
+        "description": "Create an async spyOn method in a test"
     },
 
     "console.log()": {
         "prefix": "cl",
-        "body": ["console.log('$1', $2);"]
+        "body": ["console.log('$1 ----->', $2);"],
+                "description": "Create a console.log"
+    },
+
+    "console.log() with string literal": {
+        "prefix": "cll",
+        "body": ["console.log(`$0`);"],
+                "description": "Create a console.log with string literal"
+    },
+
+    "ANSI color red": {
+        "prefix": "color red",
+        "body": [
+            "\\x1b[31m"
+        ],
+        "description": "Add color red to the text"
+    },
+
+    "ANSI color green": {
+        "prefix": "color green",
+        "body": [
+            "\\x1b[32m"
+        ],
+        "description": "Add color green to the text"
+    },
+
+    "ANSI color yellow": {
+        "prefix": "color yellow",
+        "body": [
+            "\\x1b[33m"
+        ],
+        "description": "Add color yellow to the text"
+    },
+
+    "ANSI color blue": {
+        "prefix": "color blue",
+        "body": [
+            "\\x1b[34m"
+        ],
+        "description": "Add color blue to the text"
+    },
+
+    "ANSI color reset": {
+        "prefix": "color reset",
+        "body": [
+            "\\x1b[0m"
+        ],
+        "description": "Add color reset to the text"
+    },
+
+    "Typescript ignore next line": {
+        "prefix": "ts-ignore",
+        "body": "// @ts-ignore",
+        "description": "Disables typescript checking for the next line"
+    },
+
+    "Typescript ignore whole file": {
+        "prefix": "ts-ignore-all",
+        "body": "// @ts-nocheck",
+        "description": "Disables typescript checking for the whole file"
+    },
+
+    "Create a namespace for errors": {
+        "prefix": "error-namespace",
+        "body": [
+
+            "import { DomainError } from 'ddd';",
+            "",
+            "export namespace ${1:AggregateRoot}Errors {",
+            "  export class $1NotFound extends DomainError {",
+            "    constructor(cause?: string) {",
+            "      super($0'$1_NOT_FOUND');",
+            "      this.cause = cause;",
+            "    }",
+            "  }",
+            "}"
+
+        ],
+        "description": "Create a namespace for errors"
     }
 }

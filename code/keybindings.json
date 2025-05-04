@@ -643,12 +643,22 @@
     },
     {
         "key": "space t t",
-        "command": "workbench.action.togglePanel",
+        "command": "workbench.action.terminal.toggleTerminal",
         "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
     },
     {
         "key": "ctrl+t t",
         "command": "workbench.action.togglePanel"
+    },
+    {
+        "key": "space t o",
+        "command": "workbench.action.output.toggleOutput",
+        "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
+    },
+    {
+        "key": "space t p",
+        "command": "workbench.action.problems.focus",
+        "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
     },
 
     //* ============================= [MISC] ===================================
@@ -848,5 +858,20 @@
         "key": "space",
         "command": "-list.toggleExpand",
         "when": "listFocus && !inputFocus && !treestickyScrollFocused"
+    },
+    {
+        "key": "shift+cmd+u",
+        "command": "-workbench.action.output.toggleOutput",
+        "when": "workbench.panel.output.active"
+    },
+    {
+        "key": "tab",
+        "command": "editor.action.inlineSuggest.commit",
+        "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    },
+    {
+        "key": "tab",
+        "command": "-editor.action.inlineSuggest.commit",
+        "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
     }
 ]

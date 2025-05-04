@@ -197,7 +197,6 @@
     "search.showLineNumbers": true,
     "task.quickOpen.history": 0,
     "window.commandCenter": false,
-    "window.customTitleBarVisibility": "never",
     "window.title": "${folderName}/${activeFolderMedium} [${activeRepositoryBranchName}]",
     "workbench.startupEditor": "none",
     "workbench.tree.enableStickyScroll": false,
@@ -311,6 +310,10 @@
             "commands": []
         },
         {
+            "before": ["d", "a", "e"],
+            "commands": []
+        },
+        {
             "before": ["g", "b"],
             "commands": []
         },
@@ -407,9 +410,12 @@
         "fullscreen",
         "hlsearch",
         "htmx",
+        "iban",
+        "inversify",
         "nodenext",
         "OWASP",
         "Pingvinukas",
+        "typeorm",
         "vinted"
     ],
 
