@@ -21,4 +21,4 @@
     template = ~/.gitconfig_commit_template
 
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lg = !"echo '' && echo 'Newer commits at the top ⬆️, older commits at the bottom ⬇️' && echo '' && git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s%n%b %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"

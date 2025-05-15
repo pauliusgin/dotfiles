@@ -18,7 +18,7 @@
             "",
             "- ### Query Params:",
             "",
-            "    ${6|Query param:,None.|}",
+            "${6|    None.,```typescript\n\t// params\n```|}",
             "",
             "- ### Types:",
             "",

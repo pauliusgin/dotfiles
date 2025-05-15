@@ -180,7 +180,6 @@
     "editor.guides.bracketPairs": "active",
     "editor.guides.highlightActiveBracketPair": false,
     "editor.rulers": [80],
-    "editor.smoothScrolling": true,
     "editor.cursorSurroundingLinesStyle": "all",
     "editor.colorDecoratorsActivatedOn": "click",
     "editor.minimap.enabled": false,
@@ -299,11 +298,11 @@
         },
         {
             "before": ["<C-u>"],
-            "after": ["<C-u>", "z", "z"]
+            "after": ["2", "0", "k", "z", "z"]
         },
         {
             "before": ["<C-d>"],
-            "after": ["<C-d>", "z", "z"]
+            "after": ["2", "0", "j", "z", "z"]
         },
         {
             "before": ["<leader>", "g", "b"],
@@ -416,6 +415,7 @@
         "OWASP",
         "Pingvinukas",
         "typeorm",
+        "usecases",
         "vinted"
     ],
 
@@ -439,5 +439,8 @@
     "typescript.updateImportsOnFileMove.enabled": "never",
     "chat.extensionTools.enabled": false,
     "chat.focusWindowOnConfirmation": false,
-    "chat.setupFromDialog": false
+    "chat.setupFromDialog": false,
+    "editor.smoothScrolling": true,
+    "workbench.list.smoothScrolling": true,
+    "terminal.integrated.smoothScrolling": true
 }
