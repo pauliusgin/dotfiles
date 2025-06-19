@@ -164,6 +164,14 @@
         "command": "workbench.action.showEditorsInActiveGroup",
         "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
     },
+    {
+        "key": "ctrl+o",
+        "command": "workbench.action.navigateBackInNavigationLocations"
+    },
+    {
+        "key": "ctrl+shift+o",
+        "command": "workbench.action.navigateForwardInNavigationLocations"
+    },
 
     //* =========================== [MENUS] ====================================
     {
@@ -352,6 +360,11 @@
         "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus) && (editorHasDefinitionProvider && editorTextFocus)"
     },
     {
+        "key": "space g t",
+        "command": "editor.action.goToTypeDefinition",
+        "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
+    },
+    {
         "key": "space e a",
         "command": "vscode-harpoon.addEditor",
         "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
@@ -425,6 +438,11 @@
         "command": "editor.action.addSelectionToNextFindMatch",
         "when": "(vim.mode === 'Normal' || vim.mode === 'Visual') && (editorTextFocus || !inputFocus)"
     },
+    {
+        "key": "ctrl+shift+n",
+        "command": "editor.action.selectHighlights",
+        "when": "(vim.mode === 'Normal' || vim.mode === 'Visual') && (editorTextFocus || !inputFocus)"
+    },
 
     //* ============================ [GIT] =====================================
     {
@@ -456,16 +474,6 @@
         "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
     },
     {
-        "key": "space g u",
-        "command": "git.unstageSelectedRanges",
-        "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus) && (isInDiffEditor && !operationInProgress)"
-    },
-    {
-        "key": "ctrl+g u",
-        "command": "git.unstageSelectedRanges",
-        "when": "isInDiffEditor && !operationInProgress"
-    },
-    {
         "key": "ctrl+g r",
         "command": "gitlens.views.repositories.focus"
     },
@@ -482,6 +490,26 @@
     {
         "key": "ctrl+g ctrl+e",
         "command": "git.openMergeEditor"
+    },
+    {
+        "key": "space g a",
+        "command": "git.stageSelectedRanges",
+        "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus) && (isInDiffEditor && !operationInProgress)"
+    },
+    {
+        "key": "ctrl+g a",
+        "command": "git.stageSelectedRanges",
+        "when": "isInDiffEditor && !operationInProgress"
+    },
+    {
+        "key": "space g u",
+        "command": "git.unstageSelectedRanges",
+        "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus) && (isInDiffEditor && !operationInProgress)"
+    },
+    {
+        "key": "ctrl+g u",
+        "command": "git.unstageSelectedRanges",
+        "when": "isInDiffEditor && !operationInProgress"
     },
     {
         "key": "ctrl+down",
@@ -873,5 +901,20 @@
         "key": "tab",
         "command": "-editor.action.inlineSuggest.commit",
         "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    },
+    {
+        "key": "cmd+i",
+        "command": "-workbench.action.terminal.chat.start",
+        "when": "chatIsEnabled && terminalChatAgentRegistered && terminalFocusInAny && terminalHasBeenCreated || chatIsEnabled && terminalChatAgentRegistered && terminalFocusInAny && terminalProcessSupported"
+    },
+    {
+        "key": "shift+cmd+l",
+        "command": "-editor.action.selectHighlights",
+        "when": "editorFocus"
+    },
+    {
+        "key": "cmd+k alt+cmd+s",
+        "command": "-git.stageSelectedRanges",
+        "when": "editorTextFocus && !operationInProgress && resourceScheme == 'file'"
     }
 ]

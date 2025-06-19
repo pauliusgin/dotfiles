@@ -55,7 +55,7 @@
     },
     "material-icon-theme.folders.color": "#90a4ae",
     "vscode_custom_css.imports": [
-        "file:///Users/paulius/.vscode-custom-styles/custom-styles.css"
+        "file:///Users/paulius/.dotfiles/code/custom-css/vscode-custom-styles.css"
     ],
 
     //* ======================= [TEXT COLORS] ==================================
@@ -155,7 +155,7 @@
     "background.enabled": true,
     "background.fullscreen": {
         "images": [
-            "file:///Users/paulius/Pictures/Wallpapers/retro_grid_7.jpg"
+            "file:///Users/paulius/.dotfiles/code/images/retro_grid_7.jpg"
         ],
         "opacity": 0.1,
         "size": "cover",
@@ -304,6 +304,10 @@
             "before": ["<C-d>"],
             "after": ["2", "0", "j", "z", "z"]
         },
+        // {
+        //     "before": ["<C-o>"],
+        //     "after": []
+        // },
         {
             "before": ["<leader>", "g", "b"],
             "commands": []
@@ -388,9 +392,6 @@
         "azcli",
         "bats"
     ],
-
-    //* ========================= [TYPESCRIPT] =================================
-    "typescript.inlayHints.enumMemberValues.enabled": true,
     "typescript.preferences.importModuleSpecifier": "relative",
     "javascript.preferences.importModuleSpecifier": "relative",
     "markdown.preview.markEditorSelection": false,
@@ -424,23 +425,70 @@
     "editor.renderLineHighlight": "none",
     "editor.lightbulb.enabled": "off",
     "gitlens.views.scm.grouped.views": {
-        "commits": true,
         "branches": true,
         "remotes": true,
-        "stashes": true,
-        "tags": true,
-        "worktrees": true,
         "contributors": true,
         "repositories": true,
         "searchAndCompare": false,
-        "launchpad": false
+        "launchpad": false,
+        "fileHistory": true
     },
     "window.newWindowProfile": "Default",
     "typescript.updateImportsOnFileMove.enabled": "never",
     "chat.extensionTools.enabled": false,
-    "chat.focusWindowOnConfirmation": false,
-    "chat.setupFromDialog": false,
     "editor.smoothScrolling": true,
     "workbench.list.smoothScrolling": true,
-    "terminal.integrated.smoothScrolling": true
+    "terminal.integrated.smoothScrolling": true,
+    "scm.alwaysShowRepositories": true,
+    "scm.compactFolders": false,
+    "scm.showInputActionButton": false,
+    "scm.showActionButton": false,
+    "git.showActionButton": {
+        "commit": false,
+        "publish": false,
+        "sync": false
+    },
+    "git.showCommitInput": false,
+    "github.showAvatar": false,
+    "sonarlint.focusOnNewCode": true,
+    "javascript.preferGoToSourceDefinition": true,
+    "typescript.preferGoToSourceDefinition": true,
+    "gitlens.views.scm.grouped.hiddenViews": {
+        "commits": false,
+        "worktrees": true,
+        "branches": true,
+        "remotes": false,
+        "stashes": false,
+        "tags": true,
+        "contributors": true,
+        "repositories": true,
+        "fileHistory": false,
+        "launchpad": false,
+        "searchAndCompare": false
+    },
+    "chat.agent.enabled": false,
+    "telemetry.feedback.enabled": false,
+    "editor.inlineSuggest.enabled": false,
+    "editor.screenReaderAnnounceInlineSuggestion": false,
+    "accessibility.verbosity.inlineChat": false,
+    "notebook.experimental.generate": false,
+    "chat.promptFiles": false,
+    "editor.inlayHints.enabled": "off",
+    "inlineChat.lineNaturalLanguageHint": false,
+    "[snippets]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "sonarlint.rules": {
+        "typescript:S1301": {
+            "level": "on"
+        }
+    },
+    "javascript.format.enable": false,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+    "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
+    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    "javascript.format.insertSpaceAfterCommaDelimiter": false,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+    "javascript.format.insertSpaceAfterSemicolonInForStatements": false,
+    "javascript.format.insertSpaceBeforeAndAfterBinaryOperators": false
 }

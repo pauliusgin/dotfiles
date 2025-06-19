@@ -1,0 +1,89 @@
+/* GENERAL FONT */
+.mac {
+    font-family: "Terminus (TTF)", monospace;
+}
+
+/* EXPLORER FONT SIZE */
+.monaco-list-rows {
+    font-size: 15px;
+}
+
+.monaco-action-bar .action-label {
+    font-size: 15px;
+}
+
+/* TABS FONT SIZE */
+.monaco-workbench
+    .part.editor
+    > .content
+    .editor-group-container
+    > .title
+    .tabs-container
+    > .tab
+    .tab-label
+    a {
+    font-size: 15px;
+}
+
+/* TERMINAL TABS FONT SIZE */
+a.action-label.single-terminal-tab {
+    font-size: 13px;
+}
+
+.monaco-workbench .xterm .xterm-scrollable-element {
+    padding-bottom: 10px;
+}
+
+.monaco-split-view2 > .monaco-scrollable-element > .split-view-container {
+    padding-top: 1px;
+}
+
+/* .monaco-split-view2 > .sash-container > .monaco-sash {
+    border-top-color: #292929;
+    background: #292929;
+} */
+
+/* QUICK INPUT STYLE */
+.quick-input-widget.show-file-icons {
+    padding: 10px 10px 18px 10px;
+    box-shadow: #00000060 9px 9px 8px 2px !important;
+    border: 1px solid #454545 !important;
+}
+
+/* QUICK INPUT FONT SIZE */
+.monaco-findInput .monaco-inputbox {
+    font-size: 15px;
+}
+
+.monaco-inputbox > .ibwrapper {
+    background: #1f1f1f !important;
+}
+
+.monaco-inputbox > .ibwrapper > .input {
+    font-family: "Terminus (TTF)", monospace;
+}
+
+/* FIND WIDGET  */
+.editor-widget.find-widget.visible {
+    border: 1px solid #454545 !important;
+    border-radius: 2px;
+    box-shadow: #00000060 9px 9px 8px 2px !important;
+}
+
+.monaco-sash {
+    border: 1px solid #00000000;
+    background: #1f1f1f !important;
+}
+
+.monaco-editor .find-widget .monaco-findInput .input {
+    font-size: 15px;
+}
+
+/* STATUS BAR */
+.monaco-workbench .part.statusbar {
+    font-size: 15px;
+}
+
+.scm-provider > .actions {
+    display: none;
+}

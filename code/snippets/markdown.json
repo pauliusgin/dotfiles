@@ -38,7 +38,6 @@
             "---"
         ]
     },
-
     "'todo' file template": {
         "prefix": "todo",
         "body": [
@@ -58,11 +57,10 @@
         ],
         "description": "Generate a structure for a TODO file."
     },
-
     "'commands' file template": {
         "prefix": "commands",
         "body": [
-            "=================== START ===================",
+            "=================== [START] ===================",
             "",
             "-   git clone ...",
             "",
@@ -70,7 +68,7 @@
             "",
             "-   etc",
             "",
-            "=================== LAUNCH ===================",
+            "=================== [LAUNCH] ===================",
             "",
             "-   project run command",
             "",
