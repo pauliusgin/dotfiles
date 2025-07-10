@@ -699,6 +699,16 @@
         "key": "ctrl+shift+,",
         "command": "editor.action.inspectTMScopes"
     },
+    {
+        "key": "space c s",
+        "command": "codesnap.start",
+        "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
+    },
+    {
+        "key": "space t d",
+        "command": "workbench.view.extension.todo-tree-container",
+        "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
+    },
 
     //* ======================= [DISABLED DEFAULTS] ============================
     {
@@ -916,5 +926,9 @@
         "key": "cmd+k alt+cmd+s",
         "command": "-git.stageSelectedRanges",
         "when": "editorTextFocus && !operationInProgress && resourceScheme == 'file'"
+    },
+    {
+        "key": "ctrl+t ctrl+d",
+        "command": "todo-tree-view.toggleVisibility"
     }
 ]

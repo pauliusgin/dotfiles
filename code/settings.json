@@ -360,7 +360,6 @@
     //* ========================= [FORMATTING] =================================
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "prettier.bracketSameLine": true,
-    "prettier.tabWidth": 4,
     "eslint.codeActionsOnSave.rules": null,
     "files.associations": {
         ".env": "properties"
@@ -416,6 +415,7 @@
         "OWASP",
         "Pingvinukas",
         "typeorm",
+        "usecase",
         "usecases",
         "vinted"
     ],
@@ -490,5 +490,16 @@
     "javascript.format.insertSpaceAfterCommaDelimiter": false,
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
     "javascript.format.insertSpaceAfterSemicolonInForStatements": false,
-    "javascript.format.insertSpaceBeforeAndAfterBinaryOperators": false
+    "javascript.format.insertSpaceBeforeAndAfterBinaryOperators": false,
+
+    // CodeSnap
+    "codesnap.showLineNumbers": false,
+    "codesnap.showWindowControls": false,
+    "codesnap.shutterAction": "copy",
+    "codesnap.transparentBackground": true,
+    "codesnap.backgroundColor": "#202020",
+    "codesnap.boxShadow": "#00000060 9px 9px 8px 2px ",
+    "codesnap.containerPadding": "1rem",
+    "todo-tree.highlights.enabled": false,
+    "editor.tabSize": 2
 }

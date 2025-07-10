@@ -653,28 +653,38 @@
     "Create a Unit Test": {
         "prefix": "testu",
         "body": [
-            "import { eventDispatcherMock } from '$0';",
+            "import { eventDispatcherMock$0 } from '';",
             "import { ${1:AggregateRoot} } from '';",
-            "import { ${2:UseCase} } from '';",
+            "import { ${2:Usecase} } from '';",
             "import { InMemory$1Repository} from '';",
+            "import { ${7:Namespace}TestDataFactory } from '';",
             "",
             "describe('Unit - $2', () => {",
             "  let db: Map<string, $1>;",
-            "  let ${3:repoName}: InMemory$1Repository;",
-            "  let ${4:usecaseName}: $2;",
+            "  let ${3:repository}Repository: InMemory$1Repository;",
+            "  let ${4:usecase}: $2;",
             "",
             "  beforeEach(() => {",
             "    db = new Map();",
-            "    $3 = new InMemory$1Repository(db);",
-            "    $4 = new $2($3, eventDispatcherMock());",
+            "    $3Repository = new InMemory$1Repository(db);",
+            "    $4 = new $2($3Repository, eventDispatcherMock());",
             "  });",
             "",
-            "  it('${5:testName}', async () => {",
-            "    const result = await $4.execute({",
-            "      ${6:property: value}",
-            "  });",
+            "  it('${5:should do this}', async () => {",
+            "    const $3TestData = $7TestDataFactory.create$1();",
             "",
-            "    expect(result).toBe();",
+            "    const $3 = await $4.execute({",
+            "      ...$3TestData.props,",
+            "    });",
+            "",
+            "    const saved$1 = await $3Repository.getById($3.props.id);",
+            "",
+            "    const $3${8:action}Event = $3.events.find(",
+            "      (event) => event.metadata.aggregateId === $3.props.id,",
+            "    );",
+            "",
+            "    expect(saved$1.props.${9:property}).toBe($3TestData.props.$9);",
+            "    expect($3$8Event.props.$9).toBe($3.props.$9);",
             "  });",
             "});"
         ],
@@ -907,5 +917,38 @@
             "}"
         ],
         "description": "Create a namespace for errors"
+    },
+    "Create a test payment method ID": {
+        "prefix": "payment method id",
+        "body": [
+            "const paymentMethod = await this._stripe.paymentMethods.create({",
+            "  type: 'card',",
+            "  card: {",
+            "    token: 'tok_visa',",
+            "  },",
+            "});",
+            "console.log('payment method Id ----->', paymentMethod.id);"
+        ],
+        "description": "Creates a function to generate stripe payment method ID"
+    },
+    "Create test data template": {
+        "prefix": "test data",
+        "body": [
+            "static create${1:Aggregate}(overrides: Partial<$1['props']> = {}): $1 {",
+            "  return new $1({",
+            "    id: faker.string.uuid(),",
+            "    $0",
+            "    ...overrides,",
+            "  });",
+            "}"
+        ],
+        "description": "Create a template for test factory data"
+    },
+    "Test object wrapper for an optional property": {
+        "prefix": "maybe",
+        "body": [
+            "this.maybe(() => $0),"
+        ],
+        "description": "Create a 'maybe' wrapper for a test property"
     }
 }
