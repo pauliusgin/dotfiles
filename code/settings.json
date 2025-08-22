@@ -204,7 +204,6 @@
     "workbench.editor.centeredLayoutAutoResize": false,
     "workbench.list.defaultFindMatchType": "contiguous",
     "workbench.commandPalette.history": 0,
-    "workbench.activityBar.location": "hidden",
     "workbench.layoutControl.enabled": false,
     "zenMode.restore": false,
     "zenMode.silentNotifications": false,
@@ -425,13 +424,17 @@
     "editor.renderLineHighlight": "none",
     "editor.lightbulb.enabled": "off",
     "gitlens.views.scm.grouped.views": {
+        "commits": false,
         "branches": true,
         "remotes": true,
+        "stashes": true,
+        "tags": true,
+        "worktrees": true,
         "contributors": true,
+        "fileHistory": true,
         "repositories": true,
         "searchAndCompare": false,
-        "launchpad": false,
-        "fileHistory": true
+        "launchpad": false
     },
     "window.newWindowProfile": "Default",
     "typescript.updateImportsOnFileMove.enabled": "never",
@@ -501,5 +504,8 @@
     "codesnap.boxShadow": "#00000060 9px 9px 8px 2px ",
     "codesnap.containerPadding": "1rem",
     "todo-tree.highlights.enabled": false,
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "githubPullRequests.fileListLayout": "flat",
+    "workbench.activityBar.location": "hidden",
+    "githubPullRequests.pullBranch": "never"
 }

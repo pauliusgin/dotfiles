@@ -36,7 +36,8 @@
             "",
             "${10|    None.,Reason: \n```json\n{\n\tbody\n}\n```|}",
             "---"
-        ]
+        ],
+        "description": "Generate a structure for an API description"
     },
     "'todo' file template": {
         "prefix": "todo",
@@ -77,5 +78,46 @@
             "=================== [placeholder] ==================="
         ],
         "description": "Generate a structure for a 'commands' file"
-    }
+    },
+    "Webhook documentation": {
+        "prefix": "webhook",
+        "body": [
+            "## webhook: [${1:webhook}]",
+            "",
+            "- ### Description:",
+            "",
+            "    This webhook is sent when $2",
+            "",
+            "- ### Constraints:",
+            "",
+            "    ${3|Constraint:,None.|}",
+            "",
+            "- ### Authorization:",
+            "",
+            "    Webhooks include a [${4:header}] header using HMAC SHA256 and shared secret.",
+            "",
+            "- ### Types:",
+            "",
+            "${5|    None.,```typescript\n\t// types\n```|}",
+            "",
+            "- ### Payload:",
+            "",
+            "${8|    None.,```json\n{\n\tbody\n}\n```|}",
+            "",
+            "- ### Response:",
+            "",
+            "    Third party must respond with HTTP 200 (OK)",
+            "",
+            "- ### Errors:",
+            "",
+            "    HTTP 500 (Internal Server Error) will trigger a retry",
+            "---"
+        ],
+        "description": "Generate a structure for a webhook description"
+    },
+    "Add a tag": {
+        "prefix": "tag",
+        "body": "${1|**DONE**,**TODO**,**WIP**,**NEXT**,**QUESTION**,**ANSWER**,**NOTE**,**TEST**,**CUSTOM**|}",
+        "description": "Create a bold caps lock tag"
+    },
 }

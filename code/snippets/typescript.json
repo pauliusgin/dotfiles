@@ -814,7 +814,6 @@
             "const isAuthorized = await this.$1.canExecute(",
             "  req.identity",
             ");",
-            "",
             "if (!isAuthorized) {",
             "  return UnAuthorizedAction(res);",
             "};"
@@ -950,5 +949,98 @@
             "this.maybe(() => $0),"
         ],
         "description": "Create a 'maybe' wrapper for a test property"
+    },
+    "Function to log memory usage": {
+        "prefix": "memlog",
+        "body": [
+            "logMemory(stage: string): void {",
+            "  const mem = process.memoryUsage();",
+            "  const time = new Date().toLocaleTimeString(undefined, { hourCycle: 'h24' });",
+            "  console.log(`\\x1b[34m\\${time} [\\${stage}] RSS: ${(mem.rss / 1024 / 1024).toFixed(1)} MB, Heap Used: ${(mem.heapUsed / 1024 / 1024).toFixed(1)} MB\\x1b[0m\n`)",
+            "}"
+        ],
+        "description": "Use console.log() to watch memory usage"
+    },
+    "Log memory usage": {
+        "prefix": "mem",
+        "body": [
+            "logMemory('$0')",
+        ],
+        "description": "Use console.log() to watch memory usage"
+    },
+    "Log 1 timestamp": {
+        "prefix": "time1",
+        "body": [
+            "const start = Date.now();",
+            "",
+            "const timestamp1 = Date.now();",
+            "console.log(`\\x1b[32mTimestamp [${1:1}]: +\\${timestamp1 - start}ms\\x1b[0m`);"
+        ]
+    },
+    "Log 2 timestamps": {
+        "prefix": "time2",
+        "body": [
+            "const start = Date.now();",
+            "",
+            "const timestamp1 = Date.now();",
+            "console.log(`\\x1b[32mTimestamp [${1:1}]: +\\${timestamp1 - start}ms\\x1b[0m`);",
+            "",
+            "const timestamp2 = Date.now();",
+            "console.log(`\\x1b[32mTimestamp [${2:2}]: +\\${timestamp2 - timestamp1}ms, total: +\\${timestamp2 - start}ms\\x2b[0m`);"
+        ]
+    },
+    "Log 3 timestamp": {
+        "prefix": "time3",
+        "body": [
+            "const start = Date.now();",
+            "",
+            "const timestamp1 = Date.now();",
+            "console.log(`\\x1b[32mTimestamp [${1:1}]: +\\${timestamp1 - start}ms\\x1b[0m`);",
+            "",
+            "const timestamp2 = Date.now();",
+            "console.log(`\\x1b[32mTimestamp [${2:2}]: +\\${timestamp2 - timestamp1}ms, total: +\\${timestamp2 - start}ms\\x2b[0m`);",
+            "",
+            "const timestamp3 = Date.now();",
+            "console.log(`\\x1b[32mTimestamp [${3:3}]: +\\${timestamp3 - timestamp2}ms, total: +\\${timestamp3 - start}ms\\x2b[0m`);"
+        ]
+    },
+    "Log 4 timestamp": {
+        "prefix": "time4",
+        "body": [
+            "const start = Date.now();",
+            "",
+            "const timestamp1 = Date.now();",
+            "console.log(`\\x1b[32mTimestamp [${1:1}]: +\\${timestamp1 - start}ms\\x1b[0m`);",
+            "",
+            "const timestamp2 = Date.now();",
+            "console.log(`\\x1b[32mTimestamp [${2:2}]: +\\${timestamp2 - timestamp1}ms, total: +\\${timestamp2 - start}ms\\x2b[0m`);",
+            "",
+            "const timestamp3 = Date.now();",
+            "console.log(`\\x1b[32mTimestamp [${3:3}]: +\\${timestamp3 - timestamp2}ms, total: +\\${timestamp3 - start}ms\\x2b[0m`);",
+            "",
+            "const timestamp4 = Date.now();",
+            "console.log(`\\x1b[32mTimestamp [${4:4}]: +\\${timestamp4 - timestamp3}ms, total: +\\${timestamp4 - start}ms\\x2b[0m`);"
+        ]
+    },
+    "Log 5 timestamp": {
+        "prefix": "time5",
+        "body": [
+            "const start = Date.now();",
+            "",
+            "const timestamp1 = Date.now();",
+            "console.log(`\\x1b[32mTimestamp [${1:1}]: +\\${timestamp1 - start}ms\\x1b[0m`);",
+            "",
+            "const timestamp2 = Date.now();",
+            "console.log(`\\x1b[32mTimestamp [${2:2}]: +\\${timestamp2 - timestamp1}ms, total: +\\${timestamp2 - start}ms\\x2b[0m`);",
+            "",
+            "const timestamp3 = Date.now();",
+            "console.log(`\\x1b[32mTimestamp [${3:3}]: +\\${timestamp3 - timestamp2}ms, total: +\\${timestamp3 - start}ms\\x2b[0m`);",
+            "",
+            "const timestamp4 = Date.now();",
+            "console.log(`\\x1b[32mTimestamp [${4:4}]: +\\${timestamp4 - timestamp3}ms, total: +\\${timestamp4 - start}ms\\x2b[0m`);",
+            "",
+            "const timestamp5 = Date.now();",
+            "console.log(`\\x1b[32mTimestamp [${5:5}]: +\\${timestamp5 - timestamp4}ms, total: +\\${timestamp5 - start}ms\\x2b[0m`);"
+        ]
     }
 }
