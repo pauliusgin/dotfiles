@@ -30,36 +30,8 @@ export NVM_DIR="$HOME/.nvm"
 ############################################
 ########## ALIASES
 
-# NAVIGATIONAL
-alias ltc="cd documents/learn\ to\ code"
-alias dermis="cd work/GettingApp/Dermis"
-alias projects="cd Coding/personal_projects"
-
-# FILES
-alias nvcon="nvim .config/nvim/init.lua"
-alias todo="nvim ~/Documents/Personal/TODO.md"
-
 # COMMANDS
-alias temperature="sudo powermetrics | grep -i -e 'temperature' -e 'fan' "
 alias information="system_profiler SPSoftwareDataType SPHardwareDataType SPStorageDataType"
-alias simulator="open -a Simulator.app"
-
-# WEBPAGES
-alias google="open https://www.google.lt"
-alias typing="open https://www.typing.com/student/typing-test/3-minute"
-alias torrents="open https://torrentgalaxy.to"
-alias gpt="open https://chatgpt.com/"
-alias render="open https://dashboard.render.com/web/srv-ctnbq63qf0us73af75ug"
-alias hopp="open https://hoppscotch.io/"
-alias stripe-dash="open https://dashboard.stripe.com/test/dashboard"
-alias stripe-api="open https://docs.stripe.com/api"
-alias stripe-cli="open https://docs.stripe.com/cli"
-alias trello-dermis="open https://trello.com/b/f0HJHLVz/dermis"
-alias music-lofi="open https://tinyurl.com/lofig"
-# alias music-retro="open https://tinyurl.com/80s-retro"
-alias music-retro="open https://tinyurl.com/belle-retro"
-alias music-rock="open https://tinyurl.com/rock2000s"
-alias music-house="open https://tinyurl.com/d33phouse"
 
 ############################################
 ########## PROMPT

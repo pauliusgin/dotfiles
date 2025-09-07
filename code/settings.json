@@ -453,7 +453,7 @@
     },
     "git.showCommitInput": false,
     "github.showAvatar": false,
-    "sonarlint.focusOnNewCode": true,
+    "sonarlint.focusOnNewCode": false,
     "javascript.preferGoToSourceDefinition": true,
     "typescript.preferGoToSourceDefinition": true,
     "gitlens.views.scm.grouped.hiddenViews": {
