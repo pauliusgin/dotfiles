@@ -17,17 +17,17 @@
     "key": "ctrl+alt+cmd+r",
     "command": "workbench.action.reloadWindow"
   },
-  {
-    "key": "space f c",
-    "command": "workbench.action.showCommands",
-    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
-  },
 
   //* ========================== [EXPLORER] ==================================
   {
     "key": "ctrl+.",
     "command": "revealFileInOS",
     "when": "!editorFocus"
+  },
+  {
+    "key": "l",
+    "command": "list.toggleExpand",
+    "when": "listFocus && !inputFocus && !treestickyScrollFocused"
   },
   {
     "key": "a",
@@ -60,6 +60,15 @@
     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
   },
   {
+    "key": "space e t",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "ctrl+e t",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
     "key": "space e e",
     "command": "workbench.view.explorer",
     "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
@@ -70,28 +79,9 @@
     "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
   },
   {
-    "key": "space e t",
-    "command": "workbench.action.toggleSidebarVisibility",
-    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
-  },
-  {
-    "key": "ctrl+e t",
-    "command": "workbench.action.toggleSidebarVisibility"
-  },
-  {
-    "key": "space d o",
-    "command": "vscode-containers.views.containers.toggleVisibility",
-    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
-  },
-  {
     "key": "shift+z",
     "command": "workbench.files.action.collapseExplorerFolders",
     "when": "filesExplorerFocus"
-  },
-  {
-    "key": "enter",
-    "command": "filesExplorer.openFilePreserveFocus",
-    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsFolder && !inputFocus"
   },
   {
     "key": "v",
@@ -114,25 +104,42 @@
     },
     "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsFolder && !inputFocus"
   },
-  {
-    "key": "ctrl+enter",
-    "command": "explorer.openAndPassFocus",
-    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsFolder && !inputFocus"
-  },
-  {
-    "key": "l",
-    "command": "list.toggleExpand",
-    "when": "listFocus && !inputFocus && !treestickyScrollFocused"
-  },
 
   //* ========================= [NAVIGATION] =================================
   {
-    "key": "ctrl+k",
-    "command": "workbench.action.navigateUp"
+    "key": "space f f",
+    "command": "workbench.action.quickOpen",
+    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
   },
   {
-    "key": "ctrl+j",
-    "command": "workbench.action.navigateDown"
+    "key": "space f t",
+    "command": "workbench.action.showEditorsInActiveGroup",
+    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space f s",
+    "command": "workbench.action.gotoSymbol",
+    "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus) && (!accessibilityHelpIsShown && !accessibleViewIsShown)"
+  },
+  {
+    "key": "space g shift+d",
+    "command": "editor.action.revealDefinitionAside",
+    "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus) && (editorHasDefinitionProvider && editorTextFocus)"
+  },
+  {
+    "key": "space g d",
+    "command": "editor.action.revealDefinition",
+    "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus) && (editorHasDefinitionProvider && editorTextFocus)"
+  },
+  {
+    "key": "space g t",
+    "command": "editor.action.goToTypeDefinition",
+    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space f shift+s",
+    "command": "workbench.action.showAllSymbols",
+    "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus) && (!accessibilityHelpIsShown && !accessibleViewIsShown)"
   },
   {
     "key": "ctrl+h",
@@ -141,10 +148,6 @@
   {
     "key": "ctrl+l",
     "command": "workbench.action.navigateRight"
-  },
-  {
-    "key": "ctrl+e ctrl+f",
-    "command": "workbench.action.focusActiveEditorGroup"
   },
   {
     "key": "ctrl+]",
@@ -160,16 +163,6 @@
     "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus)"
   },
   {
-    "key": "space f f",
-    "command": "workbench.action.quickOpen",
-    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
-  },
-  {
-    "key": "space f t",
-    "command": "workbench.action.showEditorsInActiveGroup",
-    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
-  },
-  {
     "key": "ctrl+o",
     "command": "workbench.action.navigateBackInNavigationLocations"
   },
@@ -180,6 +173,14 @@
 
   //* =========================== [MENUS] ====================================
   {
+    "key": "ctrl+k",
+    "command": "workbench.action.navigateUp"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.navigateDown"
+  },
+  {
     "key": "ctrl+j",
     "command": "selectNextSuggestion",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
@@ -189,16 +190,16 @@
     "command": "selectPrevSuggestion",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
   },
-  {
-    "key": "tab",
-    "command": "selectNextSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
-  },
-  {
-    "key": "shift+tab",
-    "command": "selectPrevSuggestion",
-    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
-  },
+  // {
+  //   "key": "tab",
+  //   "command": "selectNextSuggestion",
+  //   "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+  // },
+  // {
+  //   "key": "shift+tab",
+  //   "command": "selectPrevSuggestion",
+  //   "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+  // },
   {
     "key": "ctrl+j",
     "command": "selectNextCodeAction",
@@ -209,16 +210,16 @@
     "command": "selectPrevCodeAction",
     "when": "codeActionMenuVisible"
   },
-  {
-    "key": "tab",
-    "command": "selectNextCodeAction",
-    "when": "codeActionMenuVisible"
-  },
-  {
-    "key": "shift+tab",
-    "command": "selectPrevCodeAction",
-    "when": "codeActionMenuVisible"
-  },
+  // {
+  //   "key": "tab",
+  //   "command": "selectNextCodeAction",
+  //   "when": "codeActionMenuVisible"
+  // },
+  // {
+  //   "key": "shift+tab",
+  //   "command": "selectPrevCodeAction",
+  //   "when": "codeActionMenuVisible"
+  // },
   {
     "key": "ctrl+j",
     "command": "workbench.action.quickOpenSelectNext",
@@ -229,16 +230,16 @@
     "command": "workbench.action.quickOpenSelectPrevious",
     "when": "inQuickOpen"
   },
-  {
-    "key": "tab",
-    "command": "workbench.action.quickOpenSelectNext",
-    "when": "inQuickOpen"
-  },
-  {
-    "key": "shift+tab",
-    "command": "workbench.action.quickOpenSelectPrevious",
-    "when": "inQuickOpen"
-  },
+  // {
+  //   "key": "tab",
+  //   "command": "workbench.action.quickOpenSelectNext",
+  //   "when": "inQuickOpen"
+  // },
+  // {
+  //   "key": "shift+tab",
+  //   "command": "workbench.action.quickOpenSelectPrevious",
+  //   "when": "inQuickOpen"
+  // },
 
   //* =========================== [EDITOR] ===================================
   {
@@ -345,16 +346,6 @@
     "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus)"
   },
   {
-    "key": "space f s",
-    "command": "workbench.action.gotoSymbol",
-    "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus) && (!accessibilityHelpIsShown && !accessibleViewIsShown)"
-  },
-  {
-    "key": "space f shift+s",
-    "command": "workbench.action.showAllSymbols",
-    "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus) && (!accessibilityHelpIsShown && !accessibleViewIsShown)"
-  },
-  {
     "key": "ctrl+e ctrl+right",
     "command": "workbench.action.increaseViewWidth",
     "when": "editorFocus"
@@ -383,21 +374,6 @@
     "key": "space e shift+p",
     "command": "workbench.action.unpinEditor",
     "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus) && activeEditorIsPinned"
-  },
-  {
-    "key": "space g shift+d",
-    "command": "editor.action.revealDefinitionAside",
-    "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus) && (editorHasDefinitionProvider && editorTextFocus)"
-  },
-  {
-    "key": "space g d",
-    "command": "editor.action.revealDefinition",
-    "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus) && (editorHasDefinitionProvider && editorTextFocus)"
-  },
-  {
-    "key": "space g t",
-    "command": "editor.action.goToTypeDefinition",
-    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
   },
   {
     "key": "space e a",
@@ -455,18 +431,13 @@
     "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus)"
   },
   {
-    "key": "ctrl+e shift+c",
-    "command": "workbench.action.closeAllEditors"
-  },
-  {
     "key": "space e shift+c",
     "command": "workbench.action.closeAllEditors",
     "when": "(vim.mode !== 'Insert') && (editorTextFocus || !inputFocus)"
   },
   {
-    "key": "space c r",
-    "command": "editor.action.rename",
-    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
+    "key": "ctrl+e shift+c",
+    "command": "workbench.action.closeAllEditors"
   },
   {
     "key": "ctrl+n",
@@ -524,17 +495,8 @@
     "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
   },
   {
-    "key": "ctrl+g r",
-    "command": "gitlens.views.repositories.focus"
-  },
-  {
-    "key": "space g h",
+    "key": "space g shift+g",
     "command": "gitlens.showRepositoriesView",
-    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
-  },
-  {
-    "key": "space g e",
-    "command": "git.openMergeEditor",
     "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
   },
   {

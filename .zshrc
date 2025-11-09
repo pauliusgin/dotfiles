@@ -33,6 +33,8 @@ export NVM_DIR="$HOME/.nvm"
 # COMMANDS
 alias information="system_profiler SPSoftwareDataType SPHardwareDataType SPStorageDataType"
 
+alias nvcon="nvim ~/.config/nvim/init.lua"
+
 ############################################
 ########## PROMPT
 
@@ -61,4 +63,6 @@ export PROMPT='${COLOR_USR}%n%f ${COLOR_DIR}%2~%f ${COLOR_GIT}$(parse_git_branch
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="/opt/homebrew/opt/ruby@3.1/bin:$PATH"
+export PATH="/opt/homebrew/opt/ruby@3.1/bin:$PATH"  
+
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"

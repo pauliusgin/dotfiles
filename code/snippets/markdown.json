@@ -117,7 +117,7 @@
     },
     "Add a tag": {
         "prefix": "tag",
-        "body": "${1|**DONE**,**TODO**,**WIP**,**NEXT**,**QUESTION**,**ANSWER**,**NOTE**,**TEST**,**CUSTOM**|}",
+        "body": "${1|**DONE**,**TODO**,**WIP**,**NEXT**,**QUESTION**,**ANSWER**,**NOTE**,**READY FOR QA**,**TEST**,**CUSTOM**|}",
         "description": "Create a bold caps lock tag"
     },
 }

@@ -1,7 +1,10 @@
 {
   "language": "en,lt",
   "version": "0.2",
-  "ignorePaths": ["node_modules/**", ".config/nvim/**"],
+  "ignorePaths": [
+    "node_modules/**",
+    ".config/nvim/**"
+  ],
   "flagWords": [],
   "words": [
     "alacritty",
@@ -21,6 +24,7 @@
     "Nonnullable",
     "nvim",
     "Picsum",
+    "Playdough",
     "Postgress",
     "powermetrics",
     "prerequest",
@@ -29,6 +33,7 @@
     "signup",
     "sslmode",
     "sslrequire",
+    "timestamptz",
     "typeorm",
     "unmark",
     "Uploadedfile",

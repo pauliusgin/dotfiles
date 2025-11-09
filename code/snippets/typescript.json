@@ -630,6 +630,13 @@
         ],
         "description": "Add an optional validator to Command's property"
     },
+    "@Type()": {
+        "prefix": "vt",
+        "body": [
+            "@Type(() => $0)"
+        ],
+        "description": "Add a typ validator to Command's nested properties"
+    },
     "Create an InMemoryRepository for a unit test": {
         "prefix": "testr",
         "body": [

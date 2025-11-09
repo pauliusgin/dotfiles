@@ -434,6 +434,7 @@ require("lazy").setup({
         config = function()
             require("neo-tree").setup({
                 window = {
+                    position = "right",
                     width = 40,
                     mappings = {
                         ["z"] = "close_all_nodes",
@@ -466,7 +467,7 @@ require("lazy").setup({
                 follow_current_file = {
                     enabled = true,
                     leave_dirs_open = false
-                }
+                },
             })
         end
     },
