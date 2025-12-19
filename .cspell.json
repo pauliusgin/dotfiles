@@ -9,6 +9,7 @@
   "words": [
     "alacritty",
     "Aziz",
+    "Brevo",
     "capturable",
     "Chalom",
     "coivoizz",
@@ -18,6 +19,7 @@
     "foldmethod",
     "Giniunas",
     "hoppscotch",
+    "ILIKE",
     "inversify",
     "Jamil",
     "Moula",
@@ -42,5 +44,8 @@
     "vinted",
     "Voizz",
     "WIZZTALK"
+  ],
+  "userWords": [
+    "firstname"
   ]
 }

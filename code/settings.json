@@ -4,6 +4,7 @@
   "workbench.colorCustomizations": {
     "activityBar.background": "#1f1f1f",
     "activityBar.border": "#00000000",
+    "listFilterWidget.background": "#1f1f1f",
     "breadcrumb.foreground": "#595959",
     "commandCenter.background": "#1f1f1f",
     "commandCenter.foreground": "#1f1f1f",
@@ -52,7 +53,13 @@
     "tab.inactiveBackground": "#1f1f1f",
     "tab.activeBorder": "#E7A74D",
     "tab.activeBorderTop": "#1f1f1f",
-    "tab.unfocusedActiveBorder": "#1f1f1f"
+    "tab.unfocusedActiveBorder": "#1f1f1f",
+    "errorLens.errorBackground": "#00000000",
+    "errorLens.errorForeground": "#CD5359",
+    "errorLens.warningBackground": "#00000000",
+    "errorLens.warningForeground": "#E7A74D",
+    "errorLens.infoBackground": "#00000000",
+    "errorLens.infoForeground": "#6796E6"
   },
   "material-icon-theme.folders.color": "#90a4ae",
   "vscode_custom_css.imports": [
@@ -312,10 +319,6 @@
       "before": ["<C-d>"],
       "after": ["2", "0", "j", "z", "z"]
     },
-    // {
-    //     "before": ["<C-o>"],
-    //     "after": []
-    // },
     {
       "before": ["<leader>", "g", "b"],
       "commands": []
@@ -431,6 +434,28 @@
     "vinted"
   ],
 
+  //* ============================= [AI] ===================================
+  "github.copilot.enable": {
+    "*": true
+  },
+
+  // "editor.inlineSuggest.enabled": false,
+  "gitlens.ai.enabled": false,
+  "github.copilot.chat.agent.autoFix": false,
+  "github.copilot.chat.agent.currentEditorContext.enabled": false,
+  "github.copilot.chat.edits.suggestRelatedFilesForTests": false,
+  "github.copilot.chat.edits.suggestRelatedFilesFromGitHistory": false,
+  "github.copilot.chat.imageUpload.enabled": false,
+  "github.copilot.chat.languageContext.typescript.enabled": true,
+  "github.copilot.chat.newWorkspaceCreation.enabled": false,
+  "github.copilot.chat.useProjectTemplates": false,
+  "github.copilot.chat.useResponsesApi": false,
+  "github.copilot.nextEditSuggestions.fixes": false,
+  "workbench.commandPalette.experimental.askChatLocation": "quickChat",
+  "inlineChat.holdToSpeech": false,
+  "github.copilot.chat.codeGeneration.useInstructionFiles": false,
+  "emmet.useInlineCompletions": true,
+
   //* ============================= [MISC] ===================================
   "security.workspace.trust.untrustedFiles": "open",
   "todo-tree.highlights.enabled": false,
@@ -485,11 +510,9 @@
   },
   "chat.agent.enabled": false,
   "telemetry.feedback.enabled": false,
-  "editor.inlineSuggest.enabled": false,
   "editor.screenReaderAnnounceInlineSuggestion": false,
   "accessibility.verbosity.inlineChat": false,
   "notebook.experimental.generate": false,
-  "chat.promptFiles": false,
   "editor.inlayHints.enabled": "off",
   "inlineChat.lineNaturalLanguageHint": false,
   "[snippets]": {
@@ -526,5 +549,25 @@
   },
   "tailwindCSS.experimental.classRegex": [
     ["`([^`]*)`", "(?:class)=\"([^\"]*)\""]
-  ]
+  ],
+  "githubPullRequests.codingAgent.enabled": false,
+  "githubPullRequests.experimental.chat": false,
+  "editor.inlineSuggest.suppressSuggestions": true,
+  "editor.suggest.snippetsPreventQuickSuggestions": true,
+  "github.copilot.renameSuggestions.triggerAutomatically": false,
+  "github.copilot.nextEditSuggestions.allowWhitespaceOnlyChanges": false,
+  "github.copilot.chat.copilotDebugCommand.enabled": false,
+  "errorLens.codeLensOnClick": "none",
+  "errorLens.decorations": {
+    "errorRange": {},
+    "warningRange": {},
+    "infoRange": {},
+    "hintRange": {},
+    "errorMessage": {},
+    "warningMessage": {},
+    "infoMessage": {},
+    "hintMessage": {}
+  },
+  "errorLens.fontSize": "14px",
+  "errorLens.enabled": false
 }

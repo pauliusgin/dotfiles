@@ -635,7 +635,17 @@
         "body": [
             "@Type(() => $0)"
         ],
-        "description": "Add a typ validator to Command's nested properties"
+        "description": "Add a type validator to Command's nested properties"
+    },
+    "@Transform()": {
+        "prefix": "vtr",
+        "body": [
+            "@Transform(({ value }) => {",
+            "  if (value === '') return null;",
+            "  return value;",
+            "})",
+        ],
+        "description": "Add a transformer to Command's empty string values"
     },
     "Create an InMemoryRepository for a unit test": {
         "prefix": "testr",
@@ -1048,6 +1058,14 @@
             "",
             "const timestamp5 = Date.now();",
             "console.log(`\\x1b[32mTimestamp [${5:5}]: +\\${timestamp5 - timestamp4}ms, total: +\\${timestamp5 - start}ms\\x2b[0m`);"
+        ]
+    },
+    "Add a delay": {
+        "prefix": "delay",
+        "body": [
+            "async function delay(ms: number): Promise<void> {",
+            "  return new Promise((resolve) => setTimeout(resolve, ms));",
+            "}"
         ]
     }
 }

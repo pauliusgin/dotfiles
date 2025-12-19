@@ -190,16 +190,6 @@
     "command": "selectPrevSuggestion",
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
   },
-  // {
-  //   "key": "tab",
-  //   "command": "selectNextSuggestion",
-  //   "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
-  // },
-  // {
-  //   "key": "shift+tab",
-  //   "command": "selectPrevSuggestion",
-  //   "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
-  // },
   {
     "key": "ctrl+j",
     "command": "selectNextCodeAction",
@@ -210,16 +200,6 @@
     "command": "selectPrevCodeAction",
     "when": "codeActionMenuVisible"
   },
-  // {
-  //   "key": "tab",
-  //   "command": "selectNextCodeAction",
-  //   "when": "codeActionMenuVisible"
-  // },
-  // {
-  //   "key": "shift+tab",
-  //   "command": "selectPrevCodeAction",
-  //   "when": "codeActionMenuVisible"
-  // },
   {
     "key": "ctrl+j",
     "command": "workbench.action.quickOpenSelectNext",
@@ -230,16 +210,6 @@
     "command": "workbench.action.quickOpenSelectPrevious",
     "when": "inQuickOpen"
   },
-  // {
-  //   "key": "tab",
-  //   "command": "workbench.action.quickOpenSelectNext",
-  //   "when": "inQuickOpen"
-  // },
-  // {
-  //   "key": "shift+tab",
-  //   "command": "workbench.action.quickOpenSelectPrevious",
-  //   "when": "inQuickOpen"
-  // },
 
   //* =========================== [EDITOR] ===================================
   {
@@ -468,6 +438,11 @@
     "key": "enter",
     "command": "acceptSelectedSuggestion",
     "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "enter",
+    "command": "editor.action.inlineSuggest.commit",
+    "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
   },
 
   //* ============================ [GIT] =====================================
@@ -701,6 +676,42 @@
     "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)"
   },
 
+  //* ============================= [AI TOOLS] ===================================
+
+  {
+    "key": "ctrl+i",
+    "command": "runCommands",
+    "args": {
+      "commands": ["editor.action.inlineSuggest.trigger", "hideSuggestWidget"]
+    },
+    "when": "suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "editor.action.inlineSuggest.showNext",
+    "when": "inlineSuggestionVisible && !editorReadonly"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "editor.action.inlineSuggest.showPrevious",
+    "when": "inlineSuggestionVisible && !editorReadonly"
+  },
+  {
+    "key": "space a i",
+    "command": "github.copilot.chat.explain",
+    "when": "(vim.mode !== 'Insert') && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space escape escape",
+    "command": "github.copilot.chat.review.discardAll",
+    "when": "(vim.mode !== 'Insert') && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space e i",
+    "command": "workbench.panel.chat",
+    "when": "(vim.mode !== 'Insert') && (editorTextFocus || !inputFocus)"
+  },
+
   //* ============================= [MISC] ===================================
   {
     "key": "space m d",
@@ -890,16 +901,6 @@
     "when": "editorTextFocus && vim.active && vim.use<C-s> && !inDebugRepl"
   },
   {
-    "key": "ctrl+enter",
-    "command": "editor.action.replaceOne",
-    "when": "editorFocus && findWidgetVisible && replaceInputFocussed"
-  },
-  {
-    "key": "enter",
-    "command": "-editor.action.replaceOne",
-    "when": "editorFocus && findWidgetVisible && replaceInputFocussed"
-  },
-  {
     "key": "alt+cmd+r",
     "command": "-revealFileInOS",
     "when": "!editorFocus"
@@ -943,5 +944,55 @@
     "key": "tab",
     "command": "-acceptSelectedSuggestion",
     "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "alt+\\",
+    "command": "-editor.action.inlineSuggest.trigger",
+    "when": "editorTextFocus && !editorHasSelection && !inlineSuggestionsVisible"
+  },
+
+  {
+    "key": "tab",
+    "command": "-editor.action.inlineSuggest.commit",
+    "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+  },
+  {
+    "key": "alt+]",
+    "command": "-editor.action.inlineSuggest.showNext",
+    "when": "inlineSuggestionVisible && !editorReadonly"
+  },
+
+  {
+    "key": "alt+[",
+    "command": "-editor.action.inlineSuggest.showPrevious",
+    "when": "inlineSuggestionVisible && !editorReadonly"
+  },
+  {
+    "key": "alt+j",
+    "command": "-supermaven.newConversationTab"
+  },
+  {
+    "key": "shift+cmd+i",
+    "command": "-supermaven.addToChat"
+  },
+  {
+    "key": "cmd+i",
+    "command": "-supermaven.editWithSupermaven"
+  },
+  {
+    "key": "cmd+z",
+    "command": "-supermaven.undoJump",
+    "when": "supermaven.hasJumped"
+  },
+
+  {
+    "key": "cmd+i",
+    "command": "-inlineChat.start",
+    "when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput && activeEditor != 'workbench.editor.notebook' || editorFocus && inlineChatHasNotebookAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput && activeEditor == 'workbench.editor.notebook' || editorFocus && inlineChatHasNotebookInline && inlineChatPossible && !editorReadonly && !editorSimpleInput && activeEditor == 'workbench.editor.notebook' || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput && activeEditor != 'workbench.editor.notebook'"
+  },
+  {
+    "key": "ctrl+cmd+i",
+    "command": "-workbench.panel.chat",
+    "when": "workbench.panel.chat.view.copilot.active"
   }
 ]
