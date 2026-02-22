@@ -164,15 +164,12 @@
       }
     ]
   },
-
-  //* ========================= [BACKGROUND] =================================
-  "background.enabled": true,
-  "background.fullscreen": {
-    "images": ["file:///Users/paulius/.dotfiles/code/images/retro_grid_7.jpg"],
-    "opacity": 0.1,
-    "size": "cover",
-    "position": "center"
-  },
+  // "background.fullscreen": {
+  //   "images": ["file:///Users/paulius/.dotfiles/code/images/retro_grid_7.jpg"],
+  //   "opacity": 0.1,
+  //   "size": "cover",
+  //   "position": "center"
+  // },
 
   //* =========================== [EDITOR] ===================================
   "breadcrumbs.symbolPath": "off",
@@ -183,7 +180,7 @@
   "editor.parameterHints.enabled": false,
   "editor.fontFamily": "\"Terminus (TTF)\", Iosevka, Monaco, Menlo, 'Courier New', monospace",
   "editor.fontLigatures": false,
-  "editor.fontSize": 15,
+  "editor.fontSize": 16,
   "editor.lineHeight": 1.1,
   "editor.tabSize": 2,
   "editor.cursorSurroundingLines": 8,
@@ -436,10 +433,13 @@
 
   //* ============================= [AI] ===================================
   "github.copilot.enable": {
-    "*": true
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
   },
 
-  // "editor.inlineSuggest.enabled": false,
+  "editor.inlineSuggest.enabled": true,
   "gitlens.ai.enabled": false,
   "github.copilot.chat.agent.autoFix": false,
   "github.copilot.chat.agent.currentEditorContext.enabled": false,
@@ -514,7 +514,6 @@
   "accessibility.verbosity.inlineChat": false,
   "notebook.experimental.generate": false,
   "editor.inlayHints.enabled": "off",
-  "inlineChat.lineNaturalLanguageHint": false,
   "[snippets]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
@@ -552,7 +551,6 @@
   ],
   "githubPullRequests.codingAgent.enabled": false,
   "githubPullRequests.experimental.chat": false,
-  "editor.inlineSuggest.suppressSuggestions": true,
   "editor.suggest.snippetsPreventQuickSuggestions": true,
   "github.copilot.renameSuggestions.triggerAutomatically": false,
   "github.copilot.nextEditSuggestions.allowWhitespaceOnlyChanges": false,
@@ -569,5 +567,20 @@
     "hintMessage": {}
   },
   "errorLens.fontSize": "14px",
-  "errorLens.enabled": false
+  "errorLens.enabled": false,
+  "background.windowBackgrounds": [
+    "Users/paulius/.dotfiles/code/images/retro_grid_7.jpg",
+    "/Users/paulius/Pictures/Wallpapers/retro_grid_7.jpg"
+  ],
+  "supermaven.enableDeleteSuggestions": false,
+  "supermaven.enableFixWithSupermaven": false,
+  "supermaven.enableJumpSuggestions": false,
+  "supermaven.enableSuggestionHighlighting": false,
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.inlineSuggest.enabled": false
+  },
+  "supermaven.enable": {
+    "*": true
+  }
 }

@@ -174,7 +174,7 @@
             "export class $1 implements DomainEvent {",
             "  id = v4();",
             "  props: $1Properties;",
-            "  timestamp = +new Date();",
+            "  timestamp = Date.now();",
             "  metadata: DomainEventMetadata;",
             "",
             "constructor(props: $1Properties) {",
@@ -223,20 +223,22 @@
         "body": [
             "import { inject, injectable } from 'inversify';",
             "import { Query } from 'ddd';",
+            "import { $2 } from '';",
+            "import { $2Repository } from '';",
             "",
             "export interface $1Input {",
-            "  ${8:InputTypes}",
+            "  ${6:InputTypes}",
             "}",
             "",
             "@injectable()",
-            "export class ${1:QueryName} implements Query<$1Input, ${2:outputType}> {",
+            "export class ${1:QueryName} implements Query<$1Input, ${2:Output}> {",
             "  constructor(",
-            "    @inject(${3:Identifier}.${4:repositoryName})",
-            "    private readonly _$4: ${5:RepositoryName}",
+            "    @inject(${3:Identifier}.${4:repository}Repository)",
+            "    private readonly _$4ReadModelRepository: $2Repository",
             "  ) {}",
             "",
-            "  async execute(${7:variable}: $1Input): Promise<$2> {",
-            "    return await this._$4.${6:method}($7);",
+            "  async execute(request: $1Input): Promise<$2> {",
+            "    return await this._$4Repository.${5:method}(${7:variable});",
             "  }",
             "}"
         ],
@@ -394,9 +396,9 @@
         "prefix": "col",
         "body": [
             "@Column({",
-            "  nullable: ${2|true,false|},",
+            "  nullable: ${2|false,true|},",
             "  type: '${3|varchar,int,numeric,jsonb,boolean,timestamp,timestamptz,enum|}',",
-            "  ${4|default:, |}",
+            "  ${4| ,default:|}$0",
             "})",
             "${1:property};",
             ""
@@ -637,11 +639,21 @@
         ],
         "description": "Add a type validator to Command's nested properties"
     },
+    "@Date()": {
+        "prefix": "vd",
+        "body": [
+            "@Type(() => Date)",
+            "@IsDate()"
+        ],
+        "description": "Add a date validator to Command's nested properties"
+    },
     "@Transform()": {
         "prefix": "vtr",
         "body": [
             "@Transform(({ value }) => {",
-            "  if (value === '') return null;",
+            "  if (value === '' || value === null) {",
+            "    return null;",
+            "  }",
             "  return value;",
             "})",
         ],
@@ -943,7 +955,7 @@
             "    token: 'tok_visa',",
             "  },",
             "});",
-            "console.log('payment method Id ----->', paymentMethod.id);"
+            "console.log('payment method Id ----->\\n', paymentMethod.id);"
         ],
         "description": "Creates a function to generate stripe payment method ID"
     },
