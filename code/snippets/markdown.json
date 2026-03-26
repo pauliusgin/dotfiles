@@ -30,7 +30,7 @@
             "",
             "- ### Response:",
             "",
-            "${9|    OK (200),```json\n{\n\tresponse\n}\n```|}",
+            "${9|    OK (200),Created (201),```json\n{\n\tresponse\n}\n```|}",
             "",
             "- ### Errors:",
             "",

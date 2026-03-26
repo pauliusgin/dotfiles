@@ -70,10 +70,10 @@ a.action-label.single-terminal-tab {
     box-shadow: #00000060 9px 9px 8px 2px !important;
 }
 
-.monaco-sash {
+/* .monaco-sash {
     border: 1px solid #00000000;
     background: #1f1f1f !important;
-}
+} */
 
 .monaco-editor .find-widget .monaco-findInput .input {
     font-size: 15px;

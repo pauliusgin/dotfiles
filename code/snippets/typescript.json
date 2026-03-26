@@ -588,6 +588,25 @@
         ],
         "description": "Create a structure for a Command"
     },
+    "Create Query Params": {
+        "prefix": "params",
+        "body": [
+            "import { Expose, plainToClass } from 'class-transformer';",
+            "import { IsString } from 'class-validator'",
+            "",
+            "export class ${1:Usecase}QueryParams {",
+            "",
+            "  $0",
+            "",
+            "  static setProperties(params: $1QueryParams): $1QueryParams {",
+            "    return plainToClass($1QueryParams, params, {",
+            "      excludeExtraneousValues: true,",
+            "    });",
+            "  }",
+            "}"
+        ],
+        "description": "Create a structure for a QueryParams"
+    },
     "Add a Command Property": {
         "prefix": "pr",
         "body": [
@@ -1078,6 +1097,40 @@
             "async function delay(ms: number): Promise<void> {",
             "  return new Promise((resolve) => setTimeout(resolve, ms));",
             "}"
+        ]
+    },
+    "Add a search condition builder for SQL queries": {
+        "prefix": "search condition",
+        "body": [
+            "buildSearchCondition(input: {",
+            "  params: ${1:Input};",
+            "  mainParams: any[];",
+            "  countParams: any[];",
+            "}): {",
+            "  limitCondition: string;",
+            "  offsetCondition: string;",
+            "  pageInput: number;",
+            "  limitInput: number;",
+            "} {",
+            "  const { params, mainParams, countParams } = input;",
+            "  const { page, limit } = params;",
+            "",
+            "  const pageInput = page ?? 1;",
+            "  const limitInput = limit ?? ${2:Entity}.defaultQueryLimit;",
+            "  const offset = (pageInput - 1) * limitInput;",
+            "",
+            "  mainParams.push(offset);",
+            "  const offsetCondition = `OFFSET $${mainParams.length}`;",
+            "",
+            "  mainParams.push(limitInput);",
+            "  const limitCondition = `LIMIT $${mainParams.length}`;",
+            "",
+            "return {",
+            "  limitCondition",
+            "  offsetCondition,",
+            "  pageInput,",
+            "  limitInput,",
+            "};",
         ]
     }
 }

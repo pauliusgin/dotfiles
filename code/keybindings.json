@@ -689,14 +689,6 @@
   //* ============================= [AI TOOLS] ===================================
 
   {
-    "key": "ctrl+i",
-    "command": "runCommands",
-    "args": {
-      "commands": ["editor.action.inlineSuggest.trigger", "hideSuggestWidget"],
-    },
-    "when": "suggestWidgetVisible && textInputFocus",
-  },
-  {
     "key": "ctrl+j",
     "command": "editor.action.inlineSuggest.showNext",
     "when": "inlineSuggestionVisible && !editorReadonly",
@@ -707,19 +699,76 @@
     "when": "inlineSuggestionVisible && !editorReadonly",
   },
   {
-    "key": "space a i",
-    "command": "github.copilot.chat.explain",
-    "when": "(vim.mode !== 'Insert') && (editorTextFocus || !inputFocus)",
+    "key": "ctrl+f ctrl+s",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "editor.action.formatDocument",
+        "workbench.action.files.save",
+      ],
+    },
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor",
   },
   {
-    "key": "space escape escape",
-    "command": "github.copilot.chat.review.discardAll",
-    "when": "(vim.mode !== 'Insert') && (editorTextFocus || !inputFocus)",
+    "key": "space c n",
+    // "command": "workbench.action.tasks.runTask",
+    // "args": "claude-code",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.terminal.new",
+        {
+          "command": "workbench.action.terminal.sendSequence",
+          "args": { "text": "claude \u000D" },
+        },
+      ],
+    },
+    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
   },
   {
-    "key": "space e i",
-    "command": "workbench.panel.chat",
-    "when": "(vim.mode !== 'Insert') && (editorTextFocus || !inputFocus)",
+    "key": "space c c",
+    "command": "workbench.action.terminal.focusAtIndex2",
+    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space c e",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "editor.action.clipboardCopyAction",
+        "workbench.action.terminal.focusAtIndex2",
+        {
+          "command": "workbench.action.terminal.sendSequence",
+          "args": { "text": "\u0016 Explain me this in detail\u000D" },
+        },
+      ],
+    },
+    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space c r",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "editor.action.clipboardCopyAction",
+        "workbench.action.terminal.focusAtIndex2",
+        {
+          "command": "workbench.action.terminal.sendSequence",
+          "args": { "text": "\u0016 Let's refactor this\u000D" },
+        },
+      ],
+    },
+    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "tab",
+    "command": "editor.action.inlineSuggest.acceptNextWord",
+    "when": "cursorBeforeGhostText && inlineSuggestionVisible && !accessibilityModeEnabled && !editorReadonly",
+  },
+  {
+    "key": "tab",
+    "command": "tab",
+    "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus && !inlineSuggestionVisible && !hasNextTabstop && !inSnippetMode && !textInputFocus ",
   },
 
   //* ============================= [MISC] ===================================
@@ -1004,16 +1053,6 @@
     "key": "ctrl+cmd+i",
     "command": "-workbench.panel.chat",
     "when": "workbench.panel.chat.view.copilot.active",
-  },
-  {
-    "key": "tab",
-    "command": "editor.action.inlineSuggest.acceptNextWord",
-    "when": "cursorBeforeGhostText && inlineSuggestionVisible && !accessibilityModeEnabled && !editorReadonly",
-  },
-  {
-    "key": "tab",
-    "command": "tab",
-    "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus && !inlineSuggestionVisible && !hasNextTabstop && !inSnippetMode && !textInputFocus ",
   },
   {
     "key": "alt+cmd+t",
