@@ -782,7 +782,7 @@
     "command": "editor.action.inspectTMScopes",
   },
   {
-    "key": "space c s",
+    "key": "space s s",
     "command": "codesnap.start",
     "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
   },

@@ -22,3 +22,24 @@
 
 [alias]
 	lg = !"echo '' && echo 'Newer commits at the top ⬆️, older commits at the bottom ⬇️' && echo '' && git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s%n%b %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+    hlp = "!f() { \
+        echo ''; \
+        echo '📌 Git Cheat Sheet' 📌; \
+        echo ''; \
+        echo '• Unstage:'; \
+        echo '  git reset (unstages all files)'; \
+        echo '  git restore --staged'; \
+        echo ''; \
+        echo '• Undo commit:'; \
+        echo '  git reset --soft HEAD~1 (keeps files staged)'; \
+        echo '  git reset HEAD~1 (unstages files)'; \
+        echo ''; \
+        echo '• Amend commit:'; \
+        echo '  git commit --amend'; \
+        echo ''; \
+        echo '• Stash:'; \
+        echo '  git stash -m <message>'; \
+        echo '  git stash list'; \
+        echo '  git stash pop <@{0}>'; \
+        echo ''; \
+    }; f"

@@ -31,6 +31,7 @@ mkdir $HOME/.config/nvim
 mkdir $HOME/.config/kitty
 mkdir $HOME/.vscode
 mkdir $HOME/.vscode/extensions
+mkdir $HOME/.claude
 
 # Symlinks
 ln -swf $HOME/.dotfiles/.zshrc $HOME/.zshrc
@@ -45,6 +46,9 @@ ln -swf $HOME/.dotfiles/code/snippets/markdown.json $HOME/Library/Application\ S
 ln -swf $HOME/.dotfiles/code/snippets/css.json $HOME/Library/Application\ Support/Code/User/snippets/css.json
 ln -swf $HOME/.dotfiles/code/snippets/scss.json $HOME/Library/Application\ Support/Code/User/snippets/scss.json
 ln -swf $HOME/.dotfiles/.cspell.json $HOME/.cspell.json
+ln -swf $HOME/.dotfiles/claude/CLAUDE.md $HOME/.claude/CLAUDE.md
+ln -swf $HOME/.dotfiles/claude/settings.json $HOME/.claude/settings.json
+ln -swf $HOME/.dotfiles/claude/statusline-command.sh $HOME/.claude/statusline-command.sh
 
 #Npm packs
 npm i -g cspell @cspell/dict-lt-lt @cspell/dict-lua eslint prettier typescript typescript-language-server ts-node

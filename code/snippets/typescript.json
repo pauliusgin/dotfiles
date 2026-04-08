@@ -1,1136 +1,1090 @@
 {
-    "Create Aggregate Root": {
-        "prefix": "agg",
-        "body": [
-            "import { AggregateRoot, Handle } from 'ddd';",
-            "import { v4 } from 'uuid';",
-            "",
-            "export interface $1Properties {",
-            "  id: string;",
-            "  ${3:propType}",
-            "}",
-            "",
-            "export class ${1:AggregateRoot} extends AggregateRoot<$1Properties> {",
-            "  static restore(props: $1Properties) {",
-            "    return new $1(props);",
-            "  }",
-            "  static create(payload: {",
-            "  $3",
-            "  }) {",
-            "    const {",
-            "      ${4:propName},",
-            "      $5,",
-            "      $6,",
-            "      $7,",
-            "      $8,",
-            "      $9,",
-            "      $10,",
-            "      $11,",
-            "      $12,",
-            "      $13,",
-            "    } = payload;",
-            "",
-            "    const ${2:variable} = new $1({",
-            "      id: v4(),",
-            "      $4,",
-            "      $5,",
-            "      $6,",
-            "      $7,",
-            "      $8,",
-            "      $9,",
-            "      $10,",
-            "      $11,",
-            "      $12,",
-            "      $13,",
-            "    });",
-            "",
-            "$2.applyChange(",
-            "      new $1Created({",
-            "        $4,",
-            "        $5,",
-            "        $6,",
-            "        $7,",
-            "        $8,",
-            "        $9,",
-            "        $10,",
-            "        $11,",
-            "        $12,",
-            "        $13,",
-            "      })",
-            "    );",
-            "",
-            "    return $2;",
-            "  }",
-            "",
-            "  @Handle($1Created)",
-            "  private apply$1Created(event: $1Created) {",
-            "    this.props.$4 = event.props.$4;",
-            "    this.props.$5 = event.props.$5;",
-            "    this.props.$6 = event.props.$6;",
-            "    this.props.$7 = event.props.$7;",
-            "    this.props.$8 = event.props.$8;",
-            "    this.props.$9 = event.props.$9;",
-            "    this.props.$10 = event.props.$10;",
-            "    this.props.$11 = event.props.$11;",
-            "    this.props.$12 = event.props.$12;",
-            "    this.props.$13 = event.props.$13;",
-            "  }",
-            "",
-            "  update(payload: {",
-            "  $3",
-            "  }) {",
-            "    const {",
-            "      $4,",
-            "      $5,",
-            "      $6,",
-            "      $7,",
-            "      $8,",
-            "      $9,",
-            "      $10,",
-            "      $11,",
-            "      $12,",
-            "      $13,",
-            "    } = payload;",
-            "",
-            "  this.applyChange(",
-            "    new $1Updated({",
-            "      $4,",
-            "      $5,",
-            "      $6,",
-            "      $7,",
-            "      $8,",
-            "      $9,",
-            "      $10,",
-            "      $11,",
-            "      $12,",
-            "      $13,",
-            "      })",
-            "    );",
-            "  }",
-            "",
-            "  @Handle($1Updated)",
-            "  private apply$1Updated(event: $1Updated) {",
-            "    this.props.$4 = event.props.$4;",
-            "    this.props.$5 = event.props.$5;",
-            "    this.props.$6 = event.props.$6;",
-            "    this.props.$7 = event.props.$7;",
-            "    this.props.$8 = event.props.$8;",
-            "    this.props.$9 = event.props.$9;",
-            "    this.props.$10 = event.props.$10;",
-            "    this.props.$11 = event.props.$11;",
-            "    this.props.$12 = event.props.$12;",
-            "    this.props.$13 = event.props.$13;",
-            "  }",
-            "}"
-        ],
-        "description": "Build a structure for creating and updating aggregate root"
-    },
-    "Create Aggregate Root Method": {
-        "prefix": "aggm",
-        "body": [
-            "${1:methodName}() {",
-            "  this.applyChange(",
-            "    new ${2:EventName}({",
-            "      ${3:newProperties}",
-            "    })",
-            "  )",
-            "}",
-            "",
-            "@Handle($2)",
-            "private apply$2(event: $2) {",
-            "  this.props.$4 = event.props.$4;",
-            "  this.props.$5 = event.props.$5;",
-            "  this.props.$6 = event.props.$6;",
-            "  this.props.$7 = event.props.$7;",
-            "  this.props.$8 = event.props.$8;",
-            "}"
-        ],
-        "description": "Add a new method to an aggregate root"
-    },
-    "Aggregate event props": {
-        "prefix": "ev",
-        "body": [
-            "this.props.$1 = event.props.$1;"
-        ],
-        "description": "Add an event property in the aggregate."
-    },
-    "Create an event": {
-        "prefix": "event",
-        "body": [
-            "import { v4 } from 'uuid';",
-            "import { DecoratedEvent } from 'messages-core';",
-            "import { DomainEvent, DomainEventMetadata } from 'ddd';",
-            "",
-            "export interface ${1:AggregateRoot}Properties {",
-            "  ${2:propType}",
-            "}",
-            "",
-            "@DecoratedEvent({",
-            "  name: '${3:EVENT_NAME}',",
-            "  namespace: '${4:namespace}',",
-            "  version: 1,",
-            "})",
-            "",
-            "export class $1 implements DomainEvent {",
-            "  id = v4();",
-            "  props: $1Properties;",
-            "  timestamp = Date.now();",
-            "  metadata: DomainEventMetadata;",
-            "",
-            "constructor(props: $1Properties) {",
-            "  this.props = props;",
-            "  }",
-            "}"
-        ],
-        "description": "Create a structure for an event."
-    },
-    "Create a Usecase": {
-        "prefix": "use",
-        "body": [
-            "import { inject, injectable } from 'inversify';",
-            "import { EventDispatcher, Usecase } from 'ddd';",
-            "import { $2$0 } from '';",
-            "import { $2Repository } from '';",
-            "",
-            "export interface ${1:Method}${2:AggregateRoot}Input {",
-            "  ${3:propType}",
-            "}",
-            "",
-            "@injectable()",
-            "export class $1$2 implements Usecase<$1$2Input, $2> {",
-            "  constructor(",
-            "    @inject(${4:identifier}.${5:repository}Repository)",
-            "    private readonly _$5Repository: $2Repository,",
-            "    @inject(EventDispatcher)",
-            "    private readonly _eventDispatcher: EventDispatcher",
-            "  ) {}",
-            "",
-            "  async execute(request: $1$2Input): Promise<$2> {",
-            "",
-            "    const ${6:variable} = '... add logic here ...'",
-            "",
-            "    await this._$5Repository.save($6);",
-            "    await this._eventDispatcher.dispatch($6);",
-            "",
-            "    return $6;",
-            "  }",
-            "}"
-        ],
-        "description": "Build a structure for creating a usecase"
-    },
-    "Create a Query": {
-        "prefix": "query",
-        "body": [
-            "import { inject, injectable } from 'inversify';",
-            "import { Query } from 'ddd';",
-            "import { $2 } from '';",
-            "import { $2Repository } from '';",
-            "",
-            "export interface $1Input {",
-            "  ${6:InputTypes}",
-            "}",
-            "",
-            "@injectable()",
-            "export class ${1:QueryName} implements Query<$1Input, ${2:Output}> {",
-            "  constructor(",
-            "    @inject(${3:Identifier}.${4:repository}Repository)",
-            "    private readonly _$4ReadModelRepository: $2Repository",
-            "  ) {}",
-            "",
-            "  async execute(request: $1Input): Promise<$2> {",
-            "    return await this._$4Repository.${5:method}(${7:variable});",
-            "  }",
-            "}"
-        ],
-        "description": "Create a structure for a query"
-    },
-    "Inject a Repository": {
-        "prefix": "injr",
-        "body": [
-            "@inject(${1:Identifier}.${2:name}Repository)",
-            "private readonly _$2Repository: ${3:AggregateRoot}Repository,"
-        ],
-        "description": "Add new repository"
-    },
-    "Inject a Gateway": {
-        "prefix": "injg",
-        "body": [
-            "@inject(${1:Identifier}.${2:name}Gateway)",
-            "private readonly _$2Gateway: ${3:AggregateRoot}Gateway,"
-        ],
-        "description": "Add a new gateway"
-    },
-    "Create a Repository": {
-        "prefix": "repo",
-        "body": [
-            "import { $1$0 } from '';",
-            "",
-            "export interface ${1:AggregateRoot}Repository {",
-            "  save(${2:variable}: $1): Promise<void>;",
-            "",
-            "  getById(id: string): Promise<$1>;",
-            "}"
-        ],
-        "description": "Build an interface for write repository"
-    },
-    "Create a Postgres Repository": {
-        "prefix": "repop",
-        "body": [
-            "import { injectable } from 'inversify';",
-            "import { EntityManager } from 'typeorm';",
-            "import { $1, $1Repository } from '$0';",
-            "import { $1Entity } from '';",
-            "import { $1EntityMapper } from '';",
-            "",
-            "@injectable()",
-            "export class Postgres${1:AggregateRoot}Repository implements $1Repository {",
-            "  private readonly $2EntityMapper: $1EntityMapper;",
-            "",
-            "  constructor(private readonly entityManager: EntityManager) {",
-            "    this.$2EntityMapper = new $1EntityMapper(entityManager);",
-            "  }",
-            "",
-            "  async save(${2:variable}: $1): Promise<void> {",
-            "    const $2Repository = this.entityManager.getRepository($1Entity);",
-            "",
-            "    const $2Entity = this.$2EntityMapper.fromDomain($2);",
-            "",
-            "    await $2Repository.save($2Entity);",
-            "  }",
-            "",
-            "  async getById(id: string): Promise<$1> {",
-            "    const $2Repository = this.entityManager.getRepository($1Entity);",
-            "",
-            "    const $2 = await $2Repository.findOne({",
-            "      where: {",
-            "        id,",
-            "      },",
-            "    });",
-            "",
-            "    if (!$2) {",
-            "      return null;",
-            "    };",
-            "",
-            "    return this.$2EntityMapper.toDomain($2);",
-            "  }",
-            "}"
-        ],
-        "description": "Build a structure for postgres write repository"
-    },
-    "Create a Postgres Read Model Repository": {
-        "prefix": "reporm",
-        "body": [
-            "import { injectable } from 'inversify';",
-            "import { EntityManager } from 'typeorm';",
-            "import { $1ReadModel, $1ReadModelRepository } from '$0'",
-            "import { $1ReadModelMapper } from '';",
-            "",
-            "@injectable()",
-            "export class Postgres${1:AggregateRoot}ReadModelRepository implements $1ReadModelRepository {",
-            "  private readonly _$2ReadModelMapper: $1ReadModelMapper;",
-            "",
-            "  constructor(private readonly _entityManager: EntityManager) {",
-            "    this._$2ReadModelMapper = new $1ReadModelMapper();",
-            "  }",
-            "",
-            "  async getById($2Id: string): Promise<$1ReadModel> {",
-            "    const result: $1ReadModel[] = await this._entityManager.query(",
-            "      `",
-            "       SELECT",
-            "         -- query goes here",
-            "      `,",
-            "      [$2Id]",
-            "    );",
-            "",
-            "    if (!result.length) {",
-            "      return null;",
-            "    }",
-            "",
-            "    return this._$2ReadModelMapper.toDomain(result[0]);",
-            "  }",
-            "",
-            "  async getAll(): Promise<$1ReadModel[]> {",
-            "    const result: $1ReadModel[] = await this._entityManager.query(",
-            "      `",
-            "       SELECT",
-            "         -- query goes here",
-            "      `,",
-            "    );",
-            "",
-            "    return result.map(($2) => this._$2ReadModelMapper.toDomain($2));",
-            "  }",
-            "}"
-        ],
-        "description": "Build a structure for postgres read model repository"
-    },
-    "Create an Entity": {
-        "prefix": "ent",
-        "body": [
-            "import {",
-            "  Entity,",
-            "  Column,",
-            "  PrimaryColumn,",
-            "  CreateDateColumn,",
-            "  UpdateDateColumn,",
-            "} from 'typeorm';",
-            "",
-            "@Entity('${1:tableName}')",
-            "export class ${2:AggregateRoot}Entity {",
-            "  @PrimaryColumn({",
-            "    type: 'varchar',",
-            "  })",
-            "  id: string;",
-            "",
-            "  $0",
-            "",
-            "  @CreateDateColumn()",
-            "  createdAt?: Date;",
-            "",
-            "  @UpdateDateColumn()",
-            "  updatedAt?: Date;",
-            "}"
-        ],
-        "description": "Build a structure for an Entity"
-    },
-    "Add a Column to Entity": {
-        "prefix": "col",
-        "body": [
-            "@Column({",
-            "  nullable: ${2|false,true|},",
-            "  type: '${3|varchar,int,numeric,jsonb,boolean,timestamp,timestamptz,enum|}',",
-            "  ${4| ,default:|}$0",
-            "})",
-            "${1:property};",
-            ""
-        ],
-        "description": "Add a new column to the entity table"
-    },
-    "Create an Entity Mapper": {
-        "prefix": "mappe",
-        "body": [
-            "import { Mapper } from 'ddd'",
-            "import { EntityManager } from 'typeorm'",
-            "import { $1 } from '$0';",
-            "import { $1Entity } from '';",
-            "",
-            "export class ${1:AggregateRoot}EntityMapper implements Mapper<$1Entity, $1> {",
-            "  constructor(private readonly entityManager: EntityManager) {}",
-            "",
-            "  fromDomain(t: $1): $1Entity {",
-            "    return this.entityManager.create($1Entity, {",
-            "      id: t.id,",
-            "      ${3:property}: t.props.$3,",
-            "      $4: t.props.$4,",
-            "      $5: t.props.$5,",
-            "      $6: t.props.$6,",
-            "      $7: t.props.$7,",
-            "      $8: t.props.$8,",
-            "      $9: t.props.$9,",
-            "      $10: t.props.$10,",
-            "      $11: t.props.$11,",
-            "    });",
-            "  }",
-            "",
-            "  toDomain(raw: $1Entity): $1 {",
-            "    const ${2:variable} = $1.restore({",
-            "      id: raw.id,",
-            "      $3: raw.$3,",
-            "      $4: raw.$4,",
-            "      $5: raw.$5,",
-            "      $6: raw.$6,",
-            "      $7: raw.$7,",
-            "      $8: raw.$8,",
-            "      $9: raw.$9,",
-            "      $10: raw.$10,",
-            "      $11: raw.$11,",
-            "    });",
-            "",
-            "    $2.createdAt = raw.createdAt;",
-            "    $2.updatedAt = raw.updatedAt;",
-            "",
-            "    return $2;",
-            "  }",
-            "}"
-        ],
-        "description": "Build a structure for your entity mapper"
-    },
-    "Create a Read Model Mapper": {
-        "prefix": "mapprm",
-        "body": [
-            "import { Mapper } from 'ddd'",
-            "import { $1ReadModel } from '$0';",
-            "",
-            "export class ${1:AggregateRoot}ReadModelMapper implements Mapper<any, $1ReadModel> {",
-            "  toDomain(raw: any): $1ReadModel {",
-            "    return {",
-            "      id: raw.id,",
-            "      $2: raw.$2,",
-            "      $3: raw.$3,",
-            "      $4: raw.$4,",
-            "      $5: raw.$5,",
-            "      $6: raw.$6,",
-            "      $7: raw.$7,",
-            "      $8: raw.$8,",
-            "      $9: raw.$9,",
-            "      $10: raw.$10,",
-            "    }",
-            "  }",
-            "}"
-        ],
-        "description": "Build a structure for your read model mapper"
-    },
-    "Add 'fromDomain()' property to a mapper": {
-        "prefix": "from",
-        "body": [
-            "$1: t.props.$1,"
-        ],
-        "description": "Add a fromDomain() property to a mapper"
-    },
-    "Add 'toDomain() property to a mapper": {
-        "prefix": "to",
-        "body": [
-            "$1: raw.$1,"
-        ],
-        "description": "Add a toDomain() property to a mapper"
-    },
-    "Create a Controller": {
-        "prefix": "ctrl",
-        "body": [
-            "import { inject, injectable } from 'inversify';",
-            "import { validateOrReject } from 'class-validator';",
-            "import { Response } from 'express';",
-            "import { AuthenticationMiddleware } from '';",
-            "import {",
-            "  Post,",
-            "  Patch,",
-            "  Get,",
-            "  Delete,",
-            "  Req,",
-            "  Res,",
-            "  JsonController,",
-            "  UseBefore,",
-            "} from 'routing-controllers';",
-            "",
-            "@injectable()",
-            "@JsonController('/${1:controllerRoot}')",
-            "export class ${2:AggregateRoot}Controller {",
-            "  constructor(",
-            "    inju$0",
-            ") {}",
-            "  // methods go here",
-            "}"
-        ],
-        "description": "Build a structure for your controller"
-    },
-    "Create a controller module": {
-        "prefix": "module",
-        "body": [
-            "import { Container } from 'inversify';",
-            "import { $1Controller } from './$1Controller';",
-            "",
-            "export class ${1:AggregateRoot}Module {",
-            "  configure(container: Container) {",
-            "    container.bind($1Controller).toSelf();",
-            "  }",
-            "}"
-        ],
-        "description": "Create a module for a controller"
-    },
-    "Inject Usecase": {
-        "prefix": "inju",
-        "body": [
-            "@inject(${1:Usecase})",
-            "private readonly ${2:variable}: $1,"
-        ],
-        "description": "Inject a usecase"
-    },
-    "Add a method to the controller": {
-        "prefix": "ctrlm",
-        "body": [
-            "${1|@UseBefore(AuthenticationMiddleware), |}",
-            "@${2|Post,Patch,Put,Get,Delete|}('/${3:path}')",
-            "async ${4:methodName}(",
-            "  ${5|@Req() req: AuthenticatedUser, |},",
-            "  @Res() res: Response,",
-            "  @Body() cmd: ${6:Command}",
-            ") {",
-            "  const body = $6.setProperties(cmd);",
-            "  await validateOrReject(body);",
-            "  const {",
-            "    ${8:properties}",
-            "  } = body",
-            "",
-            "  const result = await this.${7:usecase}.execute({",
-            "    $8",
-            "  });",
-            "",
-            "  return res.status(200).send(result);",
-            "}"
-        ],
-        "description": "Add a method to the controller"
-    },
-    "Create a Command": {
-        "prefix": "cmd",
-        "body": [
-            "import { Expose, plainToClass } from 'class-transformer';",
-            "import { IsString } from 'class-validator'",
-            "",
-            "export class ${1:Usecase}Command {",
-            "",
-            "  $0",
-            "",
-            "  static setProperties(cmd: $1Command): $1Command {",
-            "    return plainToClass($1Command, cmd, {",
-            "      excludeExtraneousValues: true,",
-            "    });",
-            "  }",
-            "}"
-        ],
-        "description": "Create a structure for a Command"
-    },
-    "Create Query Params": {
-        "prefix": "params",
-        "body": [
-            "import { Expose, plainToClass } from 'class-transformer';",
-            "import { IsString } from 'class-validator'",
-            "",
-            "export class ${1:Usecase}QueryParams {",
-            "",
-            "  $0",
-            "",
-            "  static setProperties(params: $1QueryParams): $1QueryParams {",
-            "    return plainToClass($1QueryParams, params, {",
-            "      excludeExtraneousValues: true,",
-            "    });",
-            "  }",
-            "}"
-        ],
-        "description": "Create a structure for a QueryParams"
-    },
-    "Add a Command Property": {
-        "prefix": "pr",
-        "body": [
-            "@Expose()",
-            "${1:property}"
-        ],
-        "description": "Add a new property to Command"
-    },
-    "Add a validator to a Command's Property": {
-        "prefix": "v",
-        "body": [
-            "@${1|IsString,IsNumber,IsEnum,IsBoolean,IsArray,IsOptional,Length,Min,Max,Type,ValidateNested,IsUUID,IsISO8601,IsUrl,IsEmail,IsPhoneNumber|}()"
-        ],
-        "description": "Add a validator to Command's property"
-    },
-    "@IsString()": {
-        "prefix": "vs",
-        "body": [
-            "@IsString()",
-            "@Length(1)"
-        ],
-        "description": "Add a string validator to Command's property with a minimal length of 1"
-    },
-    "@IsNumber()": {
-        "prefix": "vn",
-        "body": [
-            "@IsNumber()"
-        ],
-        "description": "Add a number validator to Command's property"
-    },
-    "@IsEnum()": {
-        "prefix": "ve",
-        "body": [
-            "@IsEnum($0)"
-        ],
-        "description": "Add an enum validator to Command's property"
-    },
-    "@IsOptional()": {
-        "prefix": "vo",
-        "body": [
-            "@IsOptional()"
-        ],
-        "description": "Add an optional validator to Command's property"
-    },
-    "@Type()": {
-        "prefix": "vt",
-        "body": [
-            "@Type(() => $0)"
-        ],
-        "description": "Add a type validator to Command's nested properties"
-    },
-    "@Date()": {
-        "prefix": "vd",
-        "body": [
-            "@Type(() => Date)",
-            "@IsDate()"
-        ],
-        "description": "Add a date validator to Command's nested properties"
-    },
-    "@Transform()": {
-        "prefix": "vtr",
-        "body": [
-            "@Transform(({ value }) => {",
-            "  if (value === '' || value === null) {",
-            "    return null;",
-            "  }",
-            "  return value;",
-            "})",
-        ],
-        "description": "Add a transformer to Command's empty string values"
-    },
-    "Create an InMemoryRepository for a unit test": {
-        "prefix": "testr",
-        "body": [
-            "import { $1 } from '$0';",
-            "import { $1Repository } from '';",
-            "",
-            "export class InMemory${1:AggregateRoot}Repository implements $1Repository {",
-            "  constructor(private readonly db: Map<string, $1>) {}",
-            "",
-            "  async save(${2:variable}: $1): Promise<void> {",
-            "    this.db.set($2.id, $2);",
-            "  }",
-            "",
-            "  async getById(id: string): Promise<$1> {",
-            "    return this.db.get(id);",
-            "  }",
-            "}"
-        ],
-        "description": "Create an InMemoryRepository for a unit test"
-    },
-    "Create a Unit Test": {
-        "prefix": "testu",
-        "body": [
-            "import { eventDispatcherMock$0 } from '';",
-            "import { ${1:AggregateRoot} } from '';",
-            "import { ${2:Usecase} } from '';",
-            "import { InMemory$1Repository} from '';",
-            "import { ${7:Namespace}TestDataFactory } from '';",
-            "",
-            "describe('Unit - $2', () => {",
-            "  let db: Map<string, $1>;",
-            "  let ${3:repository}Repository: InMemory$1Repository;",
-            "  let ${4:usecase}: $2;",
-            "",
-            "  beforeEach(() => {",
-            "    db = new Map();",
-            "    $3Repository = new InMemory$1Repository(db);",
-            "    $4 = new $2($3Repository, eventDispatcherMock());",
-            "  });",
-            "",
-            "  it('${5:should do this}', async () => {",
-            "    const $3TestData = $7TestDataFactory.create$1();",
-            "",
-            "    const $3 = await $4.execute({",
-            "      ...$3TestData.props,",
-            "    });",
-            "",
-            "    const saved$1 = await $3Repository.getById($3.props.id);",
-            "",
-            "    const $3${8:action}Event = $3.events.find(",
-            "      (event) => event.metadata.aggregateId === $3.props.id,",
-            "    );",
-            "",
-            "    expect(saved$1.props.${9:property}).toBe($3TestData.props.$9);",
-            "    expect($3$8Event.props.$9).toBe($3.props.$9);",
-            "  });",
-            "});"
-        ],
-        "description": "Create a structure for a unit test"
-    },
-    "Create an integration Test": {
-        "prefix": "testi",
-        "body": [
-            "import { TestContainer } from '$0';",
-            "import { $1, $4 } from '';",
-            "import { $5 } from '';",
-            "import { Postgres$8 } from '';",
-            "import { Postgres$4 } from '';",
-            "",
-            "describe('Integration - ${1:Query}', () => {",
-            "  let container: TestContainer;",
-            "  let ${2:query}: $1;",
-            "  let ${3:repo}: ${4:Repo};",
-            "",
-            "  beforeAll(async () => {",
-            "    container = new TestContainer();",
-            "    await container.setup({",
-            "      entities: [${5:Entity}],",
-            "      repos: [",
-            "        {",
-            "          identifier: ${6:Identifiers}.$3,",
-            "          implementation: Postgres$4",
-            "        },",
-            "        {",
-            "          identifier: $6.${7:readRepo},",
-            "          implementation: Postgres${8:ReadRepo}",
-            "        }",
-            "      ],",
-            "      usecases: [$1]",
-            "    });",
-            "  });",
-            "",
-            "  afterAll(async () => {",
-            "    await container.destroy();",
-            "  });",
-            "",
-            "  beforeEach(async () => {",
-            "    $2 = container.get($1);",
-            "    $3 = container.get(",
-            "      $6.$3,",
-            "    );",
-            "",
-            "    await container.clearData();",
-            "  });",
-            "",
-            "  it('Should ${9:do this...}', async () => {",
-            "    const count = $10",
-            "",
-            "    const ${11:variable}s = ${12:Factory}.createMultiple(count, () =>",
-            "      $12.${13:method}(),",
-            "    );",
-            "",
-            "    await Promise.all(",
-            "      $11s.map(($11) => $3.save($11)),",
-            "    );",
-            "",
-            "    const result = await $2.execute();",
-            "",
-            "    expect(result).toBeDefined();",
-            "    expect(result.length).toBe(count);",
-            "",
-            "    result.forEach(($11) => {",
-            "      expect($11.id).toBeDefined();",
-            "    });",
-            "  });",
-            "",
-            "  it('Should return an empty array', async () => {",
-            "    const result = await $2.execute();",
-            "",
-            "    expect(result).toBeDefined();",
-            "    expect(result.length).toBe(0);",
-            "  });",
-            "});"
-        ],
-        "description": "Create a structure for an integration test"
-    },
-    "Add a new method to a unit test": {
-        "prefix": "testum",
-        "body": [
-            "it('${1:testName}', async () => {",
-            "  const result = ${2:usecaseName}.execute({",
-            "    ${0:property: value}",
-            "  });",
-            "",
-            "  expect(result).toBe();",
-            "});"
-        ],
-        "description": "Add a new method to the unit test"
-    },
-    "Create a handler": {
-        "prefix": "handle",
-        "body": [
-            "import { inject, injectable } from 'inversify';",
-            "import { DomainEventHandler } from 'ddd';",
-            "",
-            "@injectable()",
-            "export class Handle${1:EventName}",
-            "  implements DomainEventHandler<$1>",
-            "{",
-            "  constructor(",
-            "  @inject(${2:Usecase})",
-            "  private readonly _${3:usecase}: $2",
-            ") {}",
-            "",
-            "  async handle(domainEvent: $1): Promise<${4:result}> {",
-            "    // handler logic goes here $0",
-            "  }",
-            "}"
-        ],
-        "description": "Create a structure for a handler."
-    },
-    "Create an identifier": {
-        "prefix": "ident",
-        "body": [
-            "static readonly ${1:repoName} = Symbol.for('$1');"
-        ],
-        "description": "Create an identifier"
-    },
-    "Create authorization check": {
-        "prefix": "auth",
-        "body": [
-            "const isAuthorized = await this.$1.canExecute(",
-            "  req.identity",
-            ");",
-            "if (!isAuthorized) {",
-            "  return UnAuthorizedAction(res);",
-            "};"
-        ],
-        "description": "Create an authorization check for canExecute"
-    },
-    "Return a set value for a spyOn method for test": {
-        "prefix": "test-spy",
-        "body": [
-            "jest",
-            "  .spyOn(${1:repository}, '${2:method}')",
-            "  .${3|mockResolvedValue, mockReturnValue|}(${4:value});"
-        ],
-        "description": "Return a set value for a spyOn method in a test"
-    },
-    "Create async spyOn method for test": {
-        "prefix": "test-spy-async",
-        "body": [
-            "jest",
-            "  .spyOn(${1:repository}, '${2:method}')",
-            "  .mockImplementation(",
-            "    async (${3:request}): Promise<${4:response}> => {",
-            "      return $0",
-            "    }",
-            "  );"
-        ],
-        "description": "Create an async spyOn method in a test"
-    },
-    "console.log()": {
-        "prefix": "cl",
-        "body": [
-            "console.log('$1 ----->', $2);"
-        ],
-        "description": "Create a console.log"
-    },
-    "console.log() with string literal": {
-        "prefix": "cll",
-        "body": [
-            "console.log(`$0`);"
-        ],
-        "description": "Create a console.log with string literal"
-    },
-    "ANSI color red": {
-        "prefix": "color red",
-        "body": [
-            "\\x1b[31m"
-        ],
-        "description": "Add color red to the text"
-    },
-    "ANSI color green": {
-        "prefix": "color green",
-        "body": [
-            "\\x1b[32m"
-        ],
-        "description": "Add color green to the text"
-    },
-    "ANSI color yellow": {
-        "prefix": "color yellow",
-        "body": [
-            "\\x1b[33m"
-        ],
-        "description": "Add color yellow to the text"
-    },
-    "ANSI color blue": {
-        "prefix": "color blue",
-        "body": [
-            "\\x1b[34m"
-        ],
-        "description": "Add color blue to the text"
-    },
-    "ANSI color reset": {
-        "prefix": "color reset",
-        "body": [
-            "\\x1b[0m"
-        ],
-        "description": "Add color reset to the text"
-    },
-    "Typescript ignore next line": {
-        "prefix": "ts-ignore",
-        "body": "// @ts-ignore",
-        "description": "Disables typescript checking for the next line"
-    },
-    "Typescript ignore whole file": {
-        "prefix": "ts-ignore-all",
-        "body": "// @ts-nocheck",
-        "description": "Disables typescript checking for the whole file"
-    },
-    "Create a namespace for errors": {
-        "prefix": "error-namespace",
-        "body": [
-            "import { DomainError } from 'ddd';",
-            "",
-            "export namespace ${1:AggregateRoot}Errors {",
-            "  export class $1NotFound extends DomainError {",
-            "    constructor(cause?: string) {",
-            "      super($0'$1_NOT_FOUND');",
-            "      this.cause = cause;",
-            "    }",
-            "  }",
-            "}"
-        ],
-        "description": "Create a namespace for errors"
-    },
-    "Create a test payment method ID": {
-        "prefix": "payment method id",
-        "body": [
-            "const paymentMethod = await this._stripe.paymentMethods.create({",
-            "  type: 'card',",
-            "  card: {",
-            "    token: 'tok_visa',",
-            "  },",
-            "});",
-            "console.log('payment method Id ----->\\n', paymentMethod.id);"
-        ],
-        "description": "Creates a function to generate stripe payment method ID"
-    },
-    "Create test data template": {
-        "prefix": "test data",
-        "body": [
-            "static create${1:Aggregate}(overrides: Partial<$1['props']> = {}): $1 {",
-            "  return new $1({",
-            "    id: faker.string.uuid(),",
-            "    $0",
-            "    ...overrides,",
-            "  });",
-            "}"
-        ],
-        "description": "Create a template for test factory data"
-    },
-    "Test object wrapper for an optional property": {
-        "prefix": "maybe",
-        "body": [
-            "this.maybe(() => $0),"
-        ],
-        "description": "Create a 'maybe' wrapper for a test property"
-    },
-    "Function to log memory usage": {
-        "prefix": "memlog",
-        "body": [
-            "logMemory(stage: string): void {",
-            "  const mem = process.memoryUsage();",
-            "  const time = new Date().toLocaleTimeString(undefined, { hourCycle: 'h24' });",
-            "  console.log(`\\x1b[34m\\${time} [\\${stage}] RSS: ${(mem.rss / 1024 / 1024).toFixed(1)} MB, Heap Used: ${(mem.heapUsed / 1024 / 1024).toFixed(1)} MB\\x1b[0m\n`)",
-            "}"
-        ],
-        "description": "Use console.log() to watch memory usage"
-    },
-    "Log memory usage": {
-        "prefix": "mem",
-        "body": [
-            "logMemory('$0')",
-        ],
-        "description": "Use console.log() to watch memory usage"
-    },
-    "Log 1 timestamp": {
-        "prefix": "time1",
-        "body": [
-            "const start = Date.now();",
-            "",
-            "const timestamp1 = Date.now();",
-            "console.log(`\\x1b[32mTimestamp [${1:1}]: +\\${timestamp1 - start}ms\\x1b[0m`);"
-        ]
-    },
-    "Log 2 timestamps": {
-        "prefix": "time2",
-        "body": [
-            "const start = Date.now();",
-            "",
-            "const timestamp1 = Date.now();",
-            "console.log(`\\x1b[32mTimestamp [${1:1}]: +\\${timestamp1 - start}ms\\x1b[0m`);",
-            "",
-            "const timestamp2 = Date.now();",
-            "console.log(`\\x1b[32mTimestamp [${2:2}]: +\\${timestamp2 - timestamp1}ms, total: +\\${timestamp2 - start}ms\\x2b[0m`);"
-        ]
-    },
-    "Log 3 timestamp": {
-        "prefix": "time3",
-        "body": [
-            "const start = Date.now();",
-            "",
-            "const timestamp1 = Date.now();",
-            "console.log(`\\x1b[32mTimestamp [${1:1}]: +\\${timestamp1 - start}ms\\x1b[0m`);",
-            "",
-            "const timestamp2 = Date.now();",
-            "console.log(`\\x1b[32mTimestamp [${2:2}]: +\\${timestamp2 - timestamp1}ms, total: +\\${timestamp2 - start}ms\\x2b[0m`);",
-            "",
-            "const timestamp3 = Date.now();",
-            "console.log(`\\x1b[32mTimestamp [${3:3}]: +\\${timestamp3 - timestamp2}ms, total: +\\${timestamp3 - start}ms\\x2b[0m`);"
-        ]
-    },
-    "Log 4 timestamp": {
-        "prefix": "time4",
-        "body": [
-            "const start = Date.now();",
-            "",
-            "const timestamp1 = Date.now();",
-            "console.log(`\\x1b[32mTimestamp [${1:1}]: +\\${timestamp1 - start}ms\\x1b[0m`);",
-            "",
-            "const timestamp2 = Date.now();",
-            "console.log(`\\x1b[32mTimestamp [${2:2}]: +\\${timestamp2 - timestamp1}ms, total: +\\${timestamp2 - start}ms\\x2b[0m`);",
-            "",
-            "const timestamp3 = Date.now();",
-            "console.log(`\\x1b[32mTimestamp [${3:3}]: +\\${timestamp3 - timestamp2}ms, total: +\\${timestamp3 - start}ms\\x2b[0m`);",
-            "",
-            "const timestamp4 = Date.now();",
-            "console.log(`\\x1b[32mTimestamp [${4:4}]: +\\${timestamp4 - timestamp3}ms, total: +\\${timestamp4 - start}ms\\x2b[0m`);"
-        ]
-    },
-    "Log 5 timestamp": {
-        "prefix": "time5",
-        "body": [
-            "const start = Date.now();",
-            "",
-            "const timestamp1 = Date.now();",
-            "console.log(`\\x1b[32mTimestamp [${1:1}]: +\\${timestamp1 - start}ms\\x1b[0m`);",
-            "",
-            "const timestamp2 = Date.now();",
-            "console.log(`\\x1b[32mTimestamp [${2:2}]: +\\${timestamp2 - timestamp1}ms, total: +\\${timestamp2 - start}ms\\x2b[0m`);",
-            "",
-            "const timestamp3 = Date.now();",
-            "console.log(`\\x1b[32mTimestamp [${3:3}]: +\\${timestamp3 - timestamp2}ms, total: +\\${timestamp3 - start}ms\\x2b[0m`);",
-            "",
-            "const timestamp4 = Date.now();",
-            "console.log(`\\x1b[32mTimestamp [${4:4}]: +\\${timestamp4 - timestamp3}ms, total: +\\${timestamp4 - start}ms\\x2b[0m`);",
-            "",
-            "const timestamp5 = Date.now();",
-            "console.log(`\\x1b[32mTimestamp [${5:5}]: +\\${timestamp5 - timestamp4}ms, total: +\\${timestamp5 - start}ms\\x2b[0m`);"
-        ]
-    },
-    "Add a delay": {
-        "prefix": "delay",
-        "body": [
-            "async function delay(ms: number): Promise<void> {",
-            "  return new Promise((resolve) => setTimeout(resolve, ms));",
-            "}"
-        ]
-    },
-    "Add a search condition builder for SQL queries": {
-        "prefix": "search condition",
-        "body": [
-            "buildSearchCondition(input: {",
-            "  params: ${1:Input};",
-            "  mainParams: any[];",
-            "  countParams: any[];",
-            "}): {",
-            "  limitCondition: string;",
-            "  offsetCondition: string;",
-            "  pageInput: number;",
-            "  limitInput: number;",
-            "} {",
-            "  const { params, mainParams, countParams } = input;",
-            "  const { page, limit } = params;",
-            "",
-            "  const pageInput = page ?? 1;",
-            "  const limitInput = limit ?? ${2:Entity}.defaultQueryLimit;",
-            "  const offset = (pageInput - 1) * limitInput;",
-            "",
-            "  mainParams.push(offset);",
-            "  const offsetCondition = `OFFSET $${mainParams.length}`;",
-            "",
-            "  mainParams.push(limitInput);",
-            "  const limitCondition = `LIMIT $${mainParams.length}`;",
-            "",
-            "return {",
-            "  limitCondition",
-            "  offsetCondition,",
-            "  pageInput,",
-            "  limitInput,",
-            "};",
-        ]
-    }
+  "Create Aggregate Root": {
+    "prefix": "agg",
+    "body": [
+      "import { AggregateRoot, Handle } from 'ddd';",
+      "import { v4 } from 'uuid';",
+      "",
+      "export interface $1Properties {",
+      "  id: string;",
+      "  ${3:propType}",
+      "}",
+      "",
+      "export class ${1:AggregateRoot} extends AggregateRoot<$1Properties> {",
+      "  static restore(props: $1Properties) {",
+      "    return new $1(props);",
+      "  }",
+      "  static create(payload: {",
+      "  $3",
+      "  }) {",
+      "    const {",
+      "      ${4:propName},",
+      "      $5,",
+      "      $6,",
+      "      $7,",
+      "      $8,",
+      "      $9,",
+      "      $10,",
+      "      $11,",
+      "      $12,",
+      "      $13,",
+      "    } = payload;",
+      "",
+      "    const ${2:variable} = new $1({",
+      "      id: v4(),",
+      "      $4,",
+      "      $5,",
+      "      $6,",
+      "      $7,",
+      "      $8,",
+      "      $9,",
+      "      $10,",
+      "      $11,",
+      "      $12,",
+      "      $13,",
+      "    });",
+      "",
+      "$2.applyChange(",
+      "      new $1Created({",
+      "        $4,",
+      "        $5,",
+      "        $6,",
+      "        $7,",
+      "        $8,",
+      "        $9,",
+      "        $10,",
+      "        $11,",
+      "        $12,",
+      "        $13,",
+      "      })",
+      "    );",
+      "",
+      "    return $2;",
+      "  }",
+      "",
+      "  @Handle($1Created)",
+      "  private apply$1Created(event: $1Created) {",
+      "    this.props.$4 = event.props.$4;",
+      "    this.props.$5 = event.props.$5;",
+      "    this.props.$6 = event.props.$6;",
+      "    this.props.$7 = event.props.$7;",
+      "    this.props.$8 = event.props.$8;",
+      "    this.props.$9 = event.props.$9;",
+      "    this.props.$10 = event.props.$10;",
+      "    this.props.$11 = event.props.$11;",
+      "    this.props.$12 = event.props.$12;",
+      "    this.props.$13 = event.props.$13;",
+      "  }",
+      "",
+      "  update(payload: {",
+      "  $3",
+      "  }) {",
+      "    const {",
+      "      $4,",
+      "      $5,",
+      "      $6,",
+      "      $7,",
+      "      $8,",
+      "      $9,",
+      "      $10,",
+      "      $11,",
+      "      $12,",
+      "      $13,",
+      "    } = payload;",
+      "",
+      "  this.applyChange(",
+      "    new $1Updated({",
+      "      $4,",
+      "      $5,",
+      "      $6,",
+      "      $7,",
+      "      $8,",
+      "      $9,",
+      "      $10,",
+      "      $11,",
+      "      $12,",
+      "      $13,",
+      "      })",
+      "    );",
+      "  }",
+      "",
+      "  @Handle($1Updated)",
+      "  private apply$1Updated(event: $1Updated) {",
+      "    this.props.$4 = event.props.$4;",
+      "    this.props.$5 = event.props.$5;",
+      "    this.props.$6 = event.props.$6;",
+      "    this.props.$7 = event.props.$7;",
+      "    this.props.$8 = event.props.$8;",
+      "    this.props.$9 = event.props.$9;",
+      "    this.props.$10 = event.props.$10;",
+      "    this.props.$11 = event.props.$11;",
+      "    this.props.$12 = event.props.$12;",
+      "    this.props.$13 = event.props.$13;",
+      "  }",
+      "}"
+    ],
+    "description": "Build a structure for creating and updating aggregate root"
+  },
+  "Create Aggregate Root Method": {
+    "prefix": "aggm",
+    "body": [
+      "${1:methodName}() {",
+      "  this.applyChange(",
+      "    new ${2:EventName}({",
+      "      ${3:newProperties}",
+      "    })",
+      "  )",
+      "}",
+      "",
+      "@Handle($2)",
+      "private apply$2(event: $2) {",
+      "  this.props.$4 = event.props.$4;",
+      "  this.props.$5 = event.props.$5;",
+      "  this.props.$6 = event.props.$6;",
+      "  this.props.$7 = event.props.$7;",
+      "  this.props.$8 = event.props.$8;",
+      "}"
+    ],
+    "description": "Add a new method to an aggregate root"
+  },
+  "Aggregate event props": {
+    "prefix": "ev",
+    "body": ["this.props.$1 = event.props.$1;"],
+    "description": "Add an event property in the aggregate."
+  },
+  "Create an event": {
+    "prefix": "event",
+    "body": [
+      "import { v4 } from 'uuid';",
+      "import { DecoratedEvent } from 'messages-core';",
+      "import { DomainEvent, DomainEventMetadata } from 'ddd';",
+      "",
+      "export interface ${1:AggregateRoot}Properties {",
+      "  ${2:propType}",
+      "}",
+      "",
+      "@DecoratedEvent({",
+      "  name: '${3:EVENT_NAME}',",
+      "  namespace: '${4:namespace}',",
+      "  version: 1,",
+      "})",
+      "",
+      "export class $1 implements DomainEvent {",
+      "  id = v4();",
+      "  props: $1Properties;",
+      "  timestamp = Date.now();",
+      "  metadata: DomainEventMetadata;",
+      "",
+      "constructor(props: $1Properties) {",
+      "  this.props = props;",
+      "  }",
+      "}"
+    ],
+    "description": "Create a structure for an event."
+  },
+  "Create a Usecase": {
+    "prefix": "use",
+    "body": [
+      "import { inject, injectable } from 'inversify';",
+      "import { EventDispatcher, Usecase } from 'ddd';",
+      "import { $2$0 } from '';",
+      "import { $2Repository } from '';",
+      "",
+      "export interface ${1:Method}${2:AggregateRoot}Input {",
+      "  ${3:propType}",
+      "}",
+      "",
+      "@injectable()",
+      "export class $1$2 implements Usecase<$1$2Input, $2> {",
+      "  constructor(",
+      "    @inject(${4:identifier}.${5:repository}Repository)",
+      "    private readonly _$5Repository: $2Repository,",
+      "    @inject(EventDispatcher)",
+      "    private readonly _eventDispatcher: EventDispatcher",
+      "  ) {}",
+      "",
+      "  async execute(request: $1$2Input): Promise<$2> {",
+      "",
+      "    const ${6:variable} = '... add logic here ...'",
+      "",
+      "    await this._$5Repository.save($6);",
+      "    await this._eventDispatcher.dispatch($6);",
+      "",
+      "    return $6;",
+      "  }",
+      "}"
+    ],
+    "description": "Build a structure for creating a usecase"
+  },
+  "Create a Query": {
+    "prefix": "query",
+    "body": [
+      "import { inject, injectable } from 'inversify';",
+      "import { Query } from 'ddd';",
+      "import { $2 } from '';",
+      "import { $2Repository } from '';",
+      "",
+      "export interface $1Input {",
+      "  ${6:InputTypes}",
+      "}",
+      "",
+      "@injectable()",
+      "export class ${1:QueryName} implements Query<$1Input, ${2:Output}> {",
+      "  constructor(",
+      "    @inject(${3:Identifier}.${4:repository}Repository)",
+      "    private readonly _$4ReadModelRepository: $2Repository",
+      "  ) {}",
+      "",
+      "  async execute(request: $1Input): Promise<$2> {",
+      "    return await this._$4Repository.${5:method}(${7:variable});",
+      "  }",
+      "}"
+    ],
+    "description": "Create a structure for a query"
+  },
+  "Inject a Repository": {
+    "prefix": "injr",
+    "body": [
+      "@inject(${1:Identifier}.${2:name}Repository)",
+      "private readonly _$2Repository: ${3:AggregateRoot}Repository,"
+    ],
+    "description": "Add new repository"
+  },
+  "Inject a Gateway": {
+    "prefix": "injg",
+    "body": [
+      "@inject(${1:Identifier}.${2:name}Gateway)",
+      "private readonly _$2Gateway: ${3:AggregateRoot}Gateway,"
+    ],
+    "description": "Add a new gateway"
+  },
+  "Create a Repository": {
+    "prefix": "repo",
+    "body": [
+      "import { $1$0 } from '';",
+      "",
+      "export interface ${1:AggregateRoot}Repository {",
+      "  save(${2:variable}: $1): Promise<void>;",
+      "",
+      "  getById(id: string): Promise<$1>;",
+      "}"
+    ],
+    "description": "Build an interface for write repository"
+  },
+  "Create a Postgres Repository": {
+    "prefix": "repop",
+    "body": [
+      "import { injectable } from 'inversify';",
+      "import { EntityManager } from 'typeorm';",
+      "import { $1, $1Repository } from '$0';",
+      "import { $1Entity } from '';",
+      "import { $1EntityMapper } from '';",
+      "",
+      "@injectable()",
+      "export class Postgres${1:AggregateRoot}Repository implements $1Repository {",
+      "  private readonly $2EntityMapper: $1EntityMapper;",
+      "",
+      "  constructor(private readonly entityManager: EntityManager) {",
+      "    this.$2EntityMapper = new $1EntityMapper(entityManager);",
+      "  }",
+      "",
+      "  async save(${2:variable}: $1): Promise<void> {",
+      "    const $2Repository = this.entityManager.getRepository($1Entity);",
+      "",
+      "    const $2Entity = this.$2EntityMapper.fromDomain($2);",
+      "",
+      "    await $2Repository.save($2Entity);",
+      "  }",
+      "",
+      "  async getById(id: string): Promise<$1> {",
+      "    const $2Repository = this.entityManager.getRepository($1Entity);",
+      "",
+      "    const $2 = await $2Repository.findOne({",
+      "      where: {",
+      "        id,",
+      "      },",
+      "    });",
+      "",
+      "    if (!$2) {",
+      "      return null;",
+      "    };",
+      "",
+      "    return this.$2EntityMapper.toDomain($2);",
+      "  }",
+      "}"
+    ],
+    "description": "Build a structure for postgres write repository"
+  },
+  "Create a Postgres Read Model Repository": {
+    "prefix": "reporm",
+    "body": [
+      "import { injectable } from 'inversify';",
+      "import { EntityManager } from 'typeorm';",
+      "import { $1ReadModel, $1ReadModelRepository } from '$0'",
+      "import { $1ReadModelMapper } from '';",
+      "",
+      "@injectable()",
+      "export class Postgres${1:AggregateRoot}ReadModelRepository implements $1ReadModelRepository {",
+      "  private readonly _$2ReadModelMapper: $1ReadModelMapper;",
+      "",
+      "  constructor(private readonly _entityManager: EntityManager) {",
+      "    this._$2ReadModelMapper = new $1ReadModelMapper();",
+      "  }",
+      "",
+      "  async getById($2Id: string): Promise<$1ReadModel> {",
+      "    const result: $1ReadModel[] = await this._entityManager.query(",
+      "      `",
+      "       SELECT",
+      "         -- query goes here",
+      "      `,",
+      "      [$2Id]",
+      "    );",
+      "",
+      "    if (!result.length) {",
+      "      return null;",
+      "    }",
+      "",
+      "    return this._$2ReadModelMapper.toDomain(result[0]);",
+      "  }",
+      "",
+      "  async getAll(): Promise<$1ReadModel[]> {",
+      "    const result: $1ReadModel[] = await this._entityManager.query(",
+      "      `",
+      "       SELECT",
+      "         -- query goes here",
+      "      `,",
+      "    );",
+      "",
+      "    return result.map(($2) => this._$2ReadModelMapper.toDomain($2));",
+      "  }",
+      "}"
+    ],
+    "description": "Build a structure for postgres read model repository"
+  },
+  "Create an Entity": {
+    "prefix": "ent",
+    "body": [
+      "import {",
+      "  Entity,",
+      "  Column,",
+      "  PrimaryColumn,",
+      "  CreateDateColumn,",
+      "  UpdateDateColumn,",
+      "} from 'typeorm';",
+      "",
+      "@Entity('${1:tableName}')",
+      "export class ${2:AggregateRoot}Entity {",
+      "  @PrimaryColumn({",
+      "    type: 'varchar',",
+      "  })",
+      "  id: string;",
+      "",
+      "  $0",
+      "",
+      "  @CreateDateColumn()",
+      "  createdAt?: Date;",
+      "",
+      "  @UpdateDateColumn()",
+      "  updatedAt?: Date;",
+      "}"
+    ],
+    "description": "Build a structure for an Entity"
+  },
+  "Add a Column to Entity": {
+    "prefix": "col",
+    "body": [
+      "@Column({",
+      "  nullable: ${2|false,true|},",
+      "  type: '${3|varchar,int,numeric,jsonb,boolean,timestamp,timestamptz,enum|}',",
+      "  ${4| ,default:|}$0",
+      "})",
+      "${1:property};",
+      ""
+    ],
+    "description": "Add a new column to the entity table"
+  },
+  "Create an Entity Mapper": {
+    "prefix": "mappe",
+    "body": [
+      "import { Mapper } from 'ddd'",
+      "import { EntityManager } from 'typeorm'",
+      "import { $1 } from '$0';",
+      "import { $1Entity } from '';",
+      "",
+      "export class ${1:AggregateRoot}EntityMapper implements Mapper<$1Entity, $1> {",
+      "  constructor(private readonly entityManager: EntityManager) {}",
+      "",
+      "  fromDomain(t: $1): $1Entity {",
+      "    return this.entityManager.create($1Entity, {",
+      "      id: t.id,",
+      "      ${3:property}: t.props.$3,",
+      "      $4: t.props.$4,",
+      "      $5: t.props.$5,",
+      "      $6: t.props.$6,",
+      "      $7: t.props.$7,",
+      "      $8: t.props.$8,",
+      "      $9: t.props.$9,",
+      "      $10: t.props.$10,",
+      "      $11: t.props.$11,",
+      "    });",
+      "  }",
+      "",
+      "  toDomain(raw: $1Entity): $1 {",
+      "    const ${2:variable} = $1.restore({",
+      "      id: raw.id,",
+      "      $3: raw.$3,",
+      "      $4: raw.$4,",
+      "      $5: raw.$5,",
+      "      $6: raw.$6,",
+      "      $7: raw.$7,",
+      "      $8: raw.$8,",
+      "      $9: raw.$9,",
+      "      $10: raw.$10,",
+      "      $11: raw.$11,",
+      "    });",
+      "",
+      "    $2.createdAt = raw.createdAt;",
+      "    $2.updatedAt = raw.updatedAt;",
+      "",
+      "    return $2;",
+      "  }",
+      "}"
+    ],
+    "description": "Build a structure for your entity mapper"
+  },
+  "Create a Read Model Mapper": {
+    "prefix": "mapprm",
+    "body": [
+      "import { Mapper } from 'ddd'",
+      "import { $1ReadModel } from '$0';",
+      "",
+      "export class ${1:AggregateRoot}ReadModelMapper implements Mapper<any, $1ReadModel> {",
+      "  toDomain(raw: any): $1ReadModel {",
+      "    return {",
+      "      id: raw.id,",
+      "      $2: raw.$2,",
+      "      $3: raw.$3,",
+      "      $4: raw.$4,",
+      "      $5: raw.$5,",
+      "      $6: raw.$6,",
+      "      $7: raw.$7,",
+      "      $8: raw.$8,",
+      "      $9: raw.$9,",
+      "      $10: raw.$10,",
+      "    }",
+      "  }",
+      "}"
+    ],
+    "description": "Build a structure for your read model mapper"
+  },
+  "Add 'fromDomain()' property to a mapper": {
+    "prefix": "from",
+    "body": ["$1: t.props.$1,"],
+    "description": "Add a fromDomain() property to a mapper"
+  },
+  "Add 'toDomain() property to a mapper": {
+    "prefix": "to",
+    "body": ["$1: raw.$1,"],
+    "description": "Add a toDomain() property to a mapper"
+  },
+  "Create a Controller": {
+    "prefix": "ctrl",
+    "body": [
+      "import { inject, injectable } from 'inversify';",
+      "import { validateOrReject } from 'class-validator';",
+      "import { Response } from 'express';",
+      "import { AuthenticationMiddleware } from '';",
+      "import {",
+      "  Post,",
+      "  Patch,",
+      "  Get,",
+      "  Delete,",
+      "  Req,",
+      "  Res,",
+      "  JsonController,",
+      "  UseBefore,",
+      "} from 'routing-controllers';",
+      "",
+      "@injectable()",
+      "@JsonController('/${1:controllerRoot}')",
+      "export class ${2:AggregateRoot}Controller {",
+      "  constructor(",
+      "    inju$0",
+      ") {}",
+      "  // methods go here",
+      "}"
+    ],
+    "description": "Build a structure for your controller"
+  },
+  "Create a controller module": {
+    "prefix": "module",
+    "body": [
+      "import { Container } from 'inversify';",
+      "import { $1Controller } from './$1Controller';",
+      "",
+      "export class ${1:AggregateRoot}Module {",
+      "  configure(container: Container) {",
+      "    container.bind($1Controller).toSelf();",
+      "  }",
+      "}"
+    ],
+    "description": "Create a module for a controller"
+  },
+  "Inject Usecase": {
+    "prefix": "inju",
+    "body": ["@inject(${1:Usecase})", "private readonly ${2:variable}: $1,"],
+    "description": "Inject a usecase"
+  },
+  "Add a method to the controller": {
+    "prefix": "ctrlm",
+    "body": [
+      "${1|@UseBefore(AuthenticationMiddleware), |}",
+      "@${2|Post,Patch,Put,Get,Delete|}('/${3:path}')",
+      "async ${4:methodName}(",
+      "  ${5|@Req() req: AuthenticatedUser, |},",
+      "  @Res() res: Response,",
+      "  @Body() cmd: ${6:Command}",
+      ") {",
+      "  const body = $6.setProperties(cmd);",
+      "  await validateOrReject(body);",
+      "  const {",
+      "    ${8:properties}",
+      "  } = body",
+      "",
+      "  const result = await this.${7:usecase}.execute({",
+      "    $8",
+      "  });",
+      "",
+      "  return res.status(200).send(result);",
+      "}"
+    ],
+    "description": "Add a method to the controller"
+  },
+  "Create a Command": {
+    "prefix": "cmd",
+    "body": [
+      "import { Expose, plainToClass } from 'class-transformer';",
+      "import { IsString } from 'class-validator'",
+      "",
+      "export class ${1:Usecase}Command {",
+      "",
+      "  $0",
+      "",
+      "  static setProperties(cmd: $1Command): $1Command {",
+      "    return plainToClass($1Command, cmd, {",
+      "      excludeExtraneousValues: true,",
+      "    });",
+      "  }",
+      "}"
+    ],
+    "description": "Create a structure for a Command"
+  },
+  "Create Query Params": {
+    "prefix": "params",
+    "body": [
+      "import { Expose, plainToClass } from 'class-transformer';",
+      "import { IsString } from 'class-validator'",
+      "",
+      "export class ${1:Usecase}QueryParams {",
+      "",
+      "  $0",
+      "",
+      "  static setProperties(params: $1QueryParams): $1QueryParams {",
+      "    return plainToClass($1QueryParams, params, {",
+      "      excludeExtraneousValues: true,",
+      "    });",
+      "  }",
+      "}"
+    ],
+    "description": "Create a structure for a QueryParams"
+  },
+  "Add a Command Property": {
+    "prefix": "pr",
+    "body": ["@Expose()", "${1:property}"],
+    "description": "Add a new property to Command"
+  },
+  "Add a validator to a Command's Property": {
+    "prefix": "v",
+    "body": [
+      "@${1|IsString,IsNumber,IsEnum,IsBoolean,IsArray,IsOptional,Length,Min,Max,Type,ValidateNested,IsUUID,IsISO8601,IsUrl,IsEmail,IsPhoneNumber|}()"
+    ],
+    "description": "Add a validator to Command's property"
+  },
+  "@IsString()": {
+    "prefix": "vs",
+    "body": ["@IsString()", "@Length(1)"],
+    "description": "Add a string validator to Command's property with a minimal length of 1"
+  },
+  "@IsNumber()": {
+    "prefix": "vn",
+    "body": ["@IsNumber()"],
+    "description": "Add a number validator to Command's property"
+  },
+  "@IsEnum()": {
+    "prefix": "ve",
+    "body": ["@IsEnum($0)"],
+    "description": "Add an enum validator to Command's property"
+  },
+  "@IsOptional()": {
+    "prefix": "vo",
+    "body": ["@IsOptional()"],
+    "description": "Add an optional validator to Command's property"
+  },
+  "@Type()": {
+    "prefix": "vt",
+    "body": ["@Type(() => $0)"],
+    "description": "Add a type validator to Command's nested properties"
+  },
+  "@Date()": {
+    "prefix": "vd",
+    "body": ["@Type(() => Date)", "@IsDate()"],
+    "description": "Add a date validator to Command's nested properties"
+  },
+  "@Transform()": {
+    "prefix": "vtr",
+    "body": [
+      "@Transform(({ value }) => {",
+      "  if (value === '' || value === null) {",
+      "    return null;",
+      "  }",
+      "  return value;",
+      "})"
+    ],
+    "description": "Add a transformer to Command's empty string values"
+  },
+  "Create an InMemoryRepository for a unit test": {
+    "prefix": "testr",
+    "body": [
+      "import { $1 } from '$0';",
+      "import { $1Repository } from '';",
+      "",
+      "export class InMemory${1:AggregateRoot}Repository implements $1Repository {",
+      "  constructor(private readonly db: Map<string, $1>) {}",
+      "",
+      "  async save(${2:variable}: $1): Promise<void> {",
+      "    this.db.set($2.id, $2);",
+      "  }",
+      "",
+      "  async getById(id: string): Promise<$1> {",
+      "    return this.db.get(id);",
+      "  }",
+      "}"
+    ],
+    "description": "Create an InMemoryRepository for a unit test"
+  },
+  "Create a Unit Test": {
+    "prefix": "testu",
+    "body": [
+      "import { eventDispatcherMock$0 } from '';",
+      "import { ${1:AggregateRoot} } from '';",
+      "import { ${2:Usecase} } from '';",
+      "import { InMemory$1Repository} from '';",
+      "import { ${7:Namespace}TestDataFactory } from '';",
+      "",
+      "describe('Unit - $2', () => {",
+      "  let db: Map<string, $1>;",
+      "  let ${3:repository}Repository: InMemory$1Repository;",
+      "  let ${4:usecase}: $2;",
+      "",
+      "  beforeEach(() => {",
+      "    db = new Map();",
+      "    $3Repository = new InMemory$1Repository(db);",
+      "    $4 = new $2($3Repository, eventDispatcherMock());",
+      "  });",
+      "",
+      "  it('${5:should do this}', async () => {",
+      "    const $3TestData = $7TestDataFactory.create$1();",
+      "",
+      "    const $3 = await $4.execute({",
+      "      ...$3TestData.props,",
+      "    });",
+      "",
+      "    const saved$1 = await $3Repository.getById($3.props.id);",
+      "",
+      "    const $3${8:action}Event = $3.events.find(",
+      "      (event) => event.metadata.aggregateId === $3.props.id,",
+      "    );",
+      "",
+      "    expect(saved$1.props.${9:property}).toBe($3TestData.props.$9);",
+      "    expect($3$8Event.props.$9).toBe($3.props.$9);",
+      "  });",
+      "});"
+    ],
+    "description": "Create a structure for a unit test"
+  },
+  "Create an integration Test": {
+    "prefix": "testi",
+    "body": [
+      "import { TestContainer } from '$0';",
+      "import { $1, $4 } from '';",
+      "import { $5 } from '';",
+      "import { Postgres$8 } from '';",
+      "import { Postgres$4 } from '';",
+      "",
+      "describe('Integration - ${1:Query}', () => {",
+      "  let container: TestContainer;",
+      "  let ${2:query}: $1;",
+      "  let ${3:repo}: ${4:Repo};",
+      "",
+      "  beforeAll(async () => {",
+      "    container = new TestContainer();",
+      "    await container.setup({",
+      "      entities: [${5:Entity}],",
+      "      repos: [",
+      "        {",
+      "          identifier: ${6:Identifiers}.$3,",
+      "          implementation: Postgres$4",
+      "        },",
+      "        {",
+      "          identifier: $6.${7:readRepo},",
+      "          implementation: Postgres${8:ReadRepo}",
+      "        }",
+      "      ],",
+      "      usecases: [$1]",
+      "    });",
+      "  });",
+      "",
+      "  afterAll(async () => {",
+      "    await container.destroy();",
+      "  });",
+      "",
+      "  beforeEach(async () => {",
+      "    $2 = container.get($1);",
+      "    $3 = container.get(",
+      "      $6.$3,",
+      "    );",
+      "",
+      "    await container.clearData();",
+      "  });",
+      "",
+      "  it('Should ${9:do this...}', async () => {",
+      "    const count = $10",
+      "",
+      "    const ${11:variable}s = ${12:Factory}.createMultiple(count, () =>",
+      "      $12.${13:method}(),",
+      "    );",
+      "",
+      "    await Promise.all(",
+      "      $11s.map(($11) => $3.save($11)),",
+      "    );",
+      "",
+      "    const result = await $2.execute();",
+      "",
+      "    expect(result).toBeDefined();",
+      "    expect(result.length).toBe(count);",
+      "",
+      "    result.forEach(($11) => {",
+      "      expect($11.id).toBeDefined();",
+      "    });",
+      "  });",
+      "",
+      "  it('Should return an empty array', async () => {",
+      "    const result = await $2.execute();",
+      "",
+      "    expect(result).toBeDefined();",
+      "    expect(result.length).toBe(0);",
+      "  });",
+      "});"
+    ],
+    "description": "Create a structure for an integration test"
+  },
+  "Add a new method to a unit test": {
+    "prefix": "testum",
+    "body": [
+      "it('${1:testName}', async () => {",
+      "  const result = ${2:usecaseName}.execute({",
+      "    ${0:property: value}",
+      "  });",
+      "",
+      "  expect(result).toBe();",
+      "});"
+    ],
+    "description": "Add a new method to the unit test"
+  },
+  "Create a handler": {
+    "prefix": "handle",
+    "body": [
+      "import { inject, injectable } from 'inversify';",
+      "import { DomainEventHandler } from 'ddd';",
+      "",
+      "@injectable()",
+      "export class Handle${1:EventName}",
+      "  implements DomainEventHandler<$1>",
+      "{",
+      "  constructor(",
+      "  @inject(${2:Usecase})",
+      "  private readonly _${3:usecase}: $2",
+      ") {}",
+      "",
+      "  async handle(domainEvent: $1): Promise<${4:result}> {",
+      "    // handler logic goes here $0",
+      "  }",
+      "}"
+    ],
+    "description": "Create a structure for a handler."
+  },
+  "Create an identifier": {
+    "prefix": "ident",
+    "body": ["static readonly ${1:repoName} = Symbol.for('$1');"],
+    "description": "Create an identifier"
+  },
+  "Create authorization check": {
+    "prefix": "auth",
+    "body": [
+      "const isAuthorized = await this.$1.canExecute(",
+      "  req.identity",
+      ");",
+      "if (!isAuthorized) {",
+      "  return UnAuthorizedAction(res);",
+      "};"
+    ],
+    "description": "Create an authorization check for canExecute"
+  },
+  "Return a set value for a spyOn method for test": {
+    "prefix": "test-spy",
+    "body": [
+      "jest",
+      "  .spyOn(${1:repository}, '${2:method}')",
+      "  .${3|mockResolvedValue, mockReturnValue|}(${4:value});"
+    ],
+    "description": "Return a set value for a spyOn method in a test"
+  },
+  "Create async spyOn method for test": {
+    "prefix": "test-spy-async",
+    "body": [
+      "jest",
+      "  .spyOn(${1:repository}, '${2:method}')",
+      "  .mockImplementation(",
+      "    async (${3:request}): Promise<${4:response}> => {",
+      "      return $0",
+      "    }",
+      "  );"
+    ],
+    "description": "Create an async spyOn method in a test"
+  },
+  "console.log()": {
+    "prefix": "cl",
+    "body": ["console.log('$1 ----->', $2);"],
+    "description": "Create a console.log"
+  },
+  "console.log() with string literal": {
+    "prefix": "cll",
+    "body": ["console.log(`$0`);"],
+    "description": "Create a console.log with string literal"
+  },
+  "ANSI color red": {
+    "prefix": "color red",
+    "body": ["\\x1b[31m"],
+    "description": "Add color red to the text"
+  },
+  "ANSI color green": {
+    "prefix": "color green",
+    "body": ["\\x1b[32m"],
+    "description": "Add color green to the text"
+  },
+  "ANSI color yellow": {
+    "prefix": "color yellow",
+    "body": ["\\x1b[33m"],
+    "description": "Add color yellow to the text"
+  },
+  "ANSI color blue": {
+    "prefix": "color blue",
+    "body": ["\\x1b[34m"],
+    "description": "Add color blue to the text"
+  },
+  "ANSI color reset": {
+    "prefix": "color reset",
+    "body": ["\\x1b[0m"],
+    "description": "Add color reset to the text"
+  },
+  "Typescript ignore next line": {
+    "prefix": "ts-ignore",
+    "body": "// @ts-ignore",
+    "description": "Disables typescript checking for the next line"
+  },
+  "Typescript ignore whole file": {
+    "prefix": "ts-ignore-all",
+    "body": "// @ts-nocheck",
+    "description": "Disables typescript checking for the whole file"
+  },
+  "Create a namespace for errors": {
+    "prefix": "error-namespace",
+    "body": [
+      "import { DomainError } from 'ddd';",
+      "",
+      "export namespace ${1:AggregateRoot}Errors {",
+      "  export class $1NotFound extends DomainError {",
+      "    constructor(cause?: string) {",
+      "      super($0'$1_NOT_FOUND');",
+      "      this.cause = cause;",
+      "    }",
+      "  }",
+      "}"
+    ],
+    "description": "Create a namespace for errors"
+  },
+  "Create a test payment method ID": {
+    "prefix": "payment method id",
+    "body": [
+      "const paymentMethod = await this._stripe.paymentMethods.create({",
+      "  type: 'card',",
+      "  card: {",
+      "    token: 'tok_visa',",
+      "  },",
+      "});",
+      "console.log('payment method Id ----->\\n', paymentMethod.id);"
+    ],
+    "description": "Creates a function to generate stripe payment method ID"
+  },
+  "Create test data template": {
+    "prefix": "test data",
+    "body": [
+      "static create${1:Aggregate}(overrides: Partial<$1['props']> = {}): $1 {",
+      "  return new $1({",
+      "    id: faker.string.uuid(),",
+      "    $0",
+      "    ...overrides,",
+      "  });",
+      "}"
+    ],
+    "description": "Create a template for test factory data"
+  },
+  "Test object wrapper for an optional property": {
+    "prefix": "maybe",
+    "body": ["this.maybe(() => $0),"],
+    "description": "Create a 'maybe' wrapper for a test property"
+  },
+  "Function to log memory usage": {
+    "prefix": "memlog",
+    "body": [
+      "logMemory(stage: string): void {",
+      "  const mem = process.memoryUsage();",
+      "  const time = new Date().toLocaleTimeString(undefined, { hourCycle: 'h24' });",
+      "  console.log(`\\x1b[34m\\${time} [\\${stage}] RSS: ${(mem.rss / 1024 / 1024).toFixed(1)} MB, Heap Used: ${(mem.heapUsed / 1024 / 1024).toFixed(1)} MB\\x1b[0m\n`)",
+      "}"
+    ],
+    "description": "Use console.log() to watch memory usage"
+  },
+  "Log memory usage": {
+    "prefix": "mem",
+    "body": ["logMemory('$0')"],
+    "description": "Use console.log() to watch memory usage"
+  },
+  "Log 1 timestamp": {
+    "prefix": "time1",
+    "body": [
+      "const start = Date.now();",
+      "",
+      "const timestamp1 = Date.now();",
+      "console.log(`\\x1b[32mTimestamp [${1:1}]: +\\${timestamp1 - start}ms\\x1b[0m`);"
+    ]
+  },
+  "Log 2 timestamps": {
+    "prefix": "time2",
+    "body": [
+      "const start = Date.now();",
+      "",
+      "const timestamp1 = Date.now();",
+      "console.log(`\\x1b[32mTimestamp [${1:1}]: +\\${timestamp1 - start}ms\\x1b[0m`);",
+      "",
+      "const timestamp2 = Date.now();",
+      "console.log(`\\x1b[32mTimestamp [${2:2}]: +\\${timestamp2 - timestamp1}ms, total: +\\${timestamp2 - start}ms\\x2b[0m`);"
+    ]
+  },
+  "Log 3 timestamp": {
+    "prefix": "time3",
+    "body": [
+      "const start = Date.now();",
+      "",
+      "const timestamp1 = Date.now();",
+      "console.log(`\\x1b[32mTimestamp [${1:1}]: +\\${timestamp1 - start}ms\\x1b[0m`);",
+      "",
+      "const timestamp2 = Date.now();",
+      "console.log(`\\x1b[32mTimestamp [${2:2}]: +\\${timestamp2 - timestamp1}ms, total: +\\${timestamp2 - start}ms\\x2b[0m`);",
+      "",
+      "const timestamp3 = Date.now();",
+      "console.log(`\\x1b[32mTimestamp [${3:3}]: +\\${timestamp3 - timestamp2}ms, total: +\\${timestamp3 - start}ms\\x2b[0m`);"
+    ]
+  },
+  "Log 4 timestamp": {
+    "prefix": "time4",
+    "body": [
+      "const start = Date.now();",
+      "",
+      "const timestamp1 = Date.now();",
+      "console.log(`\\x1b[32mTimestamp [${1:1}]: +\\${timestamp1 - start}ms\\x1b[0m`);",
+      "",
+      "const timestamp2 = Date.now();",
+      "console.log(`\\x1b[32mTimestamp [${2:2}]: +\\${timestamp2 - timestamp1}ms, total: +\\${timestamp2 - start}ms\\x2b[0m`);",
+      "",
+      "const timestamp3 = Date.now();",
+      "console.log(`\\x1b[32mTimestamp [${3:3}]: +\\${timestamp3 - timestamp2}ms, total: +\\${timestamp3 - start}ms\\x2b[0m`);",
+      "",
+      "const timestamp4 = Date.now();",
+      "console.log(`\\x1b[32mTimestamp [${4:4}]: +\\${timestamp4 - timestamp3}ms, total: +\\${timestamp4 - start}ms\\x2b[0m`);"
+    ]
+  },
+  "Log 5 timestamp": {
+    "prefix": "time5",
+    "body": [
+      "const start = Date.now();",
+      "",
+      "const timestamp1 = Date.now();",
+      "console.log(`\\x1b[32mTimestamp [${1:1}]: +\\${timestamp1 - start}ms\\x1b[0m`);",
+      "",
+      "const timestamp2 = Date.now();",
+      "console.log(`\\x1b[32mTimestamp [${2:2}]: +\\${timestamp2 - timestamp1}ms, total: +\\${timestamp2 - start}ms\\x2b[0m`);",
+      "",
+      "const timestamp3 = Date.now();",
+      "console.log(`\\x1b[32mTimestamp [${3:3}]: +\\${timestamp3 - timestamp2}ms, total: +\\${timestamp3 - start}ms\\x2b[0m`);",
+      "",
+      "const timestamp4 = Date.now();",
+      "console.log(`\\x1b[32mTimestamp [${4:4}]: +\\${timestamp4 - timestamp3}ms, total: +\\${timestamp4 - start}ms\\x2b[0m`);",
+      "",
+      "const timestamp5 = Date.now();",
+      "console.log(`\\x1b[32mTimestamp [${5:5}]: +\\${timestamp5 - timestamp4}ms, total: +\\${timestamp5 - start}ms\\x2b[0m`);"
+    ]
+  },
+  "Add a delay": {
+    "prefix": "delay",
+    "body": [
+      "async function delay(ms: number): Promise<void> {",
+      "  return new Promise((resolve) => setTimeout(resolve, ms));",
+      "}"
+    ]
+  },
+  "Add a search condition builder for SQL queries": {
+    "prefix": "search condition",
+    "body": [
+      "buildSearchCondition(input: {",
+      "  params: ${1:Input};",
+      "  mainParams: any[];",
+      "  countParams: any[];",
+      "}): {",
+      "  limitCondition: string;",
+      "  offsetCondition: string;",
+      "  pageInput: number;",
+      "  limitInput: number;",
+      "} {",
+      "  const { params, mainParams, countParams } = input;",
+      "  const { page, limit } = params;",
+      "",
+      "  const pageInput = page ?? 1;",
+      "  const limitInput = limit ?? ${2:Entity}.defaultQueryLimit;",
+      "  const offset = (pageInput - 1) * limitInput;",
+      "",
+      "  mainParams.push(offset);",
+      "  const offsetCondition = `OFFSET $${mainParams.length}`;",
+      "",
+      "  mainParams.push(limitInput);",
+      "  const limitCondition = `LIMIT $${mainParams.length}`;",
+      "",
+      "return {",
+      "  limitCondition",
+      "  offsetCondition,",
+      "  pageInput,",
+      "  limitInput,",
+      "};"
+    ]
+  }
 }

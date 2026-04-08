@@ -46,6 +46,7 @@ cask 'gimp'
 cask 'vlc'
 cask 'obs'
 cask 'qbittorrent'
+cask 'claude'
 
 # Fonts
 cask 'font-iosevka'

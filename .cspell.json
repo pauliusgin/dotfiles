@@ -14,6 +14,7 @@
     "Brevo",
     "capturable",
     "Chalom",
+    "codesnap",
     "coivoizz",
     "Covoizz",
     "dotfiles",
@@ -41,6 +42,8 @@
     "signup",
     "sslmode",
     "sslrequire",
+    "stency",
+    "supermaven",
     "timestamptz",
     "typeorm",
     "unmark",
@@ -49,9 +52,7 @@
     "usecases",
     "vinted",
     "Voizz",
-    "WIZZTALK",
-    "stency",
-    "supermaven"
+    "WIZZTALK"
   ],
   "userWords": [
     "firstname"
