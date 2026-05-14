@@ -68,6 +68,16 @@
     "key": "ctrl+e t",
     "command": "workbench.action.toggleSidebarVisibility",
   },
+
+  {
+    "key": "space e h",
+    "command": "timeline.focus",
+    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "ctrl+e h",
+    "command": "timeline.focus",
+  },
   {
     "key": "space e e",
     "command": "workbench.view.explorer",
@@ -461,8 +471,21 @@
     "command": "workbench.view.scm",
   },
   {
+    "key": "ctrl+enter",
+    "command": "git.openFile",
+  },
+  {
     "key": "space g g",
     "command": "workbench.view.scm",
+    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "ctrl+g c",
+    "command": "workbench.scm.history.focus",
+  },
+  {
+    "key": "space g c",
+    "command": "workbench.scm.history.focus",
     "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
   },
   {
@@ -472,17 +495,21 @@
   },
   {
     "key": "ctrl+g s",
-    "command": "gitlens.switchToBranch:views",
+    "command": "git.checkout",
   },
   {
     "key": "space g s",
-    "command": "gitlens.switchToBranch:views",
+    "command": "git.checkout",
     "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
   },
   {
-    "key": "space g shift+g",
-    "command": "gitlens.showRepositoriesView",
+    "key": "space g b",
+    "command": "git.blame.toggleEditorDecoration",
     "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "ctrl+g b",
+    "command": "git.blame.toggleEditorDecoration",
   },
   {
     "key": "ctrl+g ctrl+e",
@@ -497,6 +524,16 @@
     "key": "ctrl+g a",
     "command": "git.stageSelectedRanges",
     "when": "isInDiffEditor && !operationInProgress",
+  },
+  {
+    "key": "space g a",
+    "command": "git.stage",
+    "when": "vim.mode !== 'Insert' && (workbench.scm.active && !inputFocus)",
+  },
+  {
+    "key": "space g r",
+    "command": "git.unstage",
+    "when": "vim.mode !== 'Insert' && (workbench.scm.active && !inputFocus)",
   },
   {
     "key": "space g u",
@@ -542,28 +579,6 @@
     "key": "ctrl+g ctrl+enter",
     "command": "mergeEditor.acceptMerge",
     "when": "isMergeEditor",
-  },
-  {
-    "key": "space g shift+b",
-    "command": "gitlens.toggleFileBlame",
-    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus) && (editorTextFocus && config.gitlens.keymap == 'chorded' && resource in 'gitlens:tabs:blameable')",
-  },
-  {
-    "key": "ctrl+g shift+b",
-    "command": "gitlens.toggleFileBlame",
-  },
-  {
-    "key": "space g b",
-    "command": "gitlens.toggleLineBlame",
-    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus) && (editorTextFocus && config.gitlens.keymap == 'chorded' && resource in 'gitlens:tabs:blameable')",
-  },
-  {
-    "key": "ctrl+g b",
-    "command": "gitlens.toggleLineBlame",
-  },
-  {
-    "key": "ctrl+g c",
-    "command": "gitlens.compareWorkingWith",
   },
 
   //* ========================== [TERMINAL] ==================================
@@ -710,9 +725,7 @@
     "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor",
   },
   {
-    "key": "space c n",
-    // "command": "workbench.action.tasks.runTask",
-    // "args": "claude-code",
+    "key": "space c c n",
     "command": "runCommands",
     "args": {
       "commands": [
@@ -726,12 +739,12 @@
     "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
   },
   {
-    "key": "space c c",
+    "key": "space c c o",
     "command": "workbench.action.terminal.focusAtIndex2",
     "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
   },
   {
-    "key": "space c e",
+    "key": "space c c e",
     "command": "runCommands",
     "args": {
       "commands": [
@@ -746,7 +759,7 @@
     "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
   },
   {
-    "key": "space c r",
+    "key": "space c c r",
     "command": "runCommands",
     "args": {
       "commands": [
@@ -755,6 +768,35 @@
         {
           "command": "workbench.action.terminal.sendSequence",
           "args": { "text": "\u0016 Let's refactor this\u000D" },
+        },
+      ],
+    },
+    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space c c d",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "editor.action.clipboardCopyAction",
+        "workbench.action.terminal.focusAtIndex2",
+        {
+          "command": "workbench.action.terminal.sendSequence",
+          "args": { "text": "\u0016 Let's debug this\u000D" },
+        },
+      ],
+    },
+    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
+  },
+  {
+    "key": "space c c c",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "editor.action.clipboardCopyAction",
+        "workbench.action.terminal.focusAtIndex2",
+        {
+          "command": "workbench.action.terminal.sendSequence",
         },
       ],
     },
@@ -804,11 +846,6 @@
     "when": "!notebookEditorFocused && editorLangId == 'markdown'",
   },
   {
-    "key": "alt+cmd+g b",
-    "command": "-gitlens.toggleFileBlame",
-    "when": "editorTextFocus && config.gitlens.keymap == 'chorded' && resource in 'gitlens:tabs:blameable'",
-  },
-  {
     "key": "cmd+k f12",
     "command": "-editor.action.revealDefinitionAside",
     "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor",
@@ -821,11 +858,6 @@
   {
     "key": "ctrl+shift+m",
     "command": "-editor.action.toggleTabFocusMode",
-  },
-  {
-    "key": "alt+b",
-    "command": "-gitlens.toggleFileBlame",
-    "when": "editorTextFocus && config.gitlens.keymap == 'alternate' && resource in 'gitlens:tabs:blameable'",
   },
   {
     "key": "ctrl+right",
@@ -1057,5 +1089,13 @@
   {
     "key": "alt+cmd+t",
     "command": "-workbench.action.closeOtherEditors",
+  },
+  {
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "\u001b\r",
+    },
+    "when": "terminalFocus",
   },
 ]

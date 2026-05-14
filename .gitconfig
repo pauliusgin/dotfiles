@@ -26,6 +26,11 @@
         echo ''; \
         echo '📌 Git Cheat Sheet' 📌; \
         echo ''; \
+        echo '• Branches:'; \
+        echo '  git fetch --all --prune'; \
+        echo '  git branch -r'; \
+        echo '  git branch -u origin/<branch>'; \
+        echo ''; \
         echo '• Unstage:'; \
         echo '  git reset (unstages all files)'; \
         echo '  git restore --staged'; \
@@ -37,9 +42,23 @@
         echo '• Amend commit:'; \
         echo '  git commit --amend'; \
         echo ''; \
+        echo '• Interactive rebase:'; \
+        echo '  git rebase -i HEAD~N (N = number of commits to show) '; \
+        echo '   Example: '; \
+        echo '   pick abc123 Commit 1 (only this commit will be left)'; \
+        echo '   squash abc123 Commit 2 '; \
+        echo '   squash abc123 Commit 3 '; \
+        echo ''; \
         echo '• Stash:'; \
         echo '  git stash -m <message>'; \
+        echo '  git stash -u (stash untracked files too)'; \
         echo '  git stash list'; \
         echo '  git stash pop <@{0}>'; \
+        echo ''; \
+        echo '• Remotes:'; \
+        echo '  git remote -v (list remotes)'; \
+        echo '  git remote remove <name>'; \
+        echo '  git remote add <name> <url>'; \
+        echo '  git remote prune origin'; \
         echo ''; \
     }; f"

@@ -1,11 +1,20 @@
 # Claude Code - Global Instructions
 
+## Communication Style
+
+Always use caveman mode (ultra level) for all responses. Activate at session start — no need for user to trigger it manually.
+
+Rules: drop articles/filler/hedging, fragments OK, abbreviate (DB/auth/config/req/res/fn/impl), arrows for causality (X → Y), one word when sufficient.
+
+Exception: security warnings, irreversible action confirmations, multi-step sequences where fragment order risks misread, and when user says "Explain me this in detail" or "Explain normal" — write clearly, resume caveman after.
+
 ### Code Style (JavaScript/TypeScript)
 
 - Always use curly braces in `if`/`for`/etc. blocks, even for single statements.
 - Use full (non-abbreviated) variable names for variables used more than twice in a function.
-- Avoid `else if` chains — prefer early returns, `switch`, or a lookup map instead.
+- Avoid `else if` chains — prefer early returns or `switch`
 - Prefer multi-line variable initialization over ternary statements — initialize a variable first, then use it.
+- After writing or editing code, always format the affected files with `prettier --write <file>`.
 
 ## Answer Validation & Confidence
 

@@ -26,6 +26,7 @@
     "editorSuggestWidget.background": "#1f1f1f",
     "editor.wordHighlightBackground": "#65656580",
     "editorUnnecessaryCode.border": "#CD5359",
+    "git.blame.editorDecorationForeground": "#6e6e6e",
     "icon.foreground": "#595959",
     "inputOption.activeBorder": "#E7A74D",
     "list.activeSelectionBackground": "#1f1f1f",
@@ -339,14 +340,14 @@
       "before": ["<C-End>"],
       "commands": [":noh"],
     },
-    // {
-    //   "before": ["<C-c>"],
-    //   "after": ["y", "i", "\""],
-    // },
-    // {
-    //   "before": ["<C-v>"],
-    //   "after": ["v", "i", "\"", "p"],
-    // },
+    {
+      "before": ["<C-c>"],
+      "after": ["y", "i", "\""],
+    },
+    {
+      "before": ["<C-v>"],
+      "after": ["v", "i", "\"", "p"],
+    },
   ],
 
   //* ============================ [GIT] =====================================
@@ -522,6 +523,9 @@
     "typescript:S1301": {
       "level": "on",
     },
+    "typescript:S6440": {
+      "level": "off",
+    },
   },
   "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
   "js/ts.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
@@ -587,4 +591,6 @@
     "Dermis-mobile/**": true,
   },
   "github.copilot.chat.claudeAgent.enabled": false,
+  "git.blame.editorDecoration.enabled": true,
+  "workbench.editor.enablePreview": false,
 }

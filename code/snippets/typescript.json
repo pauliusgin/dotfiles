@@ -149,7 +149,9 @@
   },
   "Aggregate event props": {
     "prefix": "ev",
-    "body": ["this.props.$1 = event.props.$1;"],
+    "body": [
+      "this.props.$1 = event.props.$1;"
+    ],
     "description": "Add an event property in the aggregate."
   },
   "Create an event": {
@@ -479,12 +481,16 @@
   },
   "Add 'fromDomain()' property to a mapper": {
     "prefix": "from",
-    "body": ["$1: t.props.$1,"],
+    "body": [
+      "$1: t.props.$1,"
+    ],
     "description": "Add a fromDomain() property to a mapper"
   },
   "Add 'toDomain() property to a mapper": {
     "prefix": "to",
-    "body": ["$1: raw.$1,"],
+    "body": [
+      "$1: raw.$1,"
+    ],
     "description": "Add a toDomain() property to a mapper"
   },
   "Create a Controller": {
@@ -532,7 +538,10 @@
   },
   "Inject Usecase": {
     "prefix": "inju",
-    "body": ["@inject(${1:Usecase})", "private readonly ${2:variable}: $1,"],
+    "body": [
+      "@inject(${1:Usecase})",
+      "private readonly ${2:variable}: $1,"
+    ],
     "description": "Inject a usecase"
   },
   "Add a method to the controller": {
@@ -600,7 +609,10 @@
   },
   "Add a Command Property": {
     "prefix": "pr",
-    "body": ["@Expose()", "${1:property}"],
+    "body": [
+      "@Expose()",
+      "${1:property}"
+    ],
     "description": "Add a new property to Command"
   },
   "Add a validator to a Command's Property": {
@@ -612,32 +624,53 @@
   },
   "@IsString()": {
     "prefix": "vs",
-    "body": ["@IsString()", "@Length(1)"],
+    "body": [
+      "@IsString()",
+      "@Length(1)"
+    ],
     "description": "Add a string validator to Command's property with a minimal length of 1"
   },
   "@IsNumber()": {
     "prefix": "vn",
-    "body": ["@IsNumber()"],
+    "body": [
+      "@IsNumber()"
+    ],
     "description": "Add a number validator to Command's property"
   },
   "@IsEnum()": {
     "prefix": "ve",
-    "body": ["@IsEnum($0)"],
+    "body": [
+      "@IsEnum($0)"
+    ],
     "description": "Add an enum validator to Command's property"
+  },
+  "@IsUUID()": {
+    "prefix": "vu",
+    "body": [
+      "@IsUUID()"
+    ],
+    "description": "Add an uuid validator to Command's property"
   },
   "@IsOptional()": {
     "prefix": "vo",
-    "body": ["@IsOptional()"],
+    "body": [
+      "@IsOptional()"
+    ],
     "description": "Add an optional validator to Command's property"
   },
   "@Type()": {
     "prefix": "vt",
-    "body": ["@Type(() => $0)"],
+    "body": [
+      "@Type(() => $0)"
+    ],
     "description": "Add a type validator to Command's nested properties"
   },
   "@Date()": {
     "prefix": "vd",
-    "body": ["@Type(() => Date)", "@IsDate()"],
+    "body": [
+      "@Type(() => Date)",
+      "@IsDate()"
+    ],
     "description": "Add a date validator to Command's nested properties"
   },
   "@Transform()": {
@@ -825,7 +858,9 @@
   },
   "Create an identifier": {
     "prefix": "ident",
-    "body": ["static readonly ${1:repoName} = Symbol.for('$1');"],
+    "body": [
+      "static readonly ${1:repoName} = Symbol.for('$1');"
+    ],
     "description": "Create an identifier"
   },
   "Create authorization check": {
@@ -864,37 +899,51 @@
   },
   "console.log()": {
     "prefix": "cl",
-    "body": ["console.log('$1 ----->', $2);"],
+    "body": [
+      "console.log('$1 ----->', $2);"
+    ],
     "description": "Create a console.log"
   },
   "console.log() with string literal": {
     "prefix": "cll",
-    "body": ["console.log(`$0`);"],
+    "body": [
+      "console.log(`$0`);"
+    ],
     "description": "Create a console.log with string literal"
   },
   "ANSI color red": {
     "prefix": "color red",
-    "body": ["\\x1b[31m"],
+    "body": [
+      "\\x1b[31m"
+    ],
     "description": "Add color red to the text"
   },
   "ANSI color green": {
     "prefix": "color green",
-    "body": ["\\x1b[32m"],
+    "body": [
+      "\\x1b[32m"
+    ],
     "description": "Add color green to the text"
   },
   "ANSI color yellow": {
     "prefix": "color yellow",
-    "body": ["\\x1b[33m"],
+    "body": [
+      "\\x1b[33m"
+    ],
     "description": "Add color yellow to the text"
   },
   "ANSI color blue": {
     "prefix": "color blue",
-    "body": ["\\x1b[34m"],
+    "body": [
+      "\\x1b[34m"
+    ],
     "description": "Add color blue to the text"
   },
   "ANSI color reset": {
     "prefix": "color reset",
-    "body": ["\\x1b[0m"],
+    "body": [
+      "\\x1b[0m"
+    ],
     "description": "Add color reset to the text"
   },
   "Typescript ignore next line": {
@@ -951,7 +1000,9 @@
   },
   "Test object wrapper for an optional property": {
     "prefix": "maybe",
-    "body": ["this.maybe(() => $0),"],
+    "body": [
+      "this.maybe(() => $0),"
+    ],
     "description": "Create a 'maybe' wrapper for a test property"
   },
   "Function to log memory usage": {
@@ -967,7 +1018,9 @@
   },
   "Log memory usage": {
     "prefix": "mem",
-    "body": ["logMemory('$0')"],
+    "body": [
+      "logMemory('$0')"
+    ],
     "description": "Use console.log() to watch memory usage"
   },
   "Log 1 timestamp": {
@@ -1079,12 +1132,13 @@
       "  mainParams.push(limitInput);",
       "  const limitCondition = `LIMIT $${mainParams.length}`;",
       "",
-      "return {",
-      "  limitCondition",
-      "  offsetCondition,",
-      "  pageInput,",
-      "  limitInput,",
-      "};"
+      "  return {",
+      "    limitCondition,",
+      "    offsetCondition,",
+      "    pageInput,",
+      "    limitInput,",
+      "  };",
+      "}"
     ]
   }
 }
