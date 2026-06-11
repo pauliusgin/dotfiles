@@ -1,4 +1,4 @@
--- {{{ KEYBINDS
+-- {{{ KEYBINDINGS
 
 -- leader
 vim.g.maplocalleader = " "

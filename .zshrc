@@ -6,33 +6,40 @@ export EDITOR=nvim
 ############################################
 ########## PATH
 
+export PATH="/opt/homebrew/opt/ruby@3.1/bin:$PATH"
 export PATH="/usr/local/opt/ruby/bin:/usr/local/lib:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="$HOME/.rvm/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+
+############################################
+########## TOOLS
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# envman
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 ############################################
 ########## COMPLETIONS
 
-#GENERAL
+fpath=(~/.stripe $fpath)
+autoload -Uz compinit && compinit -i
+
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' list-prompt ''
 zstyle ':completion:*' menu select
 zstyle ':completion:*:directories' sort true
 zstyle ':completion:*' history-completion yes
 
-# STRIPE
-fpath=(~/.stripe $fpath)
-autoload -Uz compinit && compinit -i
-
-# NODE VERSION MANAGER
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-
 ############################################
 ########## ALIASES
 
-# COMMANDS
 alias information="system_profiler SPSoftwareDataType SPHardwareDataType SPStorageDataType"
-
 alias nvcon="nvim ~/.config/nvim/init.lua"
 
 ############################################
@@ -43,12 +50,10 @@ function parse_git_branch() {
 }
 
 if [ "$COLORTERM" = "truecolor" ] || [ "$TERM_PROGRAM" = "iTerm.app" ]; then
-
     COLOR_DEF=$'%f'
     COLOR_USR=$'%F{#97CCF1}'
     COLOR_DIR=$'%F{#FCB650}'
     COLOR_GIT=$'%F{#E15A60}'
-
 else
     COLOR_DEF=$'%f'
     COLOR_USR=$'%F{75}'
@@ -58,12 +63,3 @@ fi
 
 setopt PROMPT_SUBST
 export PROMPT='${COLOR_USR}%n%f ${COLOR_DIR}%2~%f ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}: '
-
-############################################
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="/opt/homebrew/opt/ruby@3.1/bin:$PATH"  
-
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
