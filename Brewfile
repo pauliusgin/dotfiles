@@ -18,6 +18,7 @@ brew 'mas' # Mac App Store manager
 brew 'neovim'
 brew 'node'
 brew 'nvm'
+brew 'ripgrep'
 brew 'ruby'
 brew 'stripe/stripe-cli/stripe'
 brew 'tree-sitter'
