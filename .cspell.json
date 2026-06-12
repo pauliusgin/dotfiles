@@ -1,10 +1,7 @@
 {
   "language": "en,lt",
   "version": "0.2",
-  "ignorePaths": [
-    "node_modules/**",
-    ".config/nvim/**"
-  ],
+  "ignorePaths": ["node_modules/**", ".config/nvim/**"],
   "flagWords": [],
   "words": [
     "Agencyconfiguration",
@@ -54,8 +51,5 @@
     "vinted",
     "Voizz",
     "WIZZTALK"
-  ],
-  "userWords": [
-    "firstname"
   ]
 }
