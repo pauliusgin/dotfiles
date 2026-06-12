@@ -2,10 +2,7 @@
 
 DOTFILES_DIR="$HOME/.dotfiles"
 
-if [[ "$(pwd)" != "$DOTFILES_DIR" ]]; then
-  echo "Error: not in $DOTFILES_DIR"
-  exit 1
-fi
+cd "$HOME/.dotfiles" || exit 1
 
 if [[ ! -d ".git" ]]; then
   echo "Error: no git repo in $DOTFILES_DIR"
