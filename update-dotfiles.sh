@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title Dotfiles push to repo
+# @raycast.mode compact
+
+# Optional parameters:
+# @raycast.icon 📕
+
+# Documentation:
+# @raycast.author Paulius Giniūnas
+
 DOTFILES_DIR="$HOME/.dotfiles"
 
 cd "$HOME/.dotfiles" || exit 1
