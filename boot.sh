@@ -22,9 +22,10 @@ brew bundle --file $HOME/.dotfiles/Brewfile
 
 # Create directories
 mkdir $HOME/Documents/Books
-mkdir $HOME/Documents/Learn\ To\ Code
+mkdir $HOME/Documents/Work\ related
 mkdir $HOME/Documents/Personal
 mkdir $HOME/Work
+mkdir $HOME/Coding
 mkdir $HOME/Pictures/Wallpapers
 mkdir $HOME/.config
 mkdir $HOME/.config/nvim
