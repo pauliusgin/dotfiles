@@ -1,4 +1,5 @@
 {
+  "model": "sonnet",
   "hooks": {
     "UserPromptSubmit": [
       {
@@ -28,6 +29,5 @@
         "repo": "JuliusBrussee/caveman"
       }
     }
-  },
-  "model": "opus"
+  }
 }
