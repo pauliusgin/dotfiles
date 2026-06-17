@@ -2,6 +2,7 @@
 /Users/paulius/Library/LaunchAgents/
 launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.update-dotfiles.daily.plist
 launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.update-dotfiles.daily.plist
+launchctl print gui/$(id -u)/com.update-dotfiles.daily
 -->
  
 <?xml version="1.0" encoding="UTF-8"?>
