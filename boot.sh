@@ -50,6 +50,7 @@ ln -swf $HOME/.dotfiles/.cspell.json $HOME/.cspell.json
 ln -swf $HOME/.dotfiles/claude/CLAUDE.md $HOME/.claude/CLAUDE.md
 ln -swf $HOME/.dotfiles/claude/settings.json $HOME/.claude/settings.json
 ln -swf $HOME/.dotfiles/claude/statusline-command.sh $HOME/.claude/statusline-command.sh
+ln -swf $HOME/.dotfiles/com.update-dotfiles.daily.plist $HOME/Library/LaunchAgents/com.update-dotfiles.daily.plist
 
 #Npm packs
 npm i -g cspell @cspell/dict-lt-lt @cspell/dict-lua eslint prettier typescript typescript-language-server ts-node
