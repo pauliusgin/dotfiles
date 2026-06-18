@@ -19,7 +19,7 @@ vim.keymap.set("n", "<Leader>p", ":PrettierAsync<CR>", keymapOptions)
 vim.keymap.set("n", "<C-q>", ":q<CR>", keymapOptions)
 
 -- neo-tree
-vim.keymap.set("n", "<C-e>", ":Neotree toggle<CR>", keymapOptions)
+vim.keymap.set("n", "<Leader>ee", ":Neotree toggle<CR>", keymapOptions)
 
 -- buffers
 vim.keymap.set("n", "<leader>bb", ":Telescope buffers<CR>", keymapOptions)
