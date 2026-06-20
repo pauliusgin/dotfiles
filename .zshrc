@@ -43,7 +43,12 @@ alias information="system_profiler SPSoftwareDataType SPHardwareDataType SPStora
 alias nvcon="nvim ~/.config/nvim/init.lua"
 
 function ask() {
-    ollama run qwen2.5-coder:14b "$*"
+    local model="qwen2.5-coder:7b"
+    if [[ "$1" == "-m" ]]; then
+        model="qwen2.5-coder:14b"
+        shift
+    fi
+    ollama run "$model" "$*"
 }
 
 ############################################
