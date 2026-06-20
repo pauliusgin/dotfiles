@@ -42,6 +42,10 @@ zstyle ':completion:*' history-completion yes
 alias information="system_profiler SPSoftwareDataType SPHardwareDataType SPStorageDataType"
 alias nvcon="nvim ~/.config/nvim/init.lua"
 
+function ask() {
+    ollama run qwen2.5-coder:14b "$*"
+}
+
 ############################################
 ########## PROMPT
 
@@ -63,3 +67,8 @@ fi
 
 setopt PROMPT_SUBST
 export PROMPT='${COLOR_USR}%n%f ${COLOR_DIR}%2~%f ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}: '
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/paulius/.lmstudio/bin"
+# End of LM Studio CLI section
+
