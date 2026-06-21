@@ -1,5 +1,3 @@
--- {{{ KEYBINDINGS
-
 -- leader
 vim.g.maplocalleader = " "
 vim.g.mapleader = " "
@@ -85,5 +83,3 @@ vim.keymap.set("n", "<C-i>", "<C-I>", keymapOptions)
 
 -- remove highlights
 vim.keymap.set("n", "<leader>/", ":noh<CR>", keymapOptions)
-
--- }}}

@@ -43,8 +43,9 @@ ai_font_name = "Terminus (TTF)"
 match_ai_font = true
 
 [appearance.themes]
-system_theme = true
+system_theme = false
 selected_system_themes = { dark = { custom = { name = "gattsu", path = "gattsu.yaml" } }, light = "light" }
+theme = { custom = { name = "gattsu", path = "gattsu.yaml" } }
 
 [appearance.icon]
 app_icon = "mono"

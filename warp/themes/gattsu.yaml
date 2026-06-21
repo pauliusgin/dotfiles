@@ -1,8 +1,8 @@
 ---
 background: "#252525"
-accent: "#101010"
+accent: "#e7a74d"
 foreground: "#ffffff"
-cursor: "#fffff0"
+cursor: "#9da9b1"
 background_image:
   path: /Users/paulius/.warp/themes/gattsu.png
   opacity: 30
@@ -10,10 +10,10 @@ details: darker
 terminal_colors:
   normal:
     black: "#616161"
-    red: "#ff8272"
-    green: "#b4fa72"
-    yellow: "#fefdc2"
-    blue: "#a5d5fe"
+    red: "#e15a60"
+    green: "#6a9955"
+    yellow: "#fcb650"
+    blue: "#6796e6"
     magenta: "#ff8ffd"
     cyan: "#d0d1fe"
     white: "#f1f1f1"

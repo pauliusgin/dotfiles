@@ -1,5 +1,3 @@
--- {{{ PLUGINS
-
 -- {{{ Lazy.nvim
 -- A modern plugin manager for Neovim
 -- https://github.com/folke/lazy.nvim
@@ -494,5 +492,3 @@ require("lazy").setup({
     -- }}}
 
 }, opts)
-
--- }}}

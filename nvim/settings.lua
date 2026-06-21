@@ -1,5 +1,3 @@
--- {{{ SETTINGS
-
 -- folding
 vim.opt.foldmethod = "marker"
 
@@ -88,5 +86,3 @@ vim.api.nvim_set_hl(0, 'Normal', { bg = 'none', ctermbg = 'none' })
 -- set nonText highlight group background to none
 vim.api.nvim_set_hl(0, 'NonText', { bg = 'none', ctermbg = 'none' })
 
-
--- }}}
