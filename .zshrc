@@ -51,6 +51,10 @@ function ask() {
     ollama run "$model" "$*"
 }
 
+function agentsinit() {
+    touch AGENTS.md && ln -s AGENTS.md CLAUDE.md && ls -l AGENTS.md CLAUDE.md
+}
+
 ############################################
 ########## PROMPT
 
