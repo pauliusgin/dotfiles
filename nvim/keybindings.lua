@@ -13,8 +13,42 @@ end
 
 --* =========================== [GENERAL] ==================================
 
--- Ctrl-s to save
+-- Ctrl-s to save (no formatting)
 vim.keymap.set("n", "<C-s>", ":w<CR>", keymapOptions)
+
+-- Ctrl-f Ctrl-s ("format and save") -> Prettier (or native fallback) then write
+local prettierFiletypes = {
+    css = true,
+    graphql = true,
+    handlebars = true,
+    html = true,
+    javascript = true,
+    javascriptreact = true,
+    json = true,
+    jsonc = true,
+    less = true,
+    markdown = true,
+    scss = true,
+    svelte = true,
+    typescript = true,
+    typescriptreact = true,
+    vue = true,
+    yaml = true,
+}
+local function formatBuffer()
+    if prettierFiletypes[vim.bo.filetype] then
+        vim.cmd("Prettier")
+    else
+        vim.notify("Prettier: unsupported file, using native linter instead", vim.log.levels.WARN)
+        vim.cmd("normal! gg=G``")
+    end
+    vim.cmd("normal! zz")
+end
+local function formatAndSave()
+    formatBuffer()
+    vim.cmd("write")
+end
+vim.keymap.set("n", "<C-f><C-s>", formatAndSave, keymapOptions)
 
 -- Ctrl-q to quit
 vim.keymap.set("n", "<C-q>", ":q<CR>", keymapOptions)
@@ -22,8 +56,8 @@ vim.keymap.set("n", "<C-q>", ":q<CR>", keymapOptions)
 -- Format the document with native linter
 vim.keymap.set("n", "<leader>=", "gg=G``", keymapOptions)
 
--- Format the document with Prettier (vscode: ctrl+f ctrl+p)
-vim.keymap.set("n", "<Leader>p", ":PrettierAsync<CR>", keymapOptions)
+-- Format the document with Prettier (native linter fallback on unsupported filetypes)
+vim.keymap.set("n", "<leader>fp", formatBuffer, keymapOptions)
 
 --* ========================== [EXPLORER] ==================================
 
@@ -111,8 +145,9 @@ vim.keymap.set("n", "<leader>td", ":tabclose<CR>", keymapOptions)
 
 vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", keymapOptions)
 vim.keymap.set("n", "<leader>sh", ":split<CR>", keymapOptions)
+vim.keymap.set("n", "<leader>sd", ":q<CR>", keymapOptions)
 
--- split / window navigation (vscode: ctrl+h / ctrl+l navigate left/right)
+-- split / window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", keymapOptions)
 vim.keymap.set("n", "<C-j>", "<C-w>j", keymapOptions)
 vim.keymap.set("n", "<C-k>", "<C-w>k", keymapOptions)
@@ -120,26 +155,18 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", keymapOptions)
 
 --* ============================ [GIT] =====================================
 -- staging / blame / hunks live in plugins.lua via gitsigns (<leader>h*).
-
--- vscode: space g b -> toggle blame on current line
 vim.keymap.set("n", "<leader>gb", function()
     require("gitsigns").toggle_current_line_blame()
 end, keymapOptions)
 
---* ========================== [TERMINAL] ==================================
-
--- vscode: space t t -> toggle terminal (opens terminal in a split)
-vim.keymap.set("n", "<leader>tt", ":split | terminal<CR>", keymapOptions)
--- escape terminal mode back to normal
-vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>", keymapOptions)
-
--- vscode: space t p -> problems (diagnostics list)
-vim.keymap.set("n", "<leader>tp", ":Telescope diagnostics<CR>", keymapOptions)
-
 --* ========================= [DIAGNOSTICS] ================================
+vim.keymap.set("n", "<leader>tp", ":Telescope diagnostics<CR>", keymapOptions)
 
 vim.keymap.set("n", "<leader>dd", ":Telescope diagnostics bufnr=0<CR>", keymapOptions)
 vim.keymap.set("n", "<leader>dad", ":Telescope diagnostics<CR>", keymapOptions)
 vim.keymap.set("n", "<leader>do", vim.diagnostic.open_float, keymapOptions)
 vim.keymap.set("n", "<leader>d]", vim.diagnostic.goto_next, keymapOptions)
 vim.keymap.set("n", "<leader>d[", vim.diagnostic.goto_prev, keymapOptions)
+
+--* ====================== [DISABLED KEYBINDINGS] =============================
+vim.keymap.set("n", "<C-f>", "<Nop>", keymapOptions)
