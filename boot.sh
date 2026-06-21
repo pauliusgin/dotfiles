@@ -39,7 +39,10 @@ mkdir $HOME/.warp/themes
 # Symlinks
 ln -swf $HOME/.dotfiles/.zshrc $HOME/.zshrc
 ln -swf $HOME/.dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
-ln -swf $HOME/.dotfiles/init.lua $HOME/.config/nvim/init.lua
+ln -swf $HOME/.dotfiles/nvim/init.lua $HOME/.config/nvim/init.lua
+ln -swf $HOME/.dotfiles/nvim/keybindings.lua $HOME/.config/nvim/keybindings.lua
+ln -swf $HOME/.dotfiles/nvim/settings.lua $HOME/.config/nvim/settings.lua
+ln -swf $HOME/.dotfiles/nvim/plugins.lua $HOME/.config/nvim/plugins.lua
 ln -swf $HOME/.dotfiles/.gitconfig $HOME/.gitconfig
 ln -swf $HOME/.dotfiles/code/extensions.json $HOME/.vscode/extensions/extensions.json
 ln -swf $HOME/.dotfiles/code/keybindings.json $HOME/Library/Application\ Support/Code/User/keybindings.json
