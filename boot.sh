@@ -33,6 +33,8 @@ mkdir $HOME/.config/kitty
 mkdir $HOME/.vscode
 mkdir $HOME/.vscode/extensions
 mkdir $HOME/.claude
+mkdir $HOME/.warp
+mkdir $HOME/.warp/themes
 
 # Symlinks
 ln -swf $HOME/.dotfiles/.zshrc $HOME/.zshrc
@@ -52,6 +54,10 @@ ln -swf $HOME/.dotfiles/agents/AGENTS.md $HOME/.claude/CLAUDE.md
 ln -swf $HOME/.dotfiles/claude/settings.json $HOME/.claude/settings.json
 ln -swf $HOME/.dotfiles/claude/statusline-command.sh $HOME/.claude/statusline-command.sh
 ln -swf $HOME/.dotfiles/com.update-dotfiles.daily.plist $HOME/Library/LaunchAgents/com.update-dotfiles.daily.plist
+ln -swf $HOME/.dotfiles/warp/settings.toml $HOME/.warp/settings.toml
+ln -swf $HOME/.dotfiles/warp/keybindings.yaml $HOME/.warp/keybindings.yaml
+ln -swf $HOME/.dotfiles/warp/themes/gattsu.yaml $HOME/.warp/themes/gattsu.yaml
+cp $HOME/.dotfiles/warp/themes/gattsu.png $HOME/.warp/themes/gattsu.png
 
 #Npm packs
 npm i -g cspell @cspell/dict-lt-lt @cspell/dict-lua eslint prettier typescript typescript-language-server ts-node
