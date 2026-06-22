@@ -154,9 +154,21 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", keymapOptions)
 vim.keymap.set("n", "<C-l>", "<C-w>l", keymapOptions)
 
 --* ============================ [GIT] =====================================
--- staging / blame / hunks live in plugins.lua via gitsigns (<leader>h*).
+vim.keymap.set("n", "<leader>gg", ":CodeDiff<CR>", keymapOptions)
+vim.keymap.set("n", "<leader>gh", ":CodeDiff history<CR>", keymapOptions)
 vim.keymap.set("n", "<leader>gb", function()
     require("gitsigns").toggle_current_line_blame()
+end, keymapOptions)
+-- Toggle full-file blame (every line), not just the current line.
+vim.keymap.set("n", "<leader>gB", function()
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local buf = vim.api.nvim_win_get_buf(win)
+        if vim.bo[buf].filetype == "gitsigns-blame" then
+            vim.api.nvim_win_close(win, true)
+            return
+        end
+    end
+    require("gitsigns").blame()
 end, keymapOptions)
 
 --* ========================= [DIAGNOSTICS] ================================
