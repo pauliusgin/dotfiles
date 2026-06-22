@@ -158,16 +158,28 @@ require("lazy").setup({
 
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.5",
+        tag = "0.1.8",
         -- or                              , branch = '0.1.x',
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
+            local actions = require("telescope.actions")
+
             require("telescope").setup{
                 defaults = {
                     search_dirs = {},
                     file_ignore_patterns = {
                         "Library",
                         "node_modules"
+                    },
+                    mappings = {
+                        i = {
+                            ["<C-j>"] = actions.move_selection_next,
+                            ["<C-k>"] = actions.move_selection_previous,
+                        },
+                        n = {
+                            ["<C-j>"] = actions.move_selection_next,
+                            ["<C-k>"] = actions.move_selection_previous,
+                        },
                     },
                 }
             }
@@ -301,6 +313,18 @@ require("lazy").setup({
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function()
+            local function supermaven_status()
+                local ok, listener = pcall(require, "supermaven-nvim.completion_preview")
+                if not ok then
+                    return ""
+                end
+                local api_ok, api = pcall(require, "supermaven-nvim.api")
+                if api_ok and not api.is_running() then
+                    return "supermaven  off"
+                end
+                return "supermaven  on"
+            end
+
             require('lualine').setup {
                 options = {
                     icons_enabled = true,
@@ -313,7 +337,7 @@ require("lazy").setup({
                     },
                     ignore_focus = {},
                     always_divide_middle = true,
-                    globalstatus = false,
+                    globalstatus = true,
                     refresh = {
                         statusline = 1000,
                         tabline = 1000,
@@ -323,10 +347,12 @@ require("lazy").setup({
                 sections = {
                     lualine_a = {'mode'},
                     lualine_b = {'branch'},
-                    lualine_c = {'filename'},
-                    lualine_x = {'fileformat'},
-                    lualine_y = {'progress'},
-                    lualine_z = {'location'}
+                    lualine_c = {},
+                    lualine_x = {'location'},
+                    lualine_y = {
+                        { 'filetype', icons_enabled = false },
+                    },
+                    lualine_z = {supermaven_status}
                 },
                 inactive_sections = {
                     lualine_a = {},
