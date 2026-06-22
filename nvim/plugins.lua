@@ -520,6 +520,33 @@ require("lazy").setup({
     },
     -- }}}
 
+    -- {{{ codediff.nvim
+    -- Fast, VSCode-like diff viewer for git changes, history, and merges
+    -- https://github.com/esmuellert/codediff.nvim
+
+    {
+        "esmuellert/codediff.nvim",
+        cmd = "CodeDiff",
+        config = function()
+            require("codediff").setup({
+                diff = {
+                    layout = "side-by-side",
+                },
+                explorer = {
+                    position = "right" 
+                    width = 40,
+                    height = 100
+                },
+                history = {
+                    position = "right",
+                    width = 40,
+                    height = 100
+                }
+            })
+        end,
+    },
+    -- }}}
+
     -- {{{ Kanagawa.nvim | colorscheme
     -- NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika Hokusai.
     -- https://github.com/rebelot/kanagawa.nvim
