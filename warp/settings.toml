@@ -2,7 +2,7 @@
 cloud_conversation_storage_enabled = true
 
 [agents.warp_agent]
-is_any_ai_enabled = false
+is_any_ai_enabled = true
 
 [agents.warp_agent.input]
 nld_in_terminal_enabled = false
@@ -12,7 +12,7 @@ ai_auto_detection_enabled = false
 agent_mode_query_suggestions_enabled = false
 code_suggestions_enabled = false
 shared_block_title_generation_enabled = false
-enabled = false
+enabled = true
 intelligent_autosuggestions_enabled = false
 
 [agents.warp_agent.other]
@@ -57,8 +57,8 @@ show_indicators_button = true
 [appearance.tabs.header_toolbar_chip_selection]
 
 [appearance.tabs.header_toolbar_chip_selection.custom]
-left = ["tabs_panel", "tools_panel"]
-right = ["agent_management"]
+left = ["tools_panel"]
+right = ["code_review"]
 
 [appearance.window]
 zoom_level = 100
@@ -86,7 +86,7 @@ compact_subtitle = "branch"
 show_panel_in_restored_windows = true
 
 [text_editing]
-vim_mode_enabled = true
+vim_mode_enabled = false
 
 [privacy]
 telemetry_enabled = true
@@ -137,18 +137,19 @@ input_box_type_setting = "classic"
 [code]
 
 [code.editor]
-show_code_review_button = false
-open_file_editor = { external_editor = "vs_code" }
-open_code_panels_file_editor = { external_editor = "vs_code" }
+show_code_review_button = true
+open_file_editor = "env_editor"
+open_code_panels_file_editor = "env_editor"
 prefer_tabbed_editor_view = true
+show_project_explorer = true
 
 [session]
 
 [session.working_directory_config]
-advanced_mode = false
-global = { custom_dir = "", mode = "home_dir" }
+advanced_mode = true
+global = { custom_dir = "", mode = "previous_dir" }
 new_tab = { custom_dir = "", mode = "previous_dir" }
-new_window = { custom_dir = "", mode = "previous_dir" }
+new_window = { custom_dir = "", mode = "home_dir" }
 split_pane = { custom_dir = "", mode = "previous_dir" }
 
 [notifications]
