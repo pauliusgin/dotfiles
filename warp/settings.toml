@@ -2,7 +2,7 @@
 cloud_conversation_storage_enabled = true
 
 [agents.warp_agent]
-is_any_ai_enabled = true
+is_any_ai_enabled = false
 
 [agents.warp_agent.input]
 nld_in_terminal_enabled = false
@@ -86,7 +86,8 @@ compact_subtitle = "branch"
 show_panel_in_restored_windows = true
 
 [text_editing]
-vim_mode_enabled = false
+vim_mode_enabled = true
+vim_unnamed_system_clipboard = true
 
 [privacy]
 telemetry_enabled = true

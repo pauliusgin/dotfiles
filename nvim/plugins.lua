@@ -34,6 +34,7 @@ require("lazy").setup({
                     "javascript",
                     "typescript",
                     "json",
+                    "go",
                 },
                 sync_install = false,
                 auto_install = true,
@@ -109,7 +110,7 @@ require("lazy").setup({
     {
         "neovim/nvim-lspconfig",
         config = function()
-            require'lspconfig'.ts_ls.setup{
+            vim.lsp.config("ts_ls", {
                 init_options = {
                     hostInfo = "neovim"
                 },
@@ -121,7 +122,10 @@ require("lazy").setup({
                     "typescriptreact",
                     "typescript.tsx"
                 },
-            }
+            })
+            vim.lsp.enable("ts_ls")
+
+            vim.lsp.enable("gopls")
         end
     },
     -- }}}
@@ -139,6 +143,7 @@ require("lazy").setup({
                     "ts_ls",
                     "html",
                     "cssls",
+                    "gopls",
                 },
                 automatic_installation = true,
                 handlers = nil,
@@ -317,9 +322,9 @@ require("lazy").setup({
                 },
                 sections = {
                     lualine_a = {'mode'},
-                    lualine_b = {'branch', 'diff', 'diagnostics'},
+                    lualine_b = {'branch'},
                     lualine_c = {'filename'},
-                    lualine_x = {'encoding', 'fileformat', 'filetype'},
+                    lualine_x = {'fileformat'},
                     lualine_y = {'progress'},
                     lualine_z = {'location'}
                 },
@@ -374,9 +379,6 @@ require("lazy").setup({
                     virt_text_priority = 100,
                 },
                 current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
-                current_line_blame_formatter_opts = {
-                    relative_time = false,
-                },
                 sign_priority = 6,
                 update_debounce = 100,
                 status_formatter = nil, -- Use default
@@ -465,6 +467,32 @@ require("lazy").setup({
         end
     },
     --}}}
+
+    -- {{{ supermaven-nvim
+    -- AI code completion with inline suggestions (free tier)
+    -- https://github.com/supermaven-inc/supermaven-nvim
+
+    {
+        "supermaven-inc/supermaven-nvim",
+        config = function()
+            require("supermaven-nvim").setup({
+                keymaps = {
+                    accept_suggestion = "<Tab>",
+                    clear_suggestion = "<C-h>",
+                    accept_word = "<C-l>",
+                },
+                ignore_filetypes = {},
+                color = {
+                    suggestion_color = "#808080",
+                    cterm = 244,
+                },
+                log_level = "info",
+                disable_inline_completion = false,
+                disable_keymaps = false,
+            })
+        end,
+    },
+    -- }}}
 
     -- {{{ Kanagawa.nvim | colorscheme
     -- NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika Hokusai.
