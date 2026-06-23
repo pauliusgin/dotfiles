@@ -29,5 +29,6 @@
         "repo": "JuliusBrussee/caveman"
       }
     }
-  }
+  },
+  "preferredNotifChannel": "terminal_bell"
 }
