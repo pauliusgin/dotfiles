@@ -1,5 +1,7 @@
 -- folding
 vim.opt.foldmethod = "marker"
+-- start with all folds open (folds still usable via za/zc etc.)
+vim.opt.foldlevelstart = 99
 
 -- Netrw
 vim.g.netrw_keepdir = 0
