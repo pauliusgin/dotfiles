@@ -61,7 +61,7 @@ vim.keymap.set("n", "<leader>fp", formatBuffer, keymapOptions)
 
 --* ========================== [EXPLORER] ==================================
 
-vim.keymap.set("n", "<leader>ee", ":Neotree toggle<CR>", keymapOptions)
+vim.keymap.set("n", "<leader>ee", ":Neotree toggle reveal<CR>", keymapOptions)
 
 --* ========================= [NAVIGATION] =================================
 

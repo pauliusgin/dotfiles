@@ -160,7 +160,10 @@ require("lazy").setup({
         "nvim-telescope/telescope.nvim",
         tag = "0.1.8",
         -- or                              , branch = '0.1.x',
-        dependencies = { "nvim-lua/plenary.nvim" },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        },
         config = function()
             local actions = require("telescope.actions")
 
@@ -181,8 +184,26 @@ require("lazy").setup({
                             ["<C-k>"] = actions.move_selection_previous,
                         },
                     },
-                }
+                },
+                pickers = {
+                    find_files = {
+                        -- 50% of telescope's default height (0.9)
+                        layout_config = {
+                            height = 0.45,
+                        },
+                    },
+                },
+                extensions = {
+                    fzf = {
+                        fuzzy = true,
+                        override_generic_sorter = true,
+                        override_file_sorter = true,
+                        case_mode = "smart_case",
+                    },
+                },
             }
+
+            require("telescope").load_extension("fzf")
         end,
     },
     -- }}}
@@ -275,6 +296,20 @@ require("lazy").setup({
                         ["S"] = "open_split",
                         ["."] = "set_root",
                         ["H"] = "toggle_hidden",
+                        ["l"] = function(state)
+                            local node = state.tree:get_node()
+                            -- filesystem source's open wraps the toggle_directory loader (same as <CR>)
+                            local commands = require("neo-tree.sources.filesystem.commands")
+                            if node.type == "directory" then
+                                -- loads + expands if closed, collapses if open
+                                commands.open(state)
+                                return
+                            end
+                            -- open file but keep focus on the neo-tree window
+                            local neotree_win = vim.api.nvim_get_current_win()
+                            commands.open(state)
+                            vim.api.nvim_set_current_win(neotree_win)
+                        end,
                     },
                 },
                 filesystem = {
@@ -295,10 +330,10 @@ require("lazy").setup({
                             ".env*"
                         }
                     },
-                },
-                follow_current_file = {
-                    enabled = true,
-                    leave_dirs_open = false
+                    follow_current_file = {
+                        enabled = true,
+                        leave_dirs_open = false
+                    },
                 },
             })
         end
