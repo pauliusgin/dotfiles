@@ -740,6 +740,24 @@ require("lazy").setup({
     },
     -- }}}
 
+    -- {{{ "tiny-cmdline.nvim"
+    -- A Neovim plugin that repositions the cmdline as a centered floating window, powered by Neovim's native ui2 system.        -- https://github.com/esmuellert/codediff.nvim
+    -- https://github.com/rachartier/tiny-cmdline.nvim
+
+    {
+
+        "rachartier/tiny-cmdline.nvim",
+        init = function()
+            vim.o.cmdheight = 0
+            require("vim._core.ui2").enable({})
+            require("tiny-cmdline").setup({
+                native_types = {},
+            })
+        end,
+
+    },
+    -- }}}
+
     -- {{{ Kanagawa.nvim | colorscheme
     -- NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika Hokusai.
     -- https://github.com/rebelot/kanagawa.nvim
@@ -766,3 +784,5 @@ require("lazy").setup({
     -- }}}
 
 }, opts)
+
+-- vim: foldmethod=marker:foldlevel=0
