@@ -40,6 +40,7 @@ local palette = {
     green = "#6a9955", -- comments (ts/js)
     property = "#bbbbbb", -- property access
     e0 = "#e0e2e4", -- params / generic identifiers
+    steel = "#9daab2", -- object refs (Foo in Foo.bar)
 
     error = "#e15a60",
     warn = "#cca700",
@@ -142,10 +143,10 @@ local groups = {
     Define = { fg = p.orange },
     Macro = { fg = p.orange },
     PreCondit = { fg = p.orange },
-    Type = { fg = p.gold },
+    Type = { fg = p.fg },
     StorageClass = { fg = p.blue },
     Structure = { fg = p.blue },
-    Typedef = { fg = p.gold },
+    Typedef = { fg = p.fg },
     Special = { fg = p.blue },
     SpecialChar = { fg = p.blue },
     Tag = { fg = p.lblue },
@@ -178,12 +179,13 @@ local groups = {
     ["@constant.macro"] = { fg = p.orange },
 
     ["@variable"] = { fg = p.fg },
+    ["@variable.object"] = { fg = p.steel }, -- `Foo` in `Foo.bar` (TextMate variable.other.object)
     ["@variable.builtin"] = { fg = "#dddddd", bold = true }, -- this/self
-    ["@variable.parameter"] = { fg = p.e0 },
-    ["@variable.member"] = { fg = p.property }, -- obj.property
+    ["@variable.parameter"] = { fg = p.fg },
+    ["@variable.member"] = { fg = p.fg }, -- obj.property
 
-    ["@property"] = { fg = p.property },
-    ["@field"] = { fg = p.property },
+    ["@property"] = { fg = p.fg },
+    ["@field"] = { fg = p.fg },
 
     ["@function"] = { fg = p.gold },
     ["@function.builtin"] = { fg = p.gold },
@@ -200,12 +202,13 @@ local groups = {
     ["@keyword.repeat"] = { fg = p.fg },
     ["@keyword.exception"] = { fg = p.fg },
     ["@keyword.coroutine"] = { fg = p.fg }, -- async/await = white
-    ["@keyword.import"] = { fg = p.orange }, -- import/from
+    ["@keyword.import"] = { fg = p.cyan }, -- import/export/from
     ["@keyword.storage"] = { fg = p.blue }, -- const/let/var
+    ["@keyword.modifier"] = { fg = p.blue }, -- private/readonly/public (storage.modifier)
 
-    ["@type"] = { fg = p.gold },
+    ["@type"] = { fg = p.fg },
     ["@type.builtin"] = { fg = p.fg_mut },
-    ["@type.definition"] = { fg = p.gold },
+    ["@type.definition"] = { fg = p.fg },
     ["@attribute"] = { fg = p.e0 },
 
     ["@operator"] = { fg = p.fg },
@@ -232,13 +235,13 @@ local groups = {
     ["@markup.italic"] = { fg = p.fg, italic = true },
 
     -- ── LSP semantic tokens ───────────────────────────────────
-    ["@lsp.type.class"] = { fg = p.gold },
-    ["@lsp.type.interface"] = { fg = p.gold },
-    ["@lsp.type.enum"] = { fg = p.gold },
-    ["@lsp.type.type"] = { fg = p.gold },
+    ["@lsp.type.class"] = { fg = p.fg },
+    ["@lsp.type.interface"] = { fg = p.fg },
+    ["@lsp.type.enum"] = { fg = p.fg },
+    ["@lsp.type.type"] = { fg = p.fg },
     ["@lsp.type.namespace"] = { fg = p.fg_mut },
-    ["@lsp.type.parameter"] = { fg = p.e0 },
-    ["@lsp.type.property"] = { fg = p.property },
+    ["@lsp.type.parameter"] = { fg = p.fg },
+    ["@lsp.type.property"] = { fg = p.fg },
     ["@lsp.type.variable"] = { fg = p.fg },
     ["@lsp.type.function"] = { fg = p.gold },
     ["@lsp.type.method"] = { fg = p.gold },
