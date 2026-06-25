@@ -37,16 +37,16 @@ local prettierFiletypes = {
 }
 local function formatBuffer()
     if prettierFiletypes[vim.bo.filetype] then
-        vim.cmd("Prettier")
+        vim.cmd("silent Prettier")
     else
         vim.notify("Prettier: unsupported file, using native linter instead", vim.log.levels.WARN)
-        vim.cmd("normal! gg=G``")
+        vim.cmd("silent normal! gg=G``")
     end
     vim.cmd("normal! zz")
 end
 local function formatAndSave()
     formatBuffer()
-    vim.cmd("write")
+    vim.cmd("silent write")
 end
 vim.keymap.set("n", "<C-f><C-s>", formatAndSave, keymapOptions)
 

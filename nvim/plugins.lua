@@ -252,6 +252,24 @@ require("lazy").setup({
         config = function()
             local actions = require("telescope.actions")
 
+            -- nvim-treesitter `main` branch dropped the legacy API that
+            -- telescope 0.1.8 previewers depend on (parsers.ft_to_lang and the
+            -- whole nvim-treesitter.configs module: is_enabled/get_module).
+            -- 1) Shim ft_to_lang (still used by telescope.builtin.__files).
+            local parsersOk, parsers = pcall(require, "nvim-treesitter.parsers")
+            if parsersOk and type(parsers.ft_to_lang) ~= "function" then
+                parsers.ft_to_lang = function(ft)
+                    return vim.treesitter.language.get_lang(ft) or ft
+                end
+            end
+            -- 2) Replace the preview TS highlighter with the native API, which
+            -- avoids nvim-treesitter.configs entirely.
+            local previewerUtils = require("telescope.previewers.utils")
+            previewerUtils.ts_highlighter = function(bufnr, ft)
+                local lang = vim.treesitter.language.get_lang(ft) or ft
+                return pcall(vim.treesitter.start, bufnr, lang)
+            end
+
             require("telescope").setup{
                 defaults = {
                     search_dirs = {},
@@ -740,24 +758,6 @@ require("lazy").setup({
     },
     -- }}}
 
-    -- {{{ "tiny-cmdline.nvim"
-    -- A Neovim plugin that repositions the cmdline as a centered floating window, powered by Neovim's native ui2 system.        -- https://github.com/esmuellert/codediff.nvim
-    -- https://github.com/rachartier/tiny-cmdline.nvim
-
-    {
-
-        "rachartier/tiny-cmdline.nvim",
-        init = function()
-            vim.o.cmdheight = 0
-            require("vim._core.ui2").enable({})
-            require("tiny-cmdline").setup({
-                native_types = {},
-            })
-        end,
-
-    },
-    -- }}}
-
     -- {{{ Kanagawa.nvim | colorscheme
     -- NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika Hokusai.
     -- https://github.com/rebelot/kanagawa.nvim
@@ -778,7 +778,7 @@ require("lazy").setup({
                     },
                 },
             })
-            vim.cmd("colorscheme kanagawa-dragon")
+            vim.cmd("colorscheme minimal-fedu")
         end,
     }
     -- }}}

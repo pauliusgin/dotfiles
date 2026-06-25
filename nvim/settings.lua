@@ -60,6 +60,7 @@ vim.opt.mouse = "a"
 
 -- width
 vim.opt.colorcolumn = "80"
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#202020" })
 
 -- pop up menu (such as completion) height in lines
 vim.opt.pumheight = 10
