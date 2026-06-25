@@ -128,7 +128,7 @@ custom_secret_regex_list = [
 show_terminal_zero_state_block = false
 focus_reporting_enabled = false
 scroll_reporting_enabled = false
-mouse_reporting_enabled = false
+mouse_reporting_enabled = true
 
 [terminal.input]
 show_hint_text = false
