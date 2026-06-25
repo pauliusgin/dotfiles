@@ -289,6 +289,19 @@ require("lazy").setup({
             require("telescope").setup{
                 defaults = {
                     search_dirs = {},
+                    -- filename_first: tag 0.1.8 lacks the built-in, so emulate
+                    -- it. Show "name  dir/path" with dir dimmed.
+                    path_display = function(_, path)
+                        local tail = require("telescope.utils").path_tail(path)
+                        local dir = path:sub(1, #path - #tail - 1)
+                        if dir == "" then
+                            return tail
+                        end
+                        local display = string.format("%s  %s", tail, dir)
+                        return display, {
+                            { { #tail + 1, #display }, "TelescopeResultsComment" },
+                        }
+                    end,
                     file_ignore_patterns = {
                         "Library",
                         "node_modules"
@@ -306,9 +319,9 @@ require("lazy").setup({
                 },
                 pickers = {
                     find_files = {
-                        -- 50% of telescope's default height (0.9)
                         layout_config = {
                             height = 0.45,
+                            width = 0.5
                         },
                     },
                 },
@@ -502,7 +515,10 @@ require("lazy").setup({
                     lualine_a = {'mode'},
                     lualine_b = {'branch'},
                     lualine_c = {},
-                    lualine_x = {'location'},
+                    lualine_x = {
+                        { 'location' },
+                        { function() return '/' .. vim.fn.line('$') end },
+                    },
                     lualine_y = {
                         { 'filetype', icons_enabled = false },
                     },
