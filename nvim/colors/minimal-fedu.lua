@@ -42,14 +42,14 @@ local palette = {
     e0 = "#e0e2e4", -- params / generic identifiers
     steel = "#9daab2", -- object refs (Foo in Foo.bar)
 
-    error = "#e15a60",
+    error = "#cd5359",
     warn = "#cca700",
     info = "#59a4f9",
     hint = "#6796e6",
 
     git_add = "#a7da1e",
     git_change = "#f7b83d",
-    git_delete = "#e15a60",
+    git_delete = "#cd5359",
     git_add_bg = "#487e02",
     git_change_bg = "#1b81a8",
 }
@@ -202,9 +202,10 @@ local groups = {
     ["@keyword.repeat"] = { fg = p.fg },
     ["@keyword.exception"] = { fg = p.fg },
     ["@keyword.coroutine"] = { fg = p.fg }, -- async/await = white
-    ["@keyword.import"] = { fg = p.cyan }, -- import/export/from
+    ["@keyword.import"] = { fg = p.orange }, -- import/from
+    ["@keyword.import.typescript"] = { fg = p.cyan }, -- ts import/from = cyan
     ["@keyword.storage"] = { fg = p.blue }, -- const/let/var
-    ["@keyword.modifier"] = { fg = p.blue }, -- private/readonly/public (storage.modifier)
+    ["@keyword.modifier.typescript"] = { fg = p.blue }, -- ts modifiers (public/private/readonly)
 
     ["@type"] = { fg = p.fg },
     ["@type.builtin"] = { fg = p.fg_mut },

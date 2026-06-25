@@ -269,6 +269,22 @@ require("lazy").setup({
                 local lang = vim.treesitter.language.get_lang(ft) or ft
                 return pcall(vim.treesitter.start, bufnr, lang)
             end
+            -- 3) Shim the whole nvim-treesitter.configs module. The `main`
+            -- branch deleted it, but telescope.builtin.__files
+            -- (current_buffer_fuzzy_find, <leader>fw) still calls
+            -- configs.is_enabled directly. The surrounding parser_ok/query_ok
+            -- guards already validate via the native API, so returning true is
+            -- safe and keeps TS highlighting in the picker.
+            if not package.loaded["nvim-treesitter.configs"] then
+                package.loaded["nvim-treesitter.configs"] = {
+                    is_enabled = function()
+                        return true
+                    end,
+                    get_module = function()
+                        return nil
+                    end,
+                }
+            end
 
             require("telescope").setup{
                 defaults = {
