@@ -855,6 +855,20 @@
     "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
   },
   {
+    "key": "space h n",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.terminal.new",
+        {
+          "command": "workbench.action.terminal.sendSequence",
+          "args": { "text": "herdr \u000D" },
+        },
+      ],
+    },
+    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
+  },
+  {
     "key": "tab",
     "command": "editor.action.inlineSuggest.acceptNextWord",
     "when": "cursorBeforeGhostText && inlineSuggestionVisible && !accessibilityModeEnabled && !editorReadonly",
