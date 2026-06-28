@@ -48,7 +48,7 @@ function ask() {
         model="qwen2.5-coder:14b"
         shift
     fi
-    ollama run "$model" "$*"
+    ollama run "$model" $*
 }
 
 function agentsinit() {
