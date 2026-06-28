@@ -756,6 +756,10 @@
   //* ============================= [AI TOOLS] ===================================
 
   {
+    "key": "ctrl+alt+cmd+s",
+    "command": "supermaven.toggle",
+  },
+  {
     "key": "ctrl+j",
     "command": "editor.action.inlineSuggest.showNext",
     "when": "inlineSuggestionVisible && !editorReadonly",
@@ -764,17 +768,6 @@
     "key": "ctrl+k",
     "command": "editor.action.inlineSuggest.showPrevious",
     "when": "inlineSuggestionVisible && !editorReadonly",
-  },
-  {
-    "key": "ctrl+f ctrl+s",
-    "command": "runCommands",
-    "args": {
-      "commands": [
-        "editor.action.formatDocument",
-        "workbench.action.files.save",
-      ],
-    },
-    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor",
   },
   {
     "key": "space c c n",

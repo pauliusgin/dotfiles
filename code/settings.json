@@ -581,7 +581,7 @@
     "editor.inlineSuggest.enabled": false,
   },
   "supermaven.enable": {
-    "*": true,
+    "*": true
   },
   "claudeCode.preferredLocation": "panel",
   "claudeCode.useTerminal": true,
