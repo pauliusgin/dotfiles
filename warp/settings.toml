@@ -134,6 +134,7 @@ mouse_reporting_enabled = true
 show_hint_text = false
 honor_ps1 = true
 input_box_type_setting = "classic"
+completions_open_while_typing = false
 
 [code]
 
