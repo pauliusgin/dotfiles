@@ -74,14 +74,16 @@
         "scope": [
           //* comment green
           "punctuation.definition.comment.ts",
-          "comment.line.double-slash.ts",
-          "comment.line.number-sign.git-commit",
-          "comment.line.number-sign.ini",
           "punctuation.definition.comment.ini",
           "punctuation.definition.comment.sql",
+          "punctuation.definition.comment.json",
+          "punctuation.definition.comment.go",
+          "comment.line.double-slash.ts",
           "comment.line.double-dash.sql",
           "comment.line.double-slash.js",
-          "punctuation.definition.comment.json",
+          "comment.line.double-slash.go",
+          "comment.line.number-sign.ini",
+          "comment.line.number-sign.git-commit",
         ],
         "settings": {
           "foreground": "#6A9955",
@@ -92,13 +94,17 @@
           //* string red
           "string.quoted.single.ts",
           "string.quoted.double.ts",
-          "string.template.ts",
           "string.quoted.double.json.comments",
-          "punctuation.definition.string.template.begin.ts",
-          "punctuation.definition.string.template.end.ts",
+          "string.quoted.double.go",
           "string.quoted.single.sql",
           "string.quoted.single.yaml",
+          "string.template.ts",
+          "punctuation.definition.string.template.begin.ts",
+          "punctuation.definition.string.template.end.ts",
+          "punctuation.definition.string.begin.go",
+          "punctuation.definition.string.end.go",
           "punctuation.definition.string.begin.yaml",
+          "punctuation.definition.string.end.yaml",
         ],
         "settings": {
           "foreground": "#CE9178",
@@ -581,7 +587,7 @@
     "editor.inlineSuggest.enabled": false,
   },
   "supermaven.enable": {
-    "*": true
+    "*": true,
   },
   "claudeCode.preferredLocation": "panel",
   "claudeCode.useTerminal": true,
