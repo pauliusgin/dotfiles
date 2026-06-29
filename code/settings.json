@@ -60,11 +60,11 @@
     "errorLens.warningBackground": "#00000000",
     "errorLens.warningForeground": "#E7A74D",
     "errorLens.infoBackground": "#00000000",
-    "errorLens.infoForeground": "#6796E6"
+    "errorLens.infoForeground": "#6796E6",
   },
   "material-icon-theme.folders.color": "#90a4ae",
   "vscode_custom_css.imports": [
-    "file:///Users/paulius/.dotfiles/code/custom-css/vscode-custom-styles.css"
+    "file:///Users/paulius/.dotfiles/code/custom-css/vscode-custom-styles.css",
   ],
 
   //* ======================= [TEXT COLORS] ==================================
@@ -83,11 +83,11 @@
           "comment.line.double-slash.js",
           "comment.line.double-slash.go",
           "comment.line.number-sign.ini",
-          "comment.line.number-sign.git-commit"
+          "comment.line.number-sign.git-commit",
         ],
         "settings": {
-          "foreground": "#6A9955"
-        }
+          "foreground": "#6A9955",
+        },
       },
       {
         "scope": [
@@ -96,6 +96,7 @@
           "string.quoted.double.ts",
           "string.quoted.double.json.comments",
           "string.quoted.double.go",
+          "string.quoted.raw.go",
           "string.quoted.single.sql",
           "string.quoted.single.yaml",
           "entity.name.import.go",
@@ -104,12 +105,14 @@
           "punctuation.definition.string.template.end.ts",
           "punctuation.definition.string.begin.go",
           "punctuation.definition.string.end.go",
+          "punctuation.definition.string.begin.go",
+          "punctuation.definition.string.end.go",
           "punctuation.definition.string.begin.yaml",
-          "punctuation.definition.string.end.yaml"
+          "punctuation.definition.string.end.yaml",
         ],
         "settings": {
-          "foreground": "#CE9178"
-        }
+          "foreground": "#CE9178",
+        },
       },
       {
         "scope": [
@@ -122,62 +125,62 @@
           "keyword.other.definition.ini",
           "keyword.other.DML.sql",
           "keyword.other.DDL.create.II.sql",
-          "keyword.other.sql"
+          "keyword.other.sql",
         ],
         "settings": {
-          "foreground": "#6796E6"
-        }
+          "foreground": "#6796E6",
+        },
       },
       {
         "scope": [
           "meta.object-literal.key.ts",
           "keyword.control.flow.ts",
-          "storage.modifier.async.ts"
+          "storage.modifier.async.ts",
         ],
         "settings": {
-          "foreground": "#FAFAFA"
-        }
+          "foreground": "#FAFAFA",
+        },
       },
       {
         "scope": [
           "variable.other.object.ts",
           "support.type.primitive.ts",
           "entity.other.inherited-class.ts",
-          "variable.language.relations.prisma"
+          "variable.language.relations.prisma",
         ],
         "settings": {
-          "foreground": "#9DA9B1"
-        }
+          "foreground": "#9DA9B1",
+        },
       },
       {
         "scope": [
           "constant.other.table-name.sql",
           "constant.other.database-name.sql",
-          "meta.embedded.block.sql"
+          "meta.embedded.block.sql",
         ],
         "settings": {
-          "foreground": "#BBBBBB"
-        }
+          "foreground": "#BBBBBB",
+        },
       },
       {
         "scope": [
           "entity.name.function.ts",
           "entity.name.type.ts",
           "punctuation.definition.string.end.sql",
-          "punctuation.definition.string.begin.sql"
+          "punctuation.definition.string.begin.sql",
         ],
         "settings": {
-          "foreground": "#E7A74D"
-        }
-      }
-    ]
+          "foreground": "#E7A74D",
+        },
+      },
+    ],
   },
   "background.enabled": true,
   "background.fullscreen": {
     "images": ["file:///Users/paulius/.dotfiles/code/images/retro_grid_7.jpg"],
     "opacity": 0.1,
     "size": "cover",
-    "position": "center"
+    "position": "center",
   },
 
   //* =========================== [EDITOR] ===================================
@@ -206,7 +209,7 @@
   "editor.minimap.showSlider": "always",
   "editor.quickSuggestions": {
     "other": "off",
-    "strings": "on"
+    "strings": "on",
   },
   "explorer.compactFolders": false,
   "makefile.configureOnOpen": false,
@@ -237,7 +240,7 @@
       "underline": false,
       "backgroundColor": "transparent",
       "bold": false,
-      "italic": false
+      "italic": false,
     },
     {
       "tag": "?",
@@ -246,7 +249,7 @@
       "underline": false,
       "backgroundColor": "transparent",
       "bold": false,
-      "italic": false
+      "italic": false,
     },
     {
       "tag": "//",
@@ -255,7 +258,7 @@
       "underline": false,
       "backgroundColor": "transparent",
       "bold": false,
-      "italic": false
+      "italic": false,
     },
     {
       "tag": "todo",
@@ -264,7 +267,7 @@
       "underline": false,
       "backgroundColor": "transparent",
       "bold": false,
-      "italic": false
+      "italic": false,
     },
     {
       "tag": "*",
@@ -273,8 +276,8 @@
       "underline": false,
       "backgroundColor": "transparent",
       "bold": false,
-      "italic": false
-    }
+      "italic": false,
+    },
   ],
 
   //* ============================ [VIM] =====================================
@@ -289,72 +292,72 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["c", "i", "e"],
-      "commands": []
+      "commands": [],
     },
     {
       "before": ["n"],
-      "after": ["n", "z", "z"]
+      "after": ["n", "z", "z"],
     },
     {
       "before": ["N"],
-      "after": ["N", "z", "z"]
+      "after": ["N", "z", "z"],
     },
     {
       "before": ["{"],
-      "after": ["{", "z", "z"]
+      "after": ["{", "z", "z"],
     },
     {
       "before": ["}"],
-      "after": ["}", "z", "z"]
+      "after": ["}", "z", "z"],
     },
     {
       "before": ["("],
-      "after": ["(", "z", "z"]
+      "after": ["(", "z", "z"],
     },
     {
       "before": [")"],
-      "after": [")", "z", "z"]
+      "after": [")", "z", "z"],
     },
     {
       "before": ["<C-u>"],
-      "after": ["2", "0", "k", "z", "z"]
+      "after": ["2", "0", "k", "z", "z"],
     },
     {
       "before": ["<C-d>"],
-      "after": ["2", "0", "j", "z", "z"]
+      "after": ["2", "0", "j", "z", "z"],
     },
     {
       "before": ["<leader>", "g", "b"],
-      "commands": []
+      "commands": [],
     },
     {
       "before": ["d", "a", "e"],
-      "commands": []
+      "commands": [],
     },
     {
       "before": ["g", "b"],
-      "commands": []
+      "commands": [],
     },
     {
       "before": ["p"],
-      "after": ["g", "p", "k", "w"]
+      "after": ["g", "p", "k", "w"],
     },
     {
       "before": ["P"],
-      "after": ["g", "P", "k", "w"]
+      "after": ["g", "P", "k", "w"],
     },
     {
       "before": ["<C-End>"],
-      "commands": [":noh"]
+      "commands": [":noh"],
     },
     {
       "before": ["<C-c>"],
-      "after": ["y", "i", "\""]
+      "after": ["y", "i", "\""],
     },
     {
       "before": ["<C-v>"],
-      "after": ["v", "i", "\"", "p"]
-    }
+      "after": ["v", "i", "\"", "p"],
+    },
   ],
 
   //* ============================ [GIT] =====================================
@@ -388,20 +391,20 @@
   "prettier.bracketSameLine": true,
   "eslint.codeActionsOnSave.rules": null,
   "files.associations": {
-    ".env": "properties"
+    ".env": "properties",
   },
   "[properties]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+    "editor.defaultFormatter": "foxundermoon.shell-format",
   },
   "[dotenv]": {
     "editor.defaultFormatter": "foxundermoon.shell-format",
-    "editor.semanticHighlighting.enabled": "configuredByTheme"
+    "editor.semanticHighlighting.enabled": "configuredByTheme",
   },
   "[prisma]": {
-    "editor.defaultFormatter": "Prisma.prisma"
+    "editor.defaultFormatter": "Prisma.prisma",
   },
   "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+    "editor.defaultFormatter": "foxundermoon.shell-format",
   },
   "shellformat.effectLanguages": [
     ".env",
@@ -415,7 +418,7 @@
     "properties",
     "spring-boot-properties",
     "azcli",
-    "bats"
+    "bats",
   ],
   "js/ts.preferences.importModuleSpecifier": "relative",
   "markdown.preview.markEditorSelection": false,
@@ -442,7 +445,7 @@
     "typeorm",
     "usecase",
     "usecases",
-    "vinted"
+    "vinted",
   ],
 
   //* ============================= [AI] ===================================
@@ -450,7 +453,7 @@
     "*": false,
     "plaintext": false,
     "markdown": false,
-    "scminput": false
+    "scminput": false,
   },
 
   "editor.inlineSuggest.enabled": true,
@@ -482,7 +485,7 @@
     "fileHistory": true,
     "repositories": true,
     "searchAndCompare": false,
-    "launchpad": false
+    "launchpad": false,
   },
   "window.newWindowProfile": "Default",
   "js/ts.updateImportsOnFileMove.enabled": "never",
@@ -498,7 +501,7 @@
   "git.showActionButton": {
     "commit": false,
     "publish": false,
-    "sync": false
+    "sync": false,
   },
   "git.showCommitInput": false,
   "github.showAvatar": false,
@@ -515,7 +518,7 @@
     "repositories": true,
     "fileHistory": false,
     "launchpad": false,
-    "searchAndCompare": false
+    "searchAndCompare": false,
   },
   "chat.agent.enabled": false,
   "telemetry.feedback.enabled": false,
@@ -524,15 +527,15 @@
   "notebook.experimental.generate": false,
   "editor.inlayHints.enabled": "off",
   "[snippets]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "vscode.json-language-features",
   },
   "sonarlint.rules": {
     "typescript:S1301": {
-      "level": "on"
+      "level": "on",
     },
     "typescript:S6440": {
-      "level": "off"
-    }
+      "level": "off",
+    },
   },
   "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
   "js/ts.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
@@ -555,10 +558,10 @@
   "tailwindCSS.includeLanguages": {
     "plaintext": "html",
     "typescript": "html",
-    "javascript": "html"
+    "javascript": "html",
   },
   "tailwindCSS.experimental.classRegex": [
-    ["`([^`]*)`", "(?:class)=\"([^\"]*)\""]
+    ["`([^`]*)`", "(?:class)=\"([^\"]*)\""],
   ],
   "githubPullRequests.codingAgent.enabled": false,
   "githubPullRequests.experimental.chat": false,
@@ -575,7 +578,7 @@
     "errorMessage": {},
     "warningMessage": {},
     "infoMessage": {},
-    "hintMessage": {}
+    "hintMessage": {},
   },
   "errorLens.fontSize": "14px",
   "errorLens.enabled": false,
@@ -585,20 +588,21 @@
   "supermaven.enableSuggestionHighlighting": false,
   "[go]": {
     "editor.defaultFormatter": "golang.go",
-    "editor.inlineSuggest.enabled": false
+    "editor.inlineSuggest.enabled": false,
   },
   "supermaven.enable": {
-    "*": true
+    "*": true,
   },
   "claudeCode.preferredLocation": "panel",
   "claudeCode.useTerminal": true,
   "terminal.integrated.defaultLocation": "view",
   "files.exclude": {
     "**.d.ts": true,
-    "Dermis-mobile/**": true
+    "Dermis-mobile/**": true,
   },
   "github.copilot.chat.claudeAgent.enabled": false,
   "git.blame.editorDecoration.enabled": false,
   "workbench.editor.enablePreview": false,
-  "todo-tree.ripgrep.ripgrep": "/opt/homebrew/bin/rg"
+  "todo-tree.ripgrep.ripgrep": "/opt/homebrew/bin/rg",
+  "terminal.integrated.minimumContrastRatio": 1,
 }

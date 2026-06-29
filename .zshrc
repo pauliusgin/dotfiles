@@ -1,7 +1,7 @@
 ############################################
 ########## EDITOR
 
-export EDITOR=nvim
+export EDITOR="code --wait"
 
 ############################################
 ########## PATH
@@ -29,6 +29,7 @@ export NVM_DIR="$HOME/.nvm"
 
 fpath=(~/.stripe $fpath)
 autoload -Uz compinit && compinit -i
+zmodload zsh/complist
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' list-prompt ''
@@ -36,11 +37,29 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*:directories' sort true
 zstyle ':completion:*' history-completion yes
 
+# vim-style navigation inside the completion menu
+bindkey -M menuselect '^k' up-line-or-history
+bindkey -M menuselect '^j' down-line-or-history
+bindkey -M menuselect '^h' backward-char
+bindkey -M menuselect '^l' forward-char
+
 ############################################
 ########## PLUGINS
 
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && \
     source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Tab: accept autosuggestion if one is showing, else normal completion menu
+function _smart_tab() {
+    if [[ -n "$POSTDISPLAY" ]]; then
+        zle autosuggest-accept
+    else
+        zle expand-or-complete
+    fi
+}
+zle -N _smart_tab
+bindkey '^I' _smart_tab
 
 ############################################
 ########## ALIASES
@@ -82,10 +101,6 @@ fi
 
 setopt PROMPT_SUBST
 export PROMPT='${COLOR_USR}%n%f ${COLOR_DIR}%2~%f ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}: '
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/paulius/.lmstudio/bin"
-# End of LM Studio CLI section
 
 ############################################
 ########## SYNTAX HIGHLIGHTING (must be last)
