@@ -37,6 +37,12 @@ zstyle ':completion:*:directories' sort true
 zstyle ':completion:*' history-completion yes
 
 ############################################
+########## PLUGINS
+
+[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && \
+    source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+############################################
 ########## ALIASES
 
 alias information="system_profiler SPSoftwareDataType SPHardwareDataType SPStorageDataType"
@@ -80,4 +86,10 @@ export PROMPT='${COLOR_USR}%n%f ${COLOR_DIR}%2~%f ${COLOR_GIT}$(parse_git_branch
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/paulius/.lmstudio/bin"
 # End of LM Studio CLI section
+
+############################################
+########## SYNTAX HIGHLIGHTING (must be last)
+
+[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
+    source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
