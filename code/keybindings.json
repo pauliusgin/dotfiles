@@ -532,11 +532,11 @@
     "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
   },
   {
-    "key": "ctrl+g c",
+    "key": "ctrl+g h",
     "command": "workbench.scm.history.focus",
   },
   {
-    "key": "space g c",
+    "key": "space g h",
     "command": "workbench.scm.history.focus",
     "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
   },
