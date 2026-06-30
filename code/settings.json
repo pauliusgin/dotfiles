@@ -601,7 +601,7 @@
     "Dermis-mobile/**": true,
   },
   "github.copilot.chat.claudeAgent.enabled": false,
-  "git.blame.editorDecoration.enabled": false,
+  "git.blame.editorDecoration.enabled": true,
   "workbench.editor.enablePreview": false,
   "todo-tree.ripgrep.ripgrep": "/opt/homebrew/bin/rg",
   "terminal.integrated.minimumContrastRatio": 1,
