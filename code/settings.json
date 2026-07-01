@@ -406,6 +406,9 @@
   "[makefile]": {
     "editor.defaultFormatter": "foxundermoon.shell-format",
   },
+  "[sql]": {
+    "editor.defaultFormatter": "mtxr.sqltools",
+  },
   "prettier.bracketSameLine": true,
   "eslint.codeActionsOnSave.rules": null,
   "files.associations": {
@@ -596,4 +599,9 @@
   "workbench.editor.enablePreview": false,
   "todo-tree.ripgrep.ripgrep": "/opt/homebrew/bin/rg",
   "terminal.integrated.minimumContrastRatio": 1,
+  "sqltools.format": {
+    "linesBetweenQueries": "preserve",
+    "language": "sql",
+    "reservedWordCase": "upper",
+  },
 }
