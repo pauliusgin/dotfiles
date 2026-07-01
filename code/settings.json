@@ -411,12 +411,12 @@
   "files.associations": {
     ".env": "properties",
   },
-  "[properties]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format",
-  },
   "[dotenv]": {
     "editor.defaultFormatter": "foxundermoon.shell-format",
     "editor.semanticHighlighting.enabled": "configuredByTheme",
+  },
+  "[properties]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format",
   },
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma",
