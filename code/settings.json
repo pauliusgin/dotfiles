@@ -367,13 +367,8 @@
   "git.inputValidation": true,
   "git.decorations.enabled": false,
   "git.suggestSmartCommit": false,
-  "gitlens.views.commits.files.layout": "list",
-  "gitlens.views.repositories.showContributors": false,
-  "gitlens.views.repositories.showWorktrees": false,
-  "gitlens.views.repositories.showTags": false,
   "githubPullRequests.fileListLayout": "flat",
   "githubPullRequests.pullBranch": "never",
-  "gitlens.views.repositories.files.layout": "tree",
   "window.density.editorTabHeight": "compact",
 
   //* ========================== [TERMINAL] ==================================
@@ -387,7 +382,30 @@
   "terminal.external.osxExec": "Kitty.app",
 
   //* ========================= [FORMATTING] =================================
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[gotmpl]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[makefile]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format",
+  },
   "prettier.bracketSameLine": true,
   "eslint.codeActionsOnSave.rules": null,
   "files.associations": {
@@ -457,7 +475,6 @@
   },
 
   "editor.inlineSuggest.enabled": true,
-  "gitlens.ai.enabled": false,
   "github.copilot.chat.agent.autoFix": false,
   "github.copilot.chat.agent.currentEditorContext.enabled": false,
   "github.copilot.chat.imageUpload.enabled": false,
@@ -474,19 +491,6 @@
   "todo-tree.highlights.enabled": false,
   "editor.renderLineHighlight": "none",
   "editor.lightbulb.enabled": "off",
-  "gitlens.views.scm.grouped.views": {
-    "commits": false,
-    "branches": true,
-    "remotes": true,
-    "stashes": true,
-    "tags": true,
-    "worktrees": true,
-    "contributors": true,
-    "fileHistory": true,
-    "repositories": true,
-    "searchAndCompare": false,
-    "launchpad": false,
-  },
   "window.newWindowProfile": "Default",
   "js/ts.updateImportsOnFileMove.enabled": "never",
   "chat.extensionTools.enabled": false,
@@ -507,19 +511,6 @@
   "github.showAvatar": false,
   "sonarlint.focusOnNewCode": false,
   "js/ts.preferGoToSourceDefinition": true,
-  "gitlens.views.scm.grouped.hiddenViews": {
-    "commits": false,
-    "worktrees": true,
-    "branches": true,
-    "remotes": false,
-    "stashes": false,
-    "tags": true,
-    "contributors": true,
-    "repositories": true,
-    "fileHistory": false,
-    "launchpad": false,
-    "searchAndCompare": false,
-  },
   "chat.agent.enabled": false,
   "telemetry.feedback.enabled": false,
   "editor.screenReaderAnnounceInlineSuggestion": false,
