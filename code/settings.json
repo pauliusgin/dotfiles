@@ -123,9 +123,11 @@
           "entity.name.section.markdown",
           "markup.bold.markdown",
           "keyword.other.definition.ini",
+          "keyword.other.sql",
+          "keyword.other.table.sql",
+          "keyword.other.create.sql",
           "keyword.other.DML.sql",
           "keyword.other.DDL.create.II.sql",
-          "keyword.other.sql",
         ],
         "settings": {
           "foreground": "#6796E6",
