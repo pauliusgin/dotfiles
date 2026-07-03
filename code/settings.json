@@ -407,7 +407,7 @@
     "editor.defaultFormatter": "foxundermoon.shell-format",
   },
   "[sql]": {
-    "editor.defaultFormatter": "mtxr.sqltools",
+    "editor.defaultFormatter": "ReneSaarsoo.sql-formatter-vsc",
   },
   "prettier.bracketSameLine": true,
   "eslint.codeActionsOnSave.rules": null,
@@ -441,6 +441,9 @@
     "azcli",
     "bats",
   ],
+  "SQL-Formatter-VSCode.dialect": "postgresql",
+  "SQL-Formatter-VSCode.identifierCase": "lower",
+  "SQL-Formatter-VSCode.keywordCase": "upper",
   "js/ts.preferences.importModuleSpecifier": "relative",
   "markdown.preview.markEditorSelection": false,
 
