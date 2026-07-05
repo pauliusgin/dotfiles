@@ -503,7 +503,6 @@
   "chat.extensionTools.enabled": false,
   "editor.smoothScrolling": true,
   "workbench.list.smoothScrolling": true,
-  "workbench.activityBar.location": "hidden",
   "terminal.integrated.smoothScrolling": true,
   "scm.alwaysShowRepositories": true,
   "scm.compactFolders": false,
@@ -610,4 +609,6 @@
   "git.enableStatusBarSync": false,
   "git.decorations.enabled": false,
   "vscode_custom_css.statusbar": false,
+  "github.copilot.chat.claude47OpusPrompt.enabled": false,
+  "workbench.activityBar.location": "hidden",
 }
