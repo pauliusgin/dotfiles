@@ -367,7 +367,6 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "git.openRepositoryInParentFolders": "never",
   "git.inputValidation": true,
-  "git.decorations.enabled": false,
   "git.suggestSmartCommit": false,
   "githubPullRequests.fileListLayout": "flat",
   "githubPullRequests.pullBranch": "never",
@@ -590,7 +589,7 @@
     "editor.inlineSuggest.enabled": false,
   },
   "supermaven.enable": {
-    "*": false
+    "*": false,
   },
   "claudeCode.preferredLocation": "panel",
   "claudeCode.useTerminal": true,
@@ -600,19 +599,15 @@
     "Dermis-mobile/**": true,
   },
   "github.copilot.chat.claudeAgent.enabled": false,
-  "git.blame.editorDecoration.enabled": true,
   "workbench.editor.enablePreview": false,
   "todo-tree.ripgrep.ripgrep": "/opt/homebrew/bin/rg",
   "terminal.integrated.minimumContrastRatio": 1,
-  "sqltools.format": {
-    "linesBetweenQueries": "preserve",
-    "language": "sql",
-    "reservedWordCase": "upper",
-  },
   "debug.showInStatusBar": "never",
   "terminal.integrated.suggest.showStatusBar": false,
   "notebook.showCellStatusBar": "hidden",
+  "git.blame.editorDecoration.enabled": true,
   "git.blame.statusBarItem.enabled": false,
   "git.enableStatusBarSync": false,
+  "git.decorations.enabled": false,
   "vscode_custom_css.statusbar": false,
 }
