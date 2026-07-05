@@ -609,4 +609,10 @@
     "language": "sql",
     "reservedWordCase": "upper",
   },
+  "debug.showInStatusBar": "never",
+  "terminal.integrated.suggest.showStatusBar": false,
+  "notebook.showCellStatusBar": "hidden",
+  "git.blame.statusBarItem.enabled": false,
+  "git.enableStatusBarSync": false,
+  "vscode_custom_css.statusbar": false,
 }
