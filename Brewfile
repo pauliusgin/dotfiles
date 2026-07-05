@@ -27,6 +27,7 @@ brew 'stripe/stripe-cli/stripe'
 brew 'tmux'
 brew 'tree-sitter'
 brew 'tree-sitter-cli'
+brew 'vsce'
 brew 'yarn'
 brew 'zsh'
 
