@@ -335,6 +335,11 @@
     "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus)",
   },
   {
+    "key": "space f l",
+    "command": "workbench.action.gotoLine",
+    "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus)",
+  },
+  {
     "key": "ctrl+e ctrl+right",
     "command": "workbench.action.increaseViewWidth",
     "when": "editorFocus",
@@ -1216,5 +1221,5 @@
   {
     "key": "ctrl+1",
     "command": "-workbench.action.openEditorAtIndex1",
-  }
+  },
 ]

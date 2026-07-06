@@ -611,4 +611,5 @@
   "vscode_custom_css.statusbar": false,
   "github.copilot.chat.claude47OpusPrompt.enabled": false,
   "workbench.activityBar.location": "hidden",
+  "editor.lineNumbers": "relative",
 }
