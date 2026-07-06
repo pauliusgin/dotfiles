@@ -335,7 +335,7 @@
     "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus)",
   },
   {
-    "key": "space f l",
+    "key": "space g l",
     "command": "workbench.action.gotoLine",
     "when": "vim.mode === 'Normal' && (editorTextFocus || !inputFocus)",
   },
