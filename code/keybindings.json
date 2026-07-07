@@ -1222,4 +1222,14 @@
     "key": "ctrl+1",
     "command": "-workbench.action.openEditorAtIndex1",
   },
+  {
+    "key": ".",
+    "command": "change-root.setAsRoot",
+    "when": "filesExplorerFocus && foldersViewVisible && !inputFocus",
+  },
+  {
+    "key": "backspace",
+    "command": "change-root.goToParentRoot",
+    "when": "filesExplorerFocus && foldersViewVisible && !inputFocus",
+  },
 ]
