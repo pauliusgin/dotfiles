@@ -615,4 +615,5 @@
   "github.copilot.chat.claude47OpusPrompt.enabled": false,
   "workbench.activityBar.location": "hidden",
   "editor.lineNumbers": "relative",
+  "terminal.integrated.persistentSessionReviveProcess": "onExitAndWindowClose",
 }
