@@ -1221,5 +1221,25 @@
   {
     "key": "ctrl+1",
     "command": "-workbench.action.openEditorAtIndex1",
+  },
+  {
+    "key": "shift+cmd+s shift+cmd+r",
+    "command": "change-root.setSelectionAsRoot",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+.",
+    "command": "-change-root.setSelectionAsRoot",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "shift+cmd+s shift+cmd+p",
+    "command": "change-root.setParentAsRoot",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+backspace",
+    "command": "-change-root.setParentAsRoot",
+    "when": "filesExplorerFocus && !inputFocus"
   }
 ]
