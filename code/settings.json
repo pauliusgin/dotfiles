@@ -79,9 +79,12 @@
           "punctuation.definition.comment.json",
           "punctuation.definition.comment.go",
           "comment.line.double-slash.ts",
+          "comment.block.ts",
+          "comment.block.documentation.ts",
           "comment.line.double-dash.sql",
           "comment.line.double-slash.js",
           "comment.line.double-slash.go",
+          "comment.block.go",
           "comment.line.number-sign.ini",
           "comment.line.number-sign.git-commit",
         ],
@@ -588,7 +591,7 @@
     "editor.inlineSuggest.enabled": false,
   },
   "supermaven.enable": {
-    "*": true
+    "*": true,
   },
   "claudeCode.preferredLocation": "panel",
   "claudeCode.useTerminal": true,
