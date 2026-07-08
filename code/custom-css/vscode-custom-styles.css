@@ -12,6 +12,18 @@
   font-size: 15px;
 }
 
+.pane-header {
+  background-color: #1f1f1f !important;
+}
+
+.pane-header > .title {
+  font-size: 13px !important;
+}
+
+.title-label h2 {
+  font-size: 13px !important;
+}
+
 /* TABS FONT SIZE */
 .monaco-workbench
   .part.editor
