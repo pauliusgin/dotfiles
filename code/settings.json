@@ -607,7 +607,7 @@
   "debug.showInStatusBar": "never",
   "terminal.integrated.suggest.showStatusBar": false,
   "notebook.showCellStatusBar": "hidden",
-  "git.blame.editorDecoration.enabled": true,
+  "git.blame.editorDecoration.enabled": false,
   "git.blame.statusBarItem.enabled": false,
   "git.enableStatusBarSync": false,
   "git.decorations.enabled": false,
