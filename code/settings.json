@@ -616,4 +616,5 @@
   "workbench.activityBar.location": "hidden",
   "editor.lineNumbers": "relative",
   "terminal.integrated.persistentSessionReviveProcess": "onExitAndWindowClose",
+  "SQL-Formatter-VSCode.paramTypes": {},
 }
