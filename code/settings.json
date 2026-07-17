@@ -392,10 +392,19 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[javacriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
   "[gotmpl]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[css]": {
@@ -474,7 +483,7 @@
     "typeorm",
     "usecase",
     "usecases",
-    "vinted"
+    "vinted",
   ],
 
   //* ============================= [AI] ===================================
@@ -592,7 +601,7 @@
     "editor.inlineSuggest.enabled": false,
   },
   "supermaven.enable": {
-    "*": false
+    "*": false,
   },
   "claudeCode.preferredLocation": "panel",
   "claudeCode.useTerminal": true,
@@ -613,7 +622,6 @@
   "git.enableStatusBarSync": false,
   "git.decorations.enabled": false,
   "vscode_custom_css.statusbar": false,
-  "github.copilot.chat.claude47OpusPrompt.enabled": false,
   "workbench.activityBar.location": "hidden",
   "editor.lineNumbers": "relative",
   "terminal.integrated.persistentSessionReviveProcess": "onExitAndWindowClose",
