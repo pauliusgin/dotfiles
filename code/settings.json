@@ -466,6 +466,7 @@
   "cSpell.languageSettings": [],
   "cSpell.userWords": [
     "Alpaka",
+    "amqp",
     "dotfiles",
     "easymotion",
     "esbenp",
@@ -483,7 +484,7 @@
     "typeorm",
     "usecase",
     "usecases",
-    "vinted",
+    "vinted"
   ],
 
   //* ============================= [AI] ===================================
