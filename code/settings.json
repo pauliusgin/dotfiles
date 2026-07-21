@@ -484,7 +484,7 @@
     "typeorm",
     "usecase",
     "usecases",
-    "vinted"
+    "vinted",
   ],
 
   //* ============================= [AI] ===================================
@@ -634,6 +634,6 @@
     "mailto",
     "vscode",
     "vscode-insiders",
-    "docker-desktop"
+    "docker-desktop",
   ],
 }
