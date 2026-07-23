@@ -1,0 +1,21 @@
+onboarding = false
+
+[theme]
+name = "terminal"
+auto_switch = false
+
+[ui]
+agent_panel_sort = "spaces"
+show_agent_labels_on_pane_borders = true
+
+[ui.toast]
+delivery = "system"
+
+[keys]
+prefix = "ctrl+h"
+
+new_workspace = "prefix+n"
+close_workspace = "prefix+c"
+previous_workspace = "ctrl+shift+{"
+next_workspace = "ctrl+shift+}"
+split_vertical = "prefix+\\"

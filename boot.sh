@@ -29,6 +29,7 @@ mkdir $HOME/Coding
 mkdir $HOME/Pictures/Wallpapers
 mkdir $HOME/.config
 mkdir $HOME/.config/nvim
+mkdir $HOME/.config/herdr
 mkdir $HOME/.vscode
 mkdir $HOME/.vscode/extensions
 mkdir $HOME/.claude
@@ -50,6 +51,7 @@ ln -swf $HOME/.dotfiles/code/settings.json $HOME/Library/Application\ Support/Co
 ln -swfh $HOME/.dotfiles/code/snippets $HOME/Library/Application\ Support/Code/User/snippets
 ln -swfh $HOME/.dotfiles/karabiner $HOME/.config/karabiner
 ln -swfh $HOME/.dotfiles/zed $HOME/.config/zed
+ln -swf $HOME/.dotfiles/herdr/config.toml $HOME/.config/herdr/config.toml
 ln -swf $HOME/.dotfiles/.cspell.json $HOME/.cspell.json
 ln -swf $HOME/.dotfiles/agents/AGENTS.md $HOME/AGENTS.md
 ln -swf $HOME/.dotfiles/agents/AGENTS.md $HOME/.claude/CLAUDE.md
