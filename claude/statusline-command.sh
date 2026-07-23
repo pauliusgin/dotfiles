@@ -27,11 +27,6 @@ ctx_input=$(echo "$input" | jq -r '.context_window.current_usage.input_tokens //
 ctx_cache_read=$(echo "$input" | jq -r '.context_window.current_usage.cache_read_input_tokens // 0')
 ctx_cache_write=$(echo "$input" | jq -r '.context_window.current_usage.cache_creation_input_tokens // 0')
 ctx_output=$(echo "$input" | jq -r '.context_window.current_usage.output_tokens // 0')
-ctx_window_size=$(echo "$input" | jq -r '.context_window.context_window_size // 0')
-
-# Total input tokens in session (cumulative, for 5h/7d approximation)
-total_input=$(echo "$input" | jq -r '.context_window.total_input_tokens // 0')
-total_output=$(echo "$input" | jq -r '.context_window.total_output_tokens // 0')
 
 # Model
 model_name=$(echo "$input" | jq -r '.model.display_name // empty')
