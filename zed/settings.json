@@ -1,0 +1,127 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "colorize_brackets": true,
+  "cli_default_open_behavior": "existing_window",
+  "proxy": "",
+  "icon_theme": "Zed (Default)",
+  "outline_panel": {
+    "dock": "left",
+  },
+  "agent": {
+    "sidebar_side": "right",
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "edit_predictions": {
+    "provider": "zed",
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": false,
+    },
+  },
+  "minimum_contrast_for_highlights": 5.0,
+  "toolbar": {
+    "breadcrumbs": true,
+  },
+  "search": {
+    "button": true,
+  },
+  "diagnostics": {
+    "button": true,
+  },
+  "terminal": {
+    "blinking": "on",
+    "minimum_contrast": 5.0,
+    "button": false,
+  },
+  "use_smartcase_search": true,
+  "prettier": {
+    "allowed": true,
+  },
+  "format_on_save": "off",
+  "hover_popover_enabled": false,
+  "cursor_shape": "block",
+  "show_completion_documentation": false,
+  "show_completions_on_input": true,
+  "disable_ai": true,
+  "base_keymap": "VSCode",
+  "vim_mode": true,
+  "buffer_font_size": 16,
+  "buffer_font_family": "Terminus (TTF)",
+  "buffer_line_height": {
+    "custom": 1.100000023841858
+  },
+  "ui_font_family": "Terminus (TTF)",
+  "ui_font_weight": 400,
+  "ui_font_size": 18,
+
+  "project_panel": {
+    "sort_mode": "directories_first",
+    "hide_root": false,
+    "drag_and_drop": true,
+    "indent_guides": {
+      "show": "never",
+    },
+    "sticky_scroll": false,
+    "scrollbar": {
+      "show": "never",
+    },
+    "starts_open": false,
+    "auto_reveal_entries": true,
+    "indent_size": 8.0,
+    "git_status": true,
+    "folder_icons": true,
+    "file_icons": true,
+    "entry_spacing": "standard",
+    "default_width": 300.0,
+    "auto_fold_dirs": false,
+    "dock": "right",
+  },
+  "collaboration_panel": {
+    "button": false,
+    "dock": "right",
+    "default_width": 240,
+  },
+  "git_panel": {
+    "button": false,
+    "dock": "right",
+    "default_width": 300,
+    "status_style": "icon",
+    "fallback_branch_name": "main",
+    "sort_by_path": false,
+    "collapse_untracked_diff": false,
+    "scrollbar": {},
+  },
+  "theme": "Basic",
+  "theme_overrides": {
+    "VSCode Dark Modern": {
+      "panel.background": "#1f1f1f",
+      "terminal.background": "#1f1f1f",
+      "scrollbar.track.background": "#1f1f1f",
+      "status_bar.background": "#1f1f1f",
+      "toolbar.background": "#1f1f1f",
+      "title_bar.background": "#1f1f1f",
+      "tab_bar.background": "#1f1f1f",
+    },
+  },
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "preferences": {
+            "importModuleSpecifier": "relative",
+          },
+        },
+      },
+    },
+  },
+}

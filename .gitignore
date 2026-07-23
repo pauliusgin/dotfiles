@@ -1,4 +1,7 @@
 .DS_Store
 .DS_Store?
-undo/
-
+nvim/undo/
+karabiner/automatic_backups/
+kitty/*.bak
+zed/conversations/
+zed/prompts/

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>521.1</string>
+	<string>526</string>
 	<key>AMApplicationVersion</key>
 	<string>2.10</string>
 	<key>AMDocumentVersion</key>
@@ -73,7 +73,7 @@
 				<key>Class Name</key>
 				<string>AMOpenFinderItems</string>
 				<key>InputUUID</key>
-				<string>5C729252-C8D5-4BD7-BDEE-350F553F97A6</string>
+				<string>3CF10EAA-B45D-4108-9DF5-C50A7341467F</string>
 				<key>Keywords</key>
 				<array>
 					<string>Open</string>
@@ -81,9 +81,9 @@
 					<string>File</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>30B31B78-908F-423E-8C5B-A96D8A5D097A</string>
+				<string>71C90D8A-CABE-413C-8643-2878E166686A</string>
 				<key>UUID</key>
-				<string>3134F8BD-33FF-447E-BBCB-3F890CD69443</string>
+				<string>55FAC91C-DA6C-4F63-8531-F7C30E14349B</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Finder</string>
@@ -134,8 +134,6 @@
 		<array>
 			<string>/System/Library/CoreServices/Finder.app</string>
 		</array>
-		<key>backgroundColorName</key>
-		<string>blackColor</string>
 		<key>inputTypeIdentifier</key>
 		<string>com.apple.Automator.fileSystemObject</string>
 		<key>outputTypeIdentifier</key>
@@ -143,7 +141,7 @@
 		<key>presentationMode</key>
 		<integer>15</integer>
 		<key>processesInput</key>
-		<integer>0</integer>
+		<false/>
 		<key>serviceApplicationBundleID</key>
 		<string>com.apple.finder</string>
 		<key>serviceApplicationPath</key>
@@ -153,11 +151,11 @@
 		<key>serviceOutputTypeIdentifier</key>
 		<string>com.apple.Automator.nothing</string>
 		<key>serviceProcessesInput</key>
-		<integer>0</integer>
+		<false/>
 		<key>systemImageName</key>
 		<string>NSActionTemplate</string>
 		<key>useAutomaticInputType</key>
-		<integer>0</integer>
+		<false/>
 		<key>workflowTypeIdentifier</key>
 		<string>com.apple.Automator.servicesMenu</string>
 	</dict>

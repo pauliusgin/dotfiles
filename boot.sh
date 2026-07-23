@@ -29,16 +29,16 @@ mkdir $HOME/Coding
 mkdir $HOME/Pictures/Wallpapers
 mkdir $HOME/.config
 mkdir $HOME/.config/nvim
-mkdir $HOME/.config/kitty
 mkdir $HOME/.vscode
 mkdir $HOME/.vscode/extensions
 mkdir $HOME/.claude
 mkdir $HOME/.warp
 mkdir $HOME/.warp/themes
+mkdir $HOME/Library/Services
 
 # Symlinks
 ln -swf $HOME/.dotfiles/.zshrc $HOME/.zshrc
-ln -swf $HOME/.dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
+ln -swfh $HOME/.dotfiles/kitty $HOME/.config/kitty
 ln -swf $HOME/.dotfiles/nvim/init.lua $HOME/.config/nvim/init.lua
 ln -swf $HOME/.dotfiles/nvim/keybindings.lua $HOME/.config/nvim/keybindings.lua
 ln -swf $HOME/.dotfiles/nvim/settings.lua $HOME/.config/nvim/settings.lua
@@ -47,10 +47,9 @@ ln -swf $HOME/.dotfiles/.gitconfig $HOME/.gitconfig
 ln -swf $HOME/.dotfiles/code/extensions.json $HOME/.vscode/extensions/extensions.json
 ln -swf $HOME/.dotfiles/code/keybindings.json $HOME/Library/Application\ Support/Code/User/keybindings.json
 ln -swf $HOME/.dotfiles/code/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
-ln -swf $HOME/.dotfiles/code/snippets/typescript.json $HOME/Library/Application\ Support/Code/User/snippets/typescript.json
-ln -swf $HOME/.dotfiles/code/snippets/markdown.json $HOME/Library/Application\ Support/Code/User/snippets/markdown.json
-ln -swf $HOME/.dotfiles/code/snippets/css.json $HOME/Library/Application\ Support/Code/User/snippets/css.json
-ln -swf $HOME/.dotfiles/code/snippets/scss.json $HOME/Library/Application\ Support/Code/User/snippets/scss.json
+ln -swfh $HOME/.dotfiles/code/snippets $HOME/Library/Application\ Support/Code/User/snippets
+ln -swfh $HOME/.dotfiles/karabiner $HOME/.config/karabiner
+ln -swfh $HOME/.dotfiles/zed $HOME/.config/zed
 ln -swf $HOME/.dotfiles/.cspell.json $HOME/.cspell.json
 ln -swf $HOME/.dotfiles/agents/AGENTS.md $HOME/AGENTS.md
 ln -swf $HOME/.dotfiles/agents/AGENTS.md $HOME/.claude/CLAUDE.md
@@ -61,6 +60,9 @@ ln -swf $HOME/.dotfiles/warp/settings.toml $HOME/.warp/settings.toml
 ln -swf $HOME/.dotfiles/warp/keybindings.yaml $HOME/.warp/keybindings.yaml
 ln -swf $HOME/.dotfiles/warp/themes/gattsu.yaml $HOME/.warp/themes/gattsu.yaml
 cp $HOME/.dotfiles/warp/themes/gattsu.png $HOME/.warp/themes/gattsu.png
+
+# Finder Quick Actions - copied, not symlinked (see mac/INSTRUCTIONS.md)
+cp -R $HOME/.dotfiles/mac/Open\ in\ Visual\ Studio\ Code.workflow $HOME/Library/Services/
 
 #Npm packs
 npm i -g cspell @cspell/dict-lt-lt @cspell/dict-lua eslint prettier typescript typescript-language-server ts-node

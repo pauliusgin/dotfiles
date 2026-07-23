@@ -1,0 +1,16 @@
+{
+	"console.log()": {
+		"prefix": "cl",
+		"body": [
+			"console.log('$1 ----->', $2);"
+		],
+		"description": "Create a console.log"
+	},
+	"console.log() with string literal": {
+		"prefix": "cll",
+		"body": [
+			"console.log(`$0`);"
+		],
+		"description": "Create a console.log with string literal"
+	},
+}

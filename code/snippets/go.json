@@ -1,0 +1,16 @@
+{
+	"Print line": {
+		"prefix": "pln",
+		"body": [
+			"fmt.Println(\"$1 ----->\", $2)",
+		],
+		"description": "Log output on a new line"
+	},
+	"Print formatted": {
+		"prefix": "pf",
+		"body": [
+			"fmt.Printf(\"$1 -----> %v\", $2)",
+		],
+		"description": "Log formatted output"
+	}
+}
