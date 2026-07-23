@@ -1,0 +1,30 @@
+# icon
+macos-icon = chalkboard
+
+# Minimal macOS titlebar for cleaner appearance
+macos-titlebar-style = "hidden"
+macos-titlebar-proxy-icon = "hidden"
+window-padding-y = 10,10
+window-padding-x = 10,10
+
+# background
+background = #1E1E1E
+background-image = /Users/paulius/.dotfiles/wallpaper/gattsu.png
+background-image-fit = contain
+
+# font
+font-family = Terminus (TTF)
+font-size = 16
+
+# mouse
+mouse-hide-while-typing = true
+
+# keybindings
+keybind = ctrl+option+cmd+r=reload_config
+keybind = ctrl+\=new_split:right
+keybind = ctrl+-=new_split:down
+
+keybind = unconsumed:ctrl+k=goto_split:top
+keybind = unconsumed:ctrl+j=goto_split:bottom
+keybind = unconsumed:ctrl+h=goto_split:left
+keybind = unconsumed:ctrl+l=goto_split:right

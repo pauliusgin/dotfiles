@@ -40,6 +40,7 @@ mkdir $HOME/Library/Services
 # Symlinks
 ln -swf $HOME/.dotfiles/.zshrc $HOME/.zshrc
 ln -swfh $HOME/.dotfiles/kitty $HOME/.config/kitty
+ln -swfh $HOME/.dotfiles/ghostty $HOME/Library/Application\ Support/com.mitchellh.ghostty
 ln -swf $HOME/.dotfiles/nvim/init.lua $HOME/.config/nvim/init.lua
 ln -swf $HOME/.dotfiles/nvim/keybindings.lua $HOME/.config/nvim/keybindings.lua
 ln -swf $HOME/.dotfiles/nvim/settings.lua $HOME/.config/nvim/settings.lua
