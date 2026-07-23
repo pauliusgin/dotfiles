@@ -1,30 +1,45 @@
-# icon
+# ICON
 macos-icon = chalkboard
 
 # Minimal macOS titlebar for cleaner appearance
-macos-titlebar-style = "hidden"
-macos-titlebar-proxy-icon = "hidden"
+# macos-titlebar-style = "hidden"
+# macos-titlebar-proxy-icon = "hidden"
 window-padding-y = 10,10
 window-padding-x = 10,10
 
-# background
+# BACKGROUND
 background = #1E1E1E
 background-image = /Users/paulius/.dotfiles/wallpaper/gattsu.png
 background-image-fit = contain
 
-# font
+# FONT
 font-family = Terminus (TTF)
 font-size = 16
 
-# mouse
+# MOUSE
 mouse-hide-while-typing = true
 
-# keybindings
+# keyBINDINGS
+# splits
 keybind = ctrl+option+cmd+r=reload_config
 keybind = ctrl+\=new_split:right
 keybind = ctrl+-=new_split:down
+
+keybind = ctrl+shift+up=resize_split:up,10
+keybind = ctrl+shift+down=resize_split:down,10
+keybind = ctrl+shift+left=resize_split:left,10
+keybind = ctrl+shift+right=resize_split:right,10
+keybind = ctrl+shift+/=equalize_splits
 
 keybind = unconsumed:ctrl+k=goto_split:top
 keybind = unconsumed:ctrl+j=goto_split:bottom
 keybind = unconsumed:ctrl+h=goto_split:left
 keybind = unconsumed:ctrl+l=goto_split:right
+
+# tabs
+keybind = cmd+[=previous_tab
+keybind = cmd+]=next_tab
+keybind = cmd+shift+]=move_tab:1
+keybind = cmd+shift+[=move_tab:-1
+
+
