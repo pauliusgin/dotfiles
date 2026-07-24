@@ -35,14 +35,43 @@ local prettierFiletypes = {
     vue = true,
     yaml = true,
 }
+-- True when an attached LSP client can format the current buffer.
+local function hasLspFormatter()
+    for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+        if client:supports_method("textDocument/formatting") then
+            return true
+        end
+    end
+    return false
+end
+
 local function formatBuffer()
+    -- Prettier has no Go support, so gopls (gofmt) formats Go buffers.
+    if vim.bo.filetype == "go" then
+        vim.lsp.buf.format({ async = false })
+        vim.cmd("normal! zz")
+        vim.notify("gopls", vim.log.levels.INFO)
+        return
+    end
+
     if prettierFiletypes[vim.bo.filetype] then
         vim.cmd("silent Prettier")
-    else
-        vim.notify("Prettier: unsupported file, using native linter instead", vim.log.levels.WARN)
-        vim.cmd("silent normal! gg=G``")
+        vim.cmd("normal! zz")
+        vim.notify("Prettier", vim.log.levels.INFO)
+        return
     end
+
+    if hasLspFormatter() then
+        vim.lsp.buf.format({ async = false })
+        vim.cmd("normal! zz")
+        vim.notify("vim.lsp", vim.log.levels.INFO)
+        return
+    end
+
+    -- Nothing better available: Vim's built-in indent, not a real formatter.
+    vim.cmd("silent normal! gg=G``")
     vim.cmd("normal! zz")
+    vim.notify("vim indent", vim.log.levels.WARN)
 end
 local function formatAndSave()
     formatBuffer()
@@ -214,6 +243,23 @@ vim.keymap.set("n", "<leader>gB", function()
         end
     end
     require("gitsigns").blame()
+end, keymapOptions)
+
+--* =========================== [AI TOOLS] =================================
+
+-- Toggle Supermaven completions on/off (lualine shows the current state).
+vim.keymap.set("n", "<leader>sm", function()
+    local ok, supermaven = pcall(require, "supermaven-nvim.api")
+    if not ok then
+        vim.notify("Supermaven is not loaded", vim.log.levels.WARN)
+        return
+    end
+    supermaven.toggle()
+    local state = "off"
+    if supermaven.is_running() then
+        state = "on"
+    end
+    vim.notify("Supermaven " .. state, vim.log.levels.INFO)
 end, keymapOptions)
 
 --* ========================= [DIAGNOSTICS] ================================

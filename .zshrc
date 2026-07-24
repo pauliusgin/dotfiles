@@ -48,15 +48,15 @@ bindkey -M menuselect '^l' forward-char
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && \
-    source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Tab: accept autosuggestion if one is showing, else normal completion menu
 function _smart_tab() {
-    if [[ -n "$POSTDISPLAY" ]]; then
-        zle autosuggest-accept
-    else
-        zle expand-or-complete
-    fi
+if [[ -n "$POSTDISPLAY" ]]; then
+zle autosuggest-accept
+else
+zle expand-or-complete
+fi
 }
 zle -N _smart_tab
 bindkey '^I' _smart_tab
@@ -68,35 +68,35 @@ alias information="system_profiler SPSoftwareDataType SPHardwareDataType SPStora
 alias nvcon="nvim ~/.config/nvim/init.lua"
 
 function ask() {
-    local model="qwen2.5-coder:7b"
-    if [[ "$1" == "-m" ]]; then
-        model="qwen2.5-coder:14b"
-        shift
-    fi
-    ollama run "$model" $*
+local model="qwen2.5-coder:7b"
+if [[ "$1" == "-m" ]]; then
+model="qwen2.5-coder:14b"
+shift
+fi
+ollama run "$model" $*
 }
 
 function agentsinit() {
-    touch AGENTS.md && ln -s AGENTS.md CLAUDE.md && ls -l AGENTS.md CLAUDE.md
+touch AGENTS.md && ln -s AGENTS.md CLAUDE.md && ls -l AGENTS.md CLAUDE.md
 }
 
 ############################################
 ########## PROMPT
 
 function parse_git_branch() {
-    git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
+git branch 2>/dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
 }
 
 if [ "$COLORTERM" = "truecolor" ] || [ "$TERM_PROGRAM" = "iTerm.app" ]; then
-    COLOR_DEF=$'%f'
-    COLOR_USR=$'%F{#97CCF1}'
-    COLOR_DIR=$'%F{#FCB650}'
-    COLOR_GIT=$'%F{#E15A60}'
+COLOR_DEF=$'%f'
+COLOR_USR=$'%F{#97CCF1}'
+COLOR_DIR=$'%F{#FCB650}'
+COLOR_GIT=$'%F{#E15A60}'
 else
-    COLOR_DEF=$'%f'
-    COLOR_USR=$'%F{75}'
-    COLOR_DIR=$'%F{222}'
-    COLOR_GIT=$'%F{124}'
+COLOR_DEF=$'%f'
+COLOR_USR=$'%F{75}'
+COLOR_DIR=$'%F{222}'
+COLOR_GIT=$'%F{124}'
 fi
 
 setopt PROMPT_SUBST
@@ -106,5 +106,5 @@ export PROMPT='${COLOR_USR}%n%f ${COLOR_DIR}%2~%f ${COLOR_GIT}$(parse_git_branch
 ########## SYNTAX HIGHLIGHTING (must be last)
 
 [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
-    source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

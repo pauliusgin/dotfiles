@@ -761,8 +761,9 @@
   //* ============================= [AI TOOLS] ===================================
 
   {
-    "key": "ctrl+alt+cmd+s",
+    "key": "space s m",
     "command": "supermaven.toggle",
+    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus)",
   },
   {
     "key": "ctrl+j",
