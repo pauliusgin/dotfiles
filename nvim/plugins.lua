@@ -480,6 +480,26 @@ require("lazy").setup({
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function()
+            -- VSCode-style path breadcrumb rendered in the winbar (top of window).
+            local function breadcrumb()
+                if vim.bo.buftype ~= "" then
+                    return ""
+                end
+
+                local absolutePath = vim.fn.expand("%:p")
+                if absolutePath == "" then
+                    return ""
+                end
+
+                local relativePath = vim.fn.fnamemodify(absolutePath, ":.")
+
+                if vim.bo.modified then
+                    return relativePath .. " ●"
+                end
+
+                return relativePath
+            end
+
             local function supermaven_status()
                 local ok, listener = pcall(require, "supermaven-nvim.completion_preview")
                 if not ok then
@@ -500,7 +520,12 @@ require("lazy").setup({
                     section_separators = { left = '', right = ''},
                     disabled_filetypes = {
                         statusline = {},
-                        winbar = {},
+                        winbar = {
+                            "neo-tree",
+                            "NeogitStatus",
+                            "NeogitPopup",
+                            "NeogitCommitMessage",
+                        },
                     },
                     ignore_focus = {},
                     always_divide_middle = true,
@@ -533,8 +558,16 @@ require("lazy").setup({
                     lualine_z = {}
                 },
                 tabline = {},
-                winbar = {},
-                inactive_winbar = {},
+                winbar = {
+                    lualine_c = {
+                        { breadcrumb, color = "LineNr" },
+                    },
+                },
+                inactive_winbar = {
+                    lualine_c = {
+                        { breadcrumb, color = "LineNr" },
+                    },
+                },
                 extensions = {}
             }
         end
