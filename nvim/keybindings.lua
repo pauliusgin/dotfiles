@@ -154,8 +154,9 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", keymapOptions)
 vim.keymap.set("n", "<C-l>", "<C-w>l", keymapOptions)
 
 --* ============================ [GIT] =====================================
-vim.keymap.set("n", "<leader>gg", ":CodeDiff<CR>", keymapOptions)
-vim.keymap.set("n", "<leader>gh", ":CodeDiff history<CR>", keymapOptions)
+vim.keymap.set("n", "<leader>gg", ":Neogit<CR>", keymapOptions)
+vim.keymap.set("n", "<leader>gh", ":Neogit log<CR>", keymapOptions)
+vim.keymap.set("n", "<leader>gc", ":Neogit commit<CR>", keymapOptions)
 vim.keymap.set("n", "<leader>gb", function()
     require("gitsigns").toggle_current_line_blame()
 end, keymapOptions)

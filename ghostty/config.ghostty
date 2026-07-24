@@ -19,7 +19,7 @@ font-size = 16
 # MOUSE
 mouse-hide-while-typing = true
 
-# keyBINDINGS
+# KEYBINDINGS
 # splits
 keybind = ctrl+option+cmd+r=reload_config
 keybind = ctrl+\=new_split:right
@@ -30,6 +30,7 @@ keybind = ctrl+shift+down=resize_split:down,10
 keybind = ctrl+shift+left=resize_split:left,10
 keybind = ctrl+shift+right=resize_split:right,10
 keybind = ctrl+shift+/=equalize_splits
+keybind = ctrl+shift+m=toggle_split_zoom
 
 keybind = unconsumed:ctrl+k=goto_split:top
 keybind = unconsumed:ctrl+j=goto_split:bottom
@@ -41,5 +42,6 @@ keybind = cmd+[=previous_tab
 keybind = cmd+]=next_tab
 keybind = cmd+shift+]=move_tab:1
 keybind = cmd+shift+[=move_tab:-1
+
 
 

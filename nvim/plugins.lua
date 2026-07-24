@@ -692,6 +692,7 @@ require("lazy").setup({
 
     -- {{{ codediff.nvim
     -- Fast, VSCode-like diff viewer for git changes, history, and merges
+    -- Used as neogit's diff viewer (see integrations below)
     -- https://github.com/esmuellert/codediff.nvim
 
     {
@@ -790,27 +791,29 @@ require("lazy").setup({
     },
     -- }}}
 
-    -- {{{ Kanagawa.nvim | colorscheme
-    -- NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika Hokusai.
-    -- https://github.com/rebelot/kanagawa.nvim
+    -- {{{ neogit
+    -- Magit-like git interface for Neovim
+    -- https://github.com/NeogitOrg/neogit
 
     {
-        "rebelot/kanagawa.nvim",
+        "NeogitOrg/neogit",
+        cmd = "Neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "esmuellert/codediff.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
         config = function()
-            require("kanagawa").setup({
-                transparent = true,
-                terminalColors = true,
-                colors = {
-                    theme = {
-                        all = {
-                            ui = {
-                                bg_gutter = "none",
-                            },
-                        },
-                    },
+            require("neogit").setup({
+                kind = "tab",           -- Open status buffer in a new tab
+                graph_style = "unicode",
+                diff_viewer = "codediff",
+                integrations = {
+                    codediff = true,
+                    diffview = false,
+                    telescope = true,
                 },
             })
-            vim.cmd("colorscheme minimal-fedu")
         end,
     }
     -- }}}
