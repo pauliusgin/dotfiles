@@ -154,7 +154,51 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", keymapOptions)
 vim.keymap.set("n", "<C-l>", "<C-w>l", keymapOptions)
 
 --* ============================ [GIT] =====================================
-vim.keymap.set("n", "<leader>gg", ":Neogit<CR>", keymapOptions)
+-- Tabs holding a Neogit status buffer or a CodeDiff view/explorer.
+local function gitUiTabs()
+    local tabs = {}
+    for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
+        for _, win in ipairs(vim.api.nvim_tabpage_list_wins(tab)) do
+            local buffer = vim.api.nvim_win_get_buf(win)
+            local filetype = vim.bo[buffer].filetype
+            local isGitUi = filetype:match("^Neogit")
+                or filetype:match("^codediff")
+                or vim.api.nvim_buf_get_name(buffer):match("^codediff:")
+            if isGitUi then
+                table.insert(tabs, vim.api.nvim_tabpage_get_number(tab))
+                break
+            end
+        end
+    end
+    return tabs
+end
+
+-- Toggle Neogit: on open, immediately fire "dd" (diff popup -> diff worktree)
+-- so we land in the CodeDiff explorer instead of the plain status buffer.
+vim.keymap.set("n", "<leader>gg", function()
+    local openTabs = gitUiTabs()
+    if #openTabs > 0 then
+        -- Close highest tab number first so the earlier numbers stay valid.
+        table.sort(openTabs, function(a, b)
+            return a > b
+        end)
+        for _, tab in ipairs(openTabs) do
+            vim.cmd(tab .. "tabclose")
+        end
+        return
+    end
+
+    vim.api.nvim_create_autocmd("User", {
+        pattern = "NeogitStatusRefreshed",
+        once = true,
+        callback = function()
+            vim.schedule(function()
+                vim.api.nvim_feedkeys("dd", "m", false)
+            end)
+        end,
+    })
+    require("neogit").open()
+end, keymapOptions)
 vim.keymap.set("n", "<leader>gh", ":Neogit log<CR>", keymapOptions)
 vim.keymap.set("n", "<leader>gc", ":Neogit commit<CR>", keymapOptions)
 vim.keymap.set("n", "<leader>gb", function()

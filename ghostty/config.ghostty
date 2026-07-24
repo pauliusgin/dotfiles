@@ -42,6 +42,3 @@ keybind = cmd+[=previous_tab
 keybind = cmd+]=next_tab
 keybind = cmd+shift+]=move_tab:1
 keybind = cmd+shift+[=move_tab:-1
-
-
-
