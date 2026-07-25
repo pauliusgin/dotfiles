@@ -80,6 +80,16 @@ function agentsinit() {
 touch AGENTS.md && ln -s AGENTS.md CLAUDE.md && ls -l AGENTS.md CLAUDE.md
 }
 
+to64() {
+pbpaste | base64 | tr -d '\n' | pbcopy
+echo "Encoded to base64."
+}
+
+from64() {
+pbpaste | base64 -d | pbcopy
+echo "Decoded base64"
+}
+
 ############################################
 ########## PROMPT
 
