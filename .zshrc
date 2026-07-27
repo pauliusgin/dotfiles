@@ -73,7 +73,11 @@ if [[ "$1" == "-m" ]]; then
 model="qwen2.5-coder:14b"
 shift
 fi
-ollama run "$model" $*
+if (( $# == 0 )); then
+ollama run "$model"
+else
+ollama run "$model" "$*"
+fi
 }
 
 function agentsinit() {
