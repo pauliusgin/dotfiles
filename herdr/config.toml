@@ -12,10 +12,11 @@ show_agent_labels_on_pane_borders = true
 delivery = "system"
 
 [keys]
-prefix = "ctrl+h"
+prefix = "ctrl+s"
 
 new_workspace = "prefix+n"
 close_workspace = "prefix+c"
-previous_workspace = "ctrl+shift+{"
-next_workspace = "ctrl+shift+}"
+previous_workspace = "prefix+{"
+next_workspace = "prefix+}"
 split_vertical = "prefix+\\"
+split_horizontal = "prefix+-"
