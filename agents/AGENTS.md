@@ -47,10 +47,3 @@ For any factual, non-trivial claim:
 6. For APIs, libraries, or CLI usage:
    - Prefer official documentation or source code links
    - Include version-specific notes when relevant
-
-### Skills
-
-- Skills in `~/.claude/skills/` are organized into subdirectories (e.g., `work/`, `personal/`). Each skill has a symlink at the top level of `~/.claude/skills/` so Claude Code can discover it. When adding a new skill, always create the symlink:
-  ```
-  ln -s ~/.claude/skills/<category>/<skill-name> ~/.claude/skills/<skill-name>
-  ```
