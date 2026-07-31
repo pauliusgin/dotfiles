@@ -882,7 +882,7 @@
   {
     "key": "space m d",
     "command": "markdown.showPreviewToSide",
-    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus) && !notebookEditorFocused && editorLangId == 'markdown'",
+    "when": "vim.mode !== 'Insert' && (editorTextFocus || !inputFocus) && !notebookEditorFocused && resourceExtname == '.md'",
   },
   {
     "key": "ctrl+shift+,",
