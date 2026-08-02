@@ -45,6 +45,31 @@ local function hasLspFormatter()
     return false
 end
 
+-- vim-prettier's own resolver returns -1 (a number) when no local prettier exists,
+-- then feeds it to executable() -> E1174. Resolve the path ourselves instead:
+-- nearest node_modules/.bin/prettier, else the global one.
+local function resolvePrettierPath()
+    local startDir = vim.fn.expand("%:p:h")
+    if startDir == "" then
+        startDir = vim.fn.getcwd()
+    end
+
+    local dir = startDir
+    while dir do
+        local candidate = dir .. "/node_modules/.bin/prettier"
+        if vim.fn.executable(candidate) == 1 then
+            return candidate
+        end
+        local parent = vim.fs.dirname(dir)
+        if parent == dir then
+            break
+        end
+        dir = parent
+    end
+
+    return vim.fn.exepath("prettier")
+end
+
 local function formatBuffer()
     -- Prettier has no Go support, so gopls (gofmt) formats Go buffers.
     if vim.bo.filetype == "go" then
@@ -55,10 +80,15 @@ local function formatBuffer()
     end
 
     if prettierFiletypes[vim.bo.filetype] then
-        vim.cmd("silent Prettier")
-        vim.cmd("normal! zz")
-        vim.notify("Prettier", vim.log.levels.INFO)
-        return
+        local prettierPath = resolvePrettierPath()
+        if prettierPath ~= "" then
+            vim.g["prettier#exec_cmd_path"] = prettierPath
+            vim.cmd("silent Prettier")
+            vim.cmd("normal! zz")
+            vim.notify("Prettier", vim.log.levels.INFO)
+            return
+        end
+        vim.notify("prettier not found, falling back", vim.log.levels.WARN)
     end
 
     if hasLspFormatter() then
