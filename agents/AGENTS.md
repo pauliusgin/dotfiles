@@ -16,6 +16,46 @@ Exception: security warnings, irreversible action confirmations, multi-step sequ
 - Prefer multi-line variable initialization over ternary statements — initialize a variable first, then use it.
 - After writing or editing code, always format the affected files with `prettier --write <file>`.
 
+## Code Longevity
+
+Default assumption: **this code has a future**. It will be read, changed, and extended later — most likely by you, with none of today's context in memory.
+
+Solving the immediate problem is necessary, not sufficient. Before committing to any non-trivial decision (naming, structure, abstraction boundary, data shape, dependency, error handling), ask:
+
+- Will someone need to **change** this? Is the change local, or does it ripple across files?
+- Will someone need to **extend** this? Is there a seam, or is it welded shut?
+- Will someone need to **understand** this? Is intent visible in the code, or only in the conversation that produced it?
+- Will someone need to **debug** this? Does it fail loudly with context, or silently?
+
+Bias toward: clear names over clever ones, explicit over implicit, small composable units over one big function, obvious code over short code, boring solutions over novel ones.
+
+Bias against: abstraction invented for requirements nobody asked for. Extensible ≠ over-engineered. Leave a seam, don't build a framework.
+
+**Exception — genuine one-off work:** throwaway scripts, one-time migrations, scratch debugging, spikes meant to be deleted. There, speed wins and this section does not apply.
+
+**When the time scope is unclear, ask — do not guess.** One clarifying question ("throwaway, or will we maintain this?"), then act accordingly:
+
+- Throwaway → optimize for speed, and say explicitly in the response that it was written as throwaway.
+- Maintained → apply everything above.
+
+## Testing
+
+Every non-trivial piece of code must have tests. Non-trivial = anything with branching, calculation, state change, parsing, or a rule someone could get wrong later. Trivial pass-through code and one-off scripts are exempt.
+
+**Workflow — not TDD, but tests early.** Do not write tests before there is anything to test. The order is:
+
+1. Build a working implementation first — get something that actually runs and does the thing.
+2. Write tests against that working implementation.
+3. Keep iterating toward the final result **with the tests in place** — every refinement, refactor, or added feature from that point on updates or adds tests in the same step.
+
+Point 3 is the part that matters: tests are not a final cleanup task appended after the code is "done". Once they exist they travel with the code, and they must be passing before any step is called complete. Never leave the suite broken or skipped to move faster.
+
+**No mocks.** Do not use mocking frameworks or auto-mocking (`jest.mock`, `sinon.stub`, spies asserting call counts, etc.). Tests must exercise the real implementation.
+
+Instead, use **faked inputs**: real objects built from realistic data, in-memory implementations of interfaces (e.g. an in-memory repository), fixture/factory-built test data, and real collaborators wired together. Assert on observable output and resulting state — not on which functions were called.
+
+Consequence for design: if something can only be tested by mocking it, that is a design signal. Inject the dependency behind an interface so a real in-memory implementation can be substituted.
+
 ## Answer Validation & Confidence
 
 For any factual, non-trivial claim:

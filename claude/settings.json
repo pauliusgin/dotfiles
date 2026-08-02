@@ -65,7 +65,8 @@
       "Edit(~/.config/gh/**)",
       "Read(~/.claude/.credentials.json)",
       "Edit(~/.claude/.credentials.json)"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "hooks": {
     "PreToolUse": [
@@ -109,7 +110,7 @@
   },
   "enabledPlugins": {
     "caveman@caveman": true,
-    "code-simplifier@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": false,
     "skill-creator@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true
@@ -123,5 +124,8 @@
     }
   },
   "tui": "fullscreen",
-  "preferredNotifChannel": "terminal_bell"
+  "preferredNotifChannel": "terminal_bell",
+  "skillOverrides": {
+    "switch-to-remote": "off"
+  }
 }
