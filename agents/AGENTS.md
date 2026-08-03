@@ -43,9 +43,9 @@ Bias against: abstraction invented for requirements nobody asked for. Extensible
 When writing or modifying code:
 
 - Optimize for low cyclomatic complexity rather than short functions. Line count is not the target; branching is.
-- Default to functions with cyclomatic complexity ≤5.
+- Default to functions with cyclomatic complexity ≤6.
 - If a function approaches complexity 10, proactively refactor it into smaller, cohesive units.
-- Use guard clauses, polymorphism, lookup tables, and helper functions to eliminate unnecessary branching.
+- Use guard clauses, early returns, extracted methods, and lookup tables to eliminate unnecessary branching. Avoid polymorphism as a complexity fix whenever possible.
 - Never split a function purely to satisfy a metric — preserve cohesion and readability.
 
 **Estimating complexity without a tool:** count decision points and add 1 — each `if`, `else if`, loop, `case`, `catch`, `&&`, `||`, `??`, ternary, and optional-chain short-circuit. Do this by eye before deciding a function is fine; do not claim a complexity number you did not count.
@@ -53,12 +53,40 @@ When writing or modifying code:
 **Eliminate branches before relocating them.** Extracting a 12-branch function into three 4-branch helpers that exist only to hide branching is not a fix — total complexity is unchanged and now spread across more places. First try to remove the branching outright:
 
 - Guard clauses / early returns for precondition and error paths.
+- Extract a cohesive method with a real name.
 - Lookup table or map for `switch`-like dispatch on a value.
 - Push the condition up to the caller when only the caller knows the answer.
 - Make impossible states unrepresentable in the types so the check is not needed.
-- Polymorphism last — it is the most expensive option and conflicts with the bias against premature abstraction under Code Longevity. Use it when the branch set is stable and behavioral, not to dodge a `switch`.
+- Polymorphism only as a last resort. It is the most expensive option, it scatters logic across files, and it conflicts with the bias against premature abstraction under Code Longevity. A readable `switch` or lookup table beats a class hierarchy introduced to hide one. Do not reach for it just because the branch count is high.
 
 Every extracted unit must be a thing with a name someone would recognize — a real concept in the domain, not `handlePart2`. If a good name does not exist, the split is wrong.
+
+### CRAP Score
+
+Change Risk Anti-Patterns (CRAP) combines complexity with test coverage into a single risk number for a function or file. Use it as the practical quality check — it captures why the Code Complexity and Testing sections belong together.
+
+```
+CRAP = CC² × (1 - coverage/100)³ + CC
+```
+
+Thresholds:
+
+- **0–30** — generally acceptable.
+- **30–60** — needs attention: add covering tests or refactor.
+- **60+** — high risk: prioritize for refactoring.
+
+Coverage enters cubed, so untested complex code is penalized brutally while well-tested complex code stays tolerable:
+
+| CC | Coverage | CRAP | Verdict |
+| -- | -------- | ---- | ------- |
+| 6 | 100% | 6 | fine |
+| 6 | 50% | 10.5 | fine |
+| 6 | 0% | 42 | needs attention |
+| 10 | 80% | 10.8 | fine |
+| 10 | 0% | 110 | high risk |
+| 20 | 50% | 70 | high risk |
+
+Read the table the right way round: coverage buys down risk, it does not license complexity. Two levers exist when a function scores over 30 — add covering tests, or reduce CC — and the tests are usually the cheaper lever, but reaching for coverage alone to drag a CC-20 function under the line is gaming the metric, not fixing the code. Coverage only counts if the tests actually assert behavior (see Testing — no mocks, assert on output and state).
 
 ## Testing
 
@@ -80,32 +108,8 @@ Consequence for design: if something can only be tested by mocking it, that is a
 
 ## Answer Validation & Confidence
 
-For any factual, non-trivial claim:
+Before stating a factual, non-trivial claim the user might act on without checking — API behavior, library or CLI usage, versions, limits, pricing, standards, or any external fact — read `~/.claude/references/answer-validation.md` and follow it. It defines the confidence levels, the required output format, and the sourcing rules.
 
-1. Assign a confidence level:
-   - HIGH — confirmed by authoritative primary sources (official docs, specs, source code)
-   - MEDIUM — supported by reliable secondary sources but not fully verified
-   - LOW — uncertain, inferred, or lacking solid documentation
+Read it when the claim is being made, not preemptively. Pure implementation work needs none of it: writing code, describing changes just made, or giving a recommendation framed as an opinion do not require a confidence block.
 
-2. Always include sources as links.
-
-3. Format:
-   CONFIDENCE: <HIGH|MEDIUM|LOW>
-   <concise answer>
-   Sources:
-   - <link 1>
-   - <link 2>
-
-4. If confidence is MEDIUM or LOW:
-   - Briefly explain uncertainty
-   - Add a short "How to verify" step
-
-5. Never:
-   - Never sound fully confident unless confidence is HIGH.
-   - Present guesses as facts
-   - Omit sources when making factual claims
-   - Claim HIGH confidence without primary-source backing
-
-6. For APIs, libraries, or CLI usage:
-   - Prefer official documentation or source code links
-   - Include version-specific notes when relevant
+Uncertain whether a claim qualifies? Read the file.

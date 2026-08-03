@@ -56,6 +56,7 @@ ln -swf $HOME/.dotfiles/herdr/config.toml $HOME/.config/herdr/config.toml
 ln -swf $HOME/.dotfiles/.cspell.json $HOME/.cspell.json
 ln -swf $HOME/.dotfiles/agents/AGENTS.md $HOME/AGENTS.md
 ln -swf $HOME/.dotfiles/agents/AGENTS.md $HOME/.claude/CLAUDE.md
+ln -swfh $HOME/.dotfiles/agents/references $HOME/.claude/references
 ln -swf $HOME/.dotfiles/claude/settings.json $HOME/.claude/settings.json
 ln -swf $HOME/.dotfiles/claude/statusline-command.sh $HOME/.claude/statusline-command.sh
 ln -swf $HOME/.dotfiles/com.update-dotfiles.daily.plist $HOME/Library/LaunchAgents/com.update-dotfiles.daily.plist
