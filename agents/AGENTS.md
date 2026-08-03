@@ -14,7 +14,78 @@ Exception: security warnings, irreversible action confirmations, multi-step sequ
 - Use full (non-abbreviated) variable names for variables used more than twice in a function.
 - Avoid `else if` chains — prefer early returns or `switch`
 - Prefer multi-line variable initialization over ternary statements — initialize a variable first, then use it.
+- Declare object shapes with `interface`, not a `type` alias, unless the alias buys something concrete: unions, intersections, tuples, mapped or conditional types, or aliasing a primitive/function type. `interface` is the default; reach for `type` when the shape cannot be expressed as one.
 - After writing or editing code, always format the affected files with `prettier --write <file>`.
+
+## Naming
+
+Names must be **expressive and specific**. Applies equally to files, types, functions, and methods.
+
+Each step down this ladder is worse than the one before it:
+
+```
+createStripeClient()   →  createClient()   →  create()
+getUserProfileById()   →  getUser()        →  get()
+```
+
+Two reasons, and the second is not optional:
+
+- A human reading the call site should understand what happens without opening the definition.
+- Lookup is text search. `grep createStripeClient` lands on the one place that matters; `grep create` returns hundreds of hits. Agents search this way almost exclusively, so a vague name is not merely unclear — it is effectively unfindable.
+
+**Target 2–4 words, at least one of them a domain word.** `diffUserObjects`, not `diff`. `queueEventForDispatch`, not `queue`. Three words is the knee of the curve — below it names stop being greppable, above it they start restating the function body. Within that band, use the shortest name that greps uniquely.
+
+The domain word is what does the work. `diff`, `queue`, `handle`, and `run` are operations every codebase performs a hundred times; `UserObjects` and `Event` are what make the name locatable and the intent legible.
+
+**Do not repeat context the caller already sees.** Specificity comes from the full path to the name, not from the identifier alone. In Go, `user.GetProfileById()` is correct — `user.GetUserProfileById()` stutters. Same for a `stripe` module exporting `createClient()`, or a `StripeClient` type with a `charge()` method. Qualify with what actually disambiguates; drop what the package, module, receiver, or type already states.
+
+Rules of thumb:
+
+- A function name says what it does and to what. If it returns something, the name says what.
+- A file is named after the thing it exports. One clear concept per file.
+- Banned as standalone names: `utils`, `helpers`, `common`, `data`, `handle`, `process`, `manage`, `stuff`. If that is the only name that fits, the unit has no single responsibility yet.
+- Ambiguity is the cost, not characters. `findExpiredSubscriptions` beats `findExpired` — but stop once the name greps uniquely and reads cleanly. Words past that point are noise, not precision.
+
+## Function Signatures
+
+Prefer a single structured argument with named fields over a list of positional parameters.
+
+The problem with positional parameters is not verbosity, it is that **same-typed parameters are silently swappable**. The compiler cannot catch it, the tests may not catch it, and the resulting bug looks like a data problem rather than a call-site problem.
+
+```ts
+// bad — both are strings; this compiles and is wrong
+function transferFunds(sourceAccountId: string, targetAccountId: string, idempotencyKey: string) {}
+transferFunds(targetAccountId, sourceAccountId, key);
+
+// good — order is impossible to get wrong
+interface TransferFundsParams {
+  sourceAccountId: string;
+  targetAccountId: string;
+  idempotencyKey: string;
+}
+function transferFunds({ sourceAccountId, targetAccountId, idempotencyKey }: TransferFundsParams) {}
+```
+
+```go
+type TransferFundsParams struct {
+    SourceAccountID string
+    TargetAccountID string
+    IdempotencyKey  string
+}
+
+func TransferFunds(params TransferFundsParams) error
+```
+
+**Required** when any of these hold:
+
+- Two or more parameters share a type.
+- There are three or more parameters.
+- Any parameter is a boolean — `send(message, true)` is unreadable at the call site.
+- Any parameter is optional or has a default.
+
+**Optional** for a single parameter, or two parameters of clearly distinct types where the order cannot be confused. Even then, prefer the structured form when neighbouring functions already use it — homogeneity across a module is worth more than saving one type declaration.
+
+Give the parameter type a real name (`TransferFundsParams`, not an inline anonymous shape) once it is exported or reused — it becomes greppable and documents the call contract in one place. This also leaves a seam: adding a field later does not touch a single existing call site.
 
 ## Code Longevity
 
