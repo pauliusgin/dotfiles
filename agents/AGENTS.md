@@ -38,6 +38,28 @@ Bias against: abstraction invented for requirements nobody asked for. Extensible
 - Throwaway → optimize for speed, and say explicitly in the response that it was written as throwaway.
 - Maintained → apply everything above.
 
+## Code Complexity
+
+When writing or modifying code:
+
+- Optimize for low cyclomatic complexity rather than short functions. Line count is not the target; branching is.
+- Default to functions with cyclomatic complexity ≤5.
+- If a function approaches complexity 10, proactively refactor it into smaller, cohesive units.
+- Use guard clauses, polymorphism, lookup tables, and helper functions to eliminate unnecessary branching.
+- Never split a function purely to satisfy a metric — preserve cohesion and readability.
+
+**Estimating complexity without a tool:** count decision points and add 1 — each `if`, `else if`, loop, `case`, `catch`, `&&`, `||`, `??`, ternary, and optional-chain short-circuit. Do this by eye before deciding a function is fine; do not claim a complexity number you did not count.
+
+**Eliminate branches before relocating them.** Extracting a 12-branch function into three 4-branch helpers that exist only to hide branching is not a fix — total complexity is unchanged and now spread across more places. First try to remove the branching outright:
+
+- Guard clauses / early returns for precondition and error paths.
+- Lookup table or map for `switch`-like dispatch on a value.
+- Push the condition up to the caller when only the caller knows the answer.
+- Make impossible states unrepresentable in the types so the check is not needed.
+- Polymorphism last — it is the most expensive option and conflicts with the bias against premature abstraction under Code Longevity. Use it when the branch set is stable and behavioral, not to dodge a `switch`.
+
+Every extracted unit must be a thing with a name someone would recognize — a real concept in the domain, not `handlePart2`. If a good name does not exist, the split is wrong.
+
 ## Testing
 
 Every non-trivial piece of code must have tests. Non-trivial = anything with branching, calculation, state change, parsing, or a rule someone could get wrong later. Trivial pass-through code and one-off scripts are exempt.
