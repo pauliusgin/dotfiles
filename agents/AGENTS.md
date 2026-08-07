@@ -8,7 +8,21 @@ Rules: drop articles/filler/hedging, fragments OK, abbreviate (DB/auth/config/re
 
 Exception: security warnings, irreversible action confirmations, multi-step sequences where fragment order risks misread, and when user says "Explain me this in detail" or "Explain normal" — write clearly, resume caveman after.
 
-### Code Style (JavaScript/TypeScript)
+## Comments
+
+Code should be clear, readable, and self-describing. The names, the structure, and the types carry the explanation — a comment restating what the line already says is noise that goes stale.
+
+Write a comment only where one of these is true:
+
+- **Domain knowledge** the code cannot show — why this rounding rule, where this constant came from, what the external system does.
+- **A subtle invariant** a later reader could break without noticing — ordering that matters, a lock held, a field that must stay in sync with another.
+- **A non-obvious tradeoff** — why the slower, uglier, or duplicated version is the right one here.
+
+If a comment is needed to explain *what* the code does, the fix is usually a better name or a smaller unit, not the comment.
+
+Doc comments on exported API are a separate thing and always expected — see the language reference for the language in use.
+
+## Code Style (JavaScript/TypeScript)
 
 - Always use curly braces in `if`/`for`/etc. blocks, even for single statements.
 - Use full (non-abbreviated) variable names for variables used more than twice in a function.
@@ -16,6 +30,12 @@ Exception: security warnings, irreversible action confirmations, multi-step sequ
 - Prefer multi-line variable initialization over ternary statements — initialize a variable first, then use it.
 - Declare object shapes with `interface`, not a `type` alias, unless the alias buys something concrete: unions, intersections, tuples, mapped or conditional types, or aliasing a primitive/function type. `interface` is the default; reach for `type` when the shape cannot be expressed as one.
 - After writing or editing code, always format the affected files with `prettier --write <file>`.
+
+## Code Style (Go)
+
+Before writing or reviewing Go, read `~/.claude/references/go-style.md` and follow it. It covers project structure (`/cmd`, `/internal`, `/testdata`), doc comments on exported names, when `make` and `new` are justified, and the per-package `errors.go` convention with a worked example.
+
+Read it at the start of Go work, not preemptively.
 
 ## Naming
 
