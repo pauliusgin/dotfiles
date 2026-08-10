@@ -120,4 +120,25 @@
         "body": "${1|**DONE**,**TODO**,**WIP**,**NEXT**,**QUESTION**,**ANSWER**,**NOTE**,**READY FOR QA**,**TEST**,**CUSTOM**|}",
         "description": "Create a bold caps lock tag"
     },
+    "initial project planning template": {
+        "prefix": "project",
+        "body": [
+            "========= [FEATURES] =========",
+            "",
+            "- list features here...",
+            "",
+            "========= [TECH-STACK] =========",
+            "",
+            "- list the tech stack here...",
+            "",
+            "========= [REQUIREMENTS] =========",
+            "",
+            "- list the requirements here...",
+            "",
+            "========= [NOTES] =========",
+            "",
+            "- list any additional notes here...",
+        ],
+        "description": "Generate a structure for an initial project planning file.",
+    }
 }
