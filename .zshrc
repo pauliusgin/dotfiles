@@ -64,6 +64,7 @@ bindkey '^I' _smart_tab
 alias information="system_profiler SPSoftwareDataType SPHardwareDataType SPStorageDataType"
 alias nvcon="nvim ~/.config/nvim/init.lua"
 alias news="news-cli -t general-news,software,infosec -l 100"
+alias gen-secret="openssl rand -base64 64"
 
 function ask() {
 local model="qwen2.5-coder:7b"
