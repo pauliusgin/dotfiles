@@ -602,7 +602,7 @@
     "editor.inlineSuggest.enabled": false,
   },
   "supermaven.enable": {
-    "*": true
+    "*": true,
   },
   "claudeCode.preferredLocation": "panel",
   "claudeCode.useTerminal": true,
@@ -647,8 +647,8 @@
     "editor.quickSuggestions": {
       "comments": "off",
       "strings": "on",
-      "other": "on"
+      "other": "on",
     },
-    "editor.wordBasedSuggestions": "off"
+    "editor.wordBasedSuggestions": "off",
   },
 }

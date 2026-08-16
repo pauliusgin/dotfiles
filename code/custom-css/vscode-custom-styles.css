@@ -112,3 +112,11 @@ a.action-label.single-terminal-tab {
 .scm-view .monaco-list .monaco-list-row:hover.force-no-hover2 {
   pointer-events: none;
 }
+
+/* .monaco-workbench.style-override.floating-panels .part.editor {
+  border-color: #ff0000 !important;
+} */
+
+#workbench.parts.panel {
+  border: 1px solid #ff0000 !important;
+}
