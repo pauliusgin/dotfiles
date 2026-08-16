@@ -651,4 +651,5 @@
     },
     "editor.wordBasedSuggestions": "off",
   },
+  "workbench.experimental.modernUI": false,
 }
