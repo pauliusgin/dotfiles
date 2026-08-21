@@ -1,5 +1,4 @@
 {
-  "model": "opus",
   "permissions": {
     "allow": [
       "Read",
@@ -36,16 +35,6 @@
       "Bash(dune runtest:*)",
       "Bash(dune fmt:*)"
     ],
-    "ask": [
-      "Bash(git push:*)",
-      "Bash(git merge:*)",
-      "Bash(git rebase:*)",
-      "Bash(git reset:*)",
-      "Bash(git revert:*)",
-      "Bash(git cherry-pick:*)",
-      "Bash(git clean:*)",
-      "Bash(git commit --amend:*)"
-    ],
     "deny": [
       "Bash(git add -A:*)",
       "Bash(git add --all:*)",
@@ -66,7 +55,21 @@
       "Read(~/.claude/.credentials.json)",
       "Edit(~/.claude/.credentials.json)"
     ],
+    "ask": [
+      "Bash(git push:*)",
+      "Bash(git merge:*)",
+      "Bash(git rebase:*)",
+      "Bash(git reset:*)",
+      "Bash(git revert:*)",
+      "Bash(git cherry-pick:*)",
+      "Bash(git clean:*)",
+      "Bash(git commit --amend:*)"
+    ],
     "defaultMode": "auto"
+  },
+  "model": "opus",
+  "skillOverrides": {
+    "switch-to-remote": "off"
   },
   "hooks": {
     "PreToolUse": [
@@ -125,7 +128,5 @@
   },
   "tui": "fullscreen",
   "preferredNotifChannel": "terminal_bell",
-  "skillOverrides": {
-    "switch-to-remote": "off"
-  }
+  "agentPushNotifEnabled": true
 }
