@@ -115,7 +115,7 @@
     "caveman@caveman": true,
     "code-simplifier@claude-plugins-official": false,
     "skill-creator@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": false,
     "gopls-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
