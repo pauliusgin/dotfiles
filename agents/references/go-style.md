@@ -133,3 +133,27 @@ func (e ErrBackwardsDateWindow) Error() string {
 ```
 
 Two named types for what looks like one failure (`ErrInvalidLimitText` vs `ErrInvalidLimitNumber`) is deliberate: the value arrives differently from the HTTP layer than from the CLI, and keeping the raw form lets the message show what the caller actually held.
+
+## Table Tests
+
+In a table-driven test, each case states its own expected outcome. When a table mixes passing and failing inputs, give the case struct an explicit `wantErr bool` and branch on it — never infer failure from a zero-valued `want` field, which makes the zero value do double duty as both "no result expected" and a legitimate result.
+
+```go
+cases := []struct {
+    name     string
+    rawPort  string
+    wantPort int
+    wantErr  bool
+}{
+    {name: "zero", rawPort: "0", wantErr: true},
+    {name: "negative", rawPort: "-1", wantErr: true},
+    {name: "lowest valid", rawPort: "1", wantPort: 1},
+    {name: "highest valid", rawPort: "65535", wantPort: 65535},
+}
+```
+
+Always name the cases and run them with `t.Run(testCase.name, ...)`, so a failure prints `/above_the_maximum` rather than an unlabelled input.
+
+Where the error's identity matters, pair `wantErr` with the specific expectation — `wantMissingVariable string`, `wantErrType error` — and assert it with `errors.As` / `errors.Is` rather than on the message text.
+
+Skip `wantErr` when it would be a constant column no branch reads: a table where every case fails, or one with no error path at all. A field nothing varies is noise. If such a table is worth making explicit, the fix is usually a passing case that was missing, not a column of `true`.
