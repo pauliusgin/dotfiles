@@ -12,5 +12,40 @@
 			"fmt.Printf(\"$1 -----> %v\", $2)",
 		],
 		"description": "Log formatted output"
-	}
+	},
+	"ANSI color red": {
+		"prefix": "color red",
+		"body": [
+			"\\x1b[31m"
+		],
+		"description": "Add color red to the text"
+	},
+	"ANSI color green": {
+		"prefix": "color green",
+		"body": [
+			"\\x1b[32m"
+		],
+		"description": "Add color green to the text"
+	},
+	"ANSI color yellow": {
+		"prefix": "color yellow",
+		"body": [
+			"\\x1b[33m"
+		],
+		"description": "Add color yellow to the text"
+	},
+	"ANSI color blue": {
+		"prefix": "color blue",
+		"body": [
+			"\\x1b[34m"
+		],
+		"description": "Add color blue to the text"
+	},
+	"ANSI color reset": {
+		"prefix": "color reset",
+		"body": [
+			"\\x1b[0m"
+		],
+		"description": "Add color reset to the text"
+	},
 }
