@@ -32,9 +32,18 @@ Doc comments are comments appearing immediately before top-level `package`, `con
 
 ```go
 // ParseFeedWindow converts a since/until pair into a validated time range.
-// A zero Until means "no upper bound".
 func ParseFeedWindow(params ParseFeedWindowParams) (FeedWindow, error) {
 ```
+
+**Keep it to one line — at most 100 columns, or one sentence, whichever is shorter.**
+
+Do not exceed the limit to explain unclear code. If the comment cannot describe the exported identifier
+inside the limit, that is a signal about the name, the API, or the surrounding code — fix those first.
+Prefer making the code and the exported names self-explanatory over adding explanatory prose.
+
+The limit may be exceeded for libraries, public APIs, and similar code where comprehensive documentation
+is genuinely required. Go longer only when the extra information carries real value and cannot reasonably
+be conveyed by improving the code or its naming.
 
 Unexported declarations get a comment only under the general comment rule — domain knowledge, a subtle invariant, or a non-obvious tradeoff.
 
