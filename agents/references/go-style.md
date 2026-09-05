@@ -109,8 +109,7 @@ func (e ErrInvalidDate) Error() string {
 	return fmt.Sprintf("invalid date %q: %s", e.RawValue, dateExpectationText)
 }
 
-// ErrInvalidLimitText reports a limit that arrived as text — a query-string value that was
-// not a number, or one that parsed to a negative.
+// ErrInvalidLimitText reports a limit that arrived as text.
 type ErrInvalidLimitText struct {
 	RawValue string
 }
@@ -119,8 +118,7 @@ func (e ErrInvalidLimitText) Error() string {
 	return fmt.Sprintf("invalid limit %q: %s", e.RawValue, limitExpectationText)
 }
 
-// ErrInvalidLimitNumber reports a limit that arrived already typed, which is the CLI's
-// --limit. It is quoted as a number so the message shows what the flag actually held.
+// ErrInvalidLimitNumber reports a limit that arrived already typed.
 type ErrInvalidLimitNumber struct {
 	Limit int
 }
