@@ -128,5 +128,6 @@
   },
   "tui": "fullscreen",
   "preferredNotifChannel": "terminal_bell",
+  "autoContinueAtUsageLimit": true,
   "agentPushNotifEnabled": true
 }
