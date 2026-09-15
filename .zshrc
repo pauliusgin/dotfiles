@@ -61,6 +61,7 @@ bindkey '^I' _smart_tab
 ############################################
 ########## ALIASES
 
+alias lsd="lsd -a"
 alias information="system_profiler SPSoftwareDataType SPHardwareDataType SPStorageDataType"
 alias nvcon="nvim ~/.config/nvim/init.lua"
 alias news="news-cli -t general-news,software,infosec -l 100"
