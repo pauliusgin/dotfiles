@@ -196,7 +196,7 @@
   "editor.parameterHints.enabled": false,
   "editor.fontFamily": "\"Terminus (TTF)\", Iosevka, Monaco, Menlo, 'Courier New', monospace",
   "editor.fontLigatures": false,
-  "editor.fontSize": 50,
+  "editor.fontSize": 16,
   "editor.lineHeight": 1.1,
   "editor.tabSize": 2,
   "editor.cursorSurroundingLines": 8,
