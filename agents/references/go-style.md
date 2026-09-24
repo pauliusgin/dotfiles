@@ -47,6 +47,15 @@ be conveyed by improving the code or its naming.
 
 Unexported declarations get a comment only under the general comment rule — domain knowledge, a subtle invariant, or a non-obvious tradeoff.
 
+**Every package gets a package doc comment**, written directly above the `package` clause and starting with `Package <name>` (`Command <name>` for a `main` package). The same one-line limit applies: say what the package is responsible for, not what files it contains.
+
+```go
+// Package refreshtoken mints, rotates, revokes and purges the opaque refresh tokens clients hold.
+package refreshtoken
+```
+
+Exactly one file per package carries it — the file named after the package, or the one holding its central type or entry point. A second package comment in another file gets merged into the first by `go doc` and usually contradicts it. When the package's responsibility changes, update its package doc in the same change; a doc naming the wrong package or a job the package no longer does is worse than none.
+
 ## Allocation — avoid `make` and `new`
 
 Prefer zero values and literals. `var items []Item` is a usable nil slice; `map[string]int{}` and `&Config{}` read better than their `make`/`new` equivalents.

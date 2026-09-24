@@ -33,7 +33,7 @@ Doc comments on exported API are a separate thing and always expected — see th
 
 ## Code Style (Go)
 
-Before writing or reviewing Go, read `~/.claude/references/go-style.md` and follow it. It covers project structure (`/cmd`, `/internal`, `/testdata`), doc comments on exported names, when `make` and `new` are justified, and the per-package `errors.go` convention with a worked example.
+Before writing or reviewing Go, read `~/.claude/references/go-style.md` and follow it. It covers project structure (`/cmd`, `/internal`, `/testdata`), doc comments on exported names, a package doc on every package, when `make` and `new` are justified, and the per-package `errors.go` convention with a worked example.
 
 Read it at the start of Go work, not preemptively.
 
