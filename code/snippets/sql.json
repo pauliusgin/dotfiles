@@ -1,11 +1,11 @@
 {
-	"Add SQL table with goose": {
+	"Add SQL table for sqlc and goose": {
 		"prefix": "table",
 		"body": [
 			"-- +goose Up",
 			"CREATE TABLE ${1:table_name} (",
-			"	 id UUID PRIMARY KEY,",
-			"	 ${2:column},",
+			"  id UUID PRIMARY KEY,",
+			"  ${2:column},",
 			"  ${3:column},",
 			"  ${4:column},",
 			"  ${5:column},",
@@ -16,7 +16,7 @@
 			"  created_at TIMESTAMPTZ NOT NULL,",
 			"  updated_at TIMESTAMPTZ NOT NULL",
 			"  -- CONSTRAINT $1_has_credential CHECK (",
-			"	 -- ${10:constraint_condition}",
+			"  --   ${10:constraint_condition}",
 			"  -- ),",
 			");",
 			"",
@@ -26,36 +26,55 @@
 			"DROP TABLE $1;"
 		],
 		"description": "Create an SQL table with goose"
-	}
-}
-
-{
-	"Add SQL table with goose": {
-		"prefix": "table",
+	},
+	"Create an SQL INSERT query for sqlc": {
+		"prefix": "insert",
 		"body": [
-			"-- +goose Up",
-			"CREATE TABLE ${1:table_name} (",
-			"    id UUID PRIMARY KEY,",
-			"    ${2:column},",
-			"    ${3:column},",
-			"    ${4:column},",
-			"    ${5:column},",
-			"    ${6:column},",
-			"    ${7:column},",
-			"    ${8:column},",
-			"    ${9:column},",
-			"    created_at TIMESTAMPTZ NOT NULL,",
-			"    updated_at TIMESTAMPTZ NOT NULL",
-			"    -- CONSTRAINT ${1}_has_credential CHECK (",
-			"    --     ${10:constraint_condition}",
-			"    -- )",
-			");",
-			"",
-			"-- CREATE INDEX ${11:index_name} ON ${1} (${12:column});",
-			"",
-			"-- +goose Down",
-			"DROP TABLE ${1};"
+			"-- name: ${1:query_name} :one",
+			"INSERT INTO ${2:table_name} (",
+			"  id UUID PRIMARY KEY,",
+			"  ${3:column},",
+			"  ${4:column},",
+			"  ${5:column},",
+			"  ${6:column},",
+			"  ${7:column},",
+			"VALUES",
+			"  ($8:id_value, $9:column_value, $10:column_value, $11:column_value, $12:column_value, $13:column_value)",
+			"RETURNING",
+			"  id",
+			"  $3",
+			"  $4",
+			"  $5",
+			"  $6",
+			"  $7;",
 		],
-		"description": "Create an SQL table with goose"
+		"description": "Create an SQL INSERT query for sqlc."
+	},
+	"Create an SQL UPDATE query for sqlc": {
+		"prefix": "update",
+		"body": [
+			"-- name: ${1:query_name} :one",
+			"UPDATE ${2:table_name}",
+			"SET",
+			"  ${3:column} = $4",
+			"WHERE",
+			"  $2.id = \\$1",
+			"RETURNING",
+			"  id",
+			"  $5",
+			"  $6",
+			"  $7;",
+		],
+		"description": "Create an SQL UPDATE query for sqlc."
+	},
+	"Create an SQL DELETE query for sqlc": {
+		"prefix": "delete",
+		"body": [
+			"-- name: ${1:query_name} :${2|exec,execrows|}",
+			"DELETE FROM ${2:table_name}",
+			"WHERE",
+			"  $3.id = \\$1",
+		],
+		"description": "Create an SQL UPDATE query for sqlc."
 	}
 }
