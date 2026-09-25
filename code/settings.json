@@ -470,6 +470,7 @@
     "dotfiles",
     "easymotion",
     "esbenp",
+    "eventsrepo",
     "execrows",
     "factorialize",
     "fileutils",
@@ -487,6 +488,7 @@
     "typeorm",
     "usecase",
     "usecases",
+    "usersrepo",
     "vinted"
   ],
 
