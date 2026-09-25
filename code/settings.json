@@ -481,10 +481,11 @@
     "OWASP",
     "Pingvinukas",
     "Println",
+    "TIMESTAMPTZ",
     "typeorm",
     "usecase",
     "usecases",
-    "vinted",
+    "vinted"
   ],
 
   //* ============================= [AI] ===================================

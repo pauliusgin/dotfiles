@@ -1,24 +1,61 @@
 {
-	// Place your snippets for SQL here. Each snippet is defined under a snippet name and has a prefix, body and 
-	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
-	// same ids are connected.
-	// Example:
-	// "Add SQL table with goose": {
-	// 	"prefix": "table",
-	// 	"body": [
-	// 		"console.log('$1');",
-	// 		"$2"
-	// 	],
-	// 	"description": "Log output to console"
-	// }
-	//
-	// You can also restrict snippets to specific files using include/exclude patterns:
-	// "Test snippet": {
-	// 	"prefix": "test",
-	// 	"body": "test('$1', () => {\n\t$0\n});",
-	// 	"include": ["**/*.test.ts", "*.spec.ts"],
-	// 	"exclude": ["**/temp/*.ts"],
-	// 	"description": "Insert test block"
-	// }
+	"Add SQL table with goose": {
+		"prefix": "table",
+		"body": [
+			"-- +goose Up",
+			"CREATE TABLE ${1:table_name} (",
+			"	 id UUID PRIMARY KEY,",
+			"	 ${2:column},",
+			"  ${3:column},",
+			"  ${4:column},",
+			"  ${5:column},",
+			"  ${6:column},",
+			"  ${7:column},",
+			"  ${8:column},",
+			"  ${9:column},",
+			"  created_at TIMESTAMPTZ NOT NULL,",
+			"  updated_at TIMESTAMPTZ NOT NULL",
+			"  -- CONSTRAINT $1_has_credential CHECK (",
+			"	 -- ${10:constraint_condition}",
+			"  -- ),",
+			");",
+			"",
+			"-- CREATE INDEX ${11:index_name} ON $1 (${11:column});",
+			"",
+			"-- +goose Down",
+			"DROP TABLE $1;"
+		],
+		"description": "Create an SQL table with goose"
+	}
+}
+
+{
+	"Add SQL table with goose": {
+		"prefix": "table",
+		"body": [
+			"-- +goose Up",
+			"CREATE TABLE ${1:table_name} (",
+			"    id UUID PRIMARY KEY,",
+			"    ${2:column},",
+			"    ${3:column},",
+			"    ${4:column},",
+			"    ${5:column},",
+			"    ${6:column},",
+			"    ${7:column},",
+			"    ${8:column},",
+			"    ${9:column},",
+			"    created_at TIMESTAMPTZ NOT NULL,",
+			"    updated_at TIMESTAMPTZ NOT NULL",
+			"    -- CONSTRAINT ${1}_has_credential CHECK (",
+			"    --     ${10:constraint_condition}",
+			"    -- )",
+			");",
+			"",
+			"-- CREATE INDEX ${11:index_name} ON ${1} (${12:column});",
+			"",
+			"-- +goose Down",
+			"DROP TABLE ${1};"
+		],
+		"description": "Create an SQL table with goose"
+	}
 }
