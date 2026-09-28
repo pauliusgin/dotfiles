@@ -69,7 +69,10 @@
   },
   "model": "opus",
   "skillOverrides": {
-    "switch-to-remote": "off"
+    "switch-to-remote": "off",
+    "write-test-jest": "off",
+    "add-project-to-portfolio": "off",
+    "create-vscode-extension": "off"
   },
   "hooks": {
     "PreToolUse": [
@@ -114,7 +117,7 @@
   "enabledPlugins": {
     "caveman@caveman": true,
     "code-simplifier@claude-plugins-official": false,
-    "skill-creator@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": false,
     "typescript-lsp@claude-plugins-official": false,
     "gopls-lsp@claude-plugins-official": true
   },
