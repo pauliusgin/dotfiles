@@ -656,4 +656,5 @@
     "editor.wordBasedSuggestions": "off",
   },
   "workbench.experimental.modernUI": false,
+  "go.toolsManagement.autoUpdate": true,
 }
