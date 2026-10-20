@@ -547,11 +547,14 @@
   },
   "sonarlint.rules": {
     "typescript:S1301": {
-      "level": "on",
+      "level": "on"
     },
     "typescript:S6440": {
-      "level": "off",
+      "level": "off"
     },
+    "typescript:S2068": {
+      "level": "off"
+    }
   },
   "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
   "js/ts.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
