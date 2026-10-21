@@ -130,6 +130,7 @@
     }
   },
   "tui": "fullscreen",
+  "theme": "dark",
   "preferredNotifChannel": "terminal_bell",
   "autoContinueAtUsageLimit": true,
   "agentPushNotifEnabled": true
