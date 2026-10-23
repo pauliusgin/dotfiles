@@ -26,6 +26,7 @@
     "companyerrors",
     "companyevents",
     "companymodels",
+    "companyqueries",
     "companyusecases",
     "Covoizz",
     "dotfiles",
