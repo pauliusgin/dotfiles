@@ -89,7 +89,8 @@
           "comment.line.number-sign.git-commit",
           "comment.block.documentation.tsx",
           "punctuation.definition.comment.tsx",
-          "comment.block.tsx"
+          "comment.block.tsx",
+          "comment.line.double-slash.tsx",
         ],
         "settings": {
           "foreground": "#6A9955",
