@@ -35,7 +35,7 @@ Doc comments are comments appearing immediately before top-level `package`, `con
 func ParseFeedWindow(params ParseFeedWindowParams) (FeedWindow, error) {
 ```
 
-**Keep it to one line — at most 100 columns, or one sentence, whichever is shorter.**
+**Keep it to one line — at most 120 columns, or one sentence, whichever is shorter.**
 
 Do not exceed the limit to explain unclear code. If the comment cannot describe the exported identifier
 inside the limit, that is a signal about the name, the API, or the surrounding code — fix those first.
