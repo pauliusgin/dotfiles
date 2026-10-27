@@ -37,6 +37,12 @@ Before writing or reviewing Go, read `~/.claude/references/go-style.md` and foll
 
 Read it at the start of Go work, not preemptively.
 
+## HTTP Server Style
+
+Before writing or reviewing an HTTP backend (handlers, use cases, repository ports, adapters), read `~/.claude/references/http-server-style.md` and follow it. It covers when to split read/write models, port and error naming, response building, which errors get logged, input sharing, and import aliases.
+
+Read it at the start of such work, not preemptively.
+
 ## Naming
 
 Names must be **expressive and specific**. Applies equally to files, types, functions, and methods.
