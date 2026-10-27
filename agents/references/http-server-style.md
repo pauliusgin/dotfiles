@@ -6,11 +6,11 @@ drifts on. A project's own CLAUDE.md may name concrete packages; where it contra
 
 ## Read vs write side
 
-- Split a domain into `read/` and `write/` trees, with a dedicated read model and a `Get<X>ReadModelByID` port,
-  only once the client-facing shape actually diverges from the write model (joins, derived fields, hidden
-  columns). Until then stay flat: one domain package with `<x>_read_repository.go` and
-  `<x>_write_repository.go` ports and a plain `Get<X>ByID`. A read model introduced before it differs is
-  a second copy of the same struct.
+- Every domain that returns data to a client splits into `read/` and `write/` trees: a dedicated read model,
+  read port and queries under `read/`, write model, port and use cases under `write/`, and a
+  `Get<X>ReadModelByID` port. This holds even while the two models look identical — the read model is the
+  explicit contract of what the client gets, so a write-side field can never leak into a response by accident.
+  Domains with no client-facing output (internal messaging, event log) stay flat.
 - Write handlers answer with the read model by re-reading through the resource's get-by-id query after the
   write. One resource, one response shape — create/update must not return fields that get/list do not.
 
