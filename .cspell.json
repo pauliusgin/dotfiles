@@ -101,6 +101,7 @@
     "unmark",
     "Uploadedfile",
     "uploaderrors",
+    "uploadevents",
     "uploadmodels",
     "uploadqueries",
     "uploadsrepo",
