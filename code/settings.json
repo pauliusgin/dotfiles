@@ -498,10 +498,9 @@
 
   //* ============================= [AI] ===================================
   "github.copilot.enable": {
-    "*": false,
     "plaintext": false,
     "markdown": false,
-    "scminput": false,
+    "scminput": false
   },
 
   "editor.inlineSuggest.enabled": true,
@@ -605,16 +604,8 @@
   },
   "errorLens.fontSize": "14px",
   "errorLens.enabled": false,
-  "supermaven.enableDeleteSuggestions": false,
-  "supermaven.enableFixWithSupermaven": false,
-  "supermaven.enableJumpSuggestions": false,
-  "supermaven.enableSuggestionHighlighting": false,
   "[go]": {
     "editor.defaultFormatter": "golang.go",
-    // "editor.inlineSuggest.enabled": true,
-  },
-  "supermaven.enable": {
-    "*": true,
   },
   "claudeCode.preferredLocation": "panel",
   "claudeCode.useTerminal": true,
@@ -664,4 +655,7 @@
   },
   "workbench.experimental.modernUI": false,
   "go.toolsManagement.autoUpdate": true,
+  "chat.copilot.dynamicAutoTiers.enabled": false,
+  "github.copilot.nextEditSuggestions.enabled": false,
+  "github.copilot.nextEditSuggestions.extendedRange": false,
 }
