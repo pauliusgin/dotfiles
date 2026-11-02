@@ -658,4 +658,7 @@
   "chat.copilot.dynamicAutoTiers.enabled": false,
   "github.copilot.nextEditSuggestions.enabled": false,
   "github.copilot.nextEditSuggestions.extendedRange": false,
+  "supermaven.enable": {
+    "*": false
+  },
 }
