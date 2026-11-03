@@ -31,6 +31,16 @@ Doc comments on exported API are a separate thing and always expected — see th
 - Declare object shapes with `interface`, not a `type` alias, unless the alias buys something concrete: unions, intersections, tuples, mapped or conditional types, or aliasing a primitive/function type. `interface` is the default; reach for `type` when the shape cannot be expressed as one.
 - After writing or editing code, always format the affected files with `prettier --write <file>`.
 
+## Frontend Screens — Text Selection
+
+By default, text on a screen must **not** be selectable. Selectable text lets a caret/selection appear on clicks and taps where nothing is editable — e.g. tapping a list row, a label, a heading or a card. That is a defect, not a neutral default.
+
+- Make the screen (or app shell) non-selectable at the top — in Tailwind, `select-none` on the root/layout — rather than sprinkling it per element.
+- Only real controls are interactive: buttons, links, inputs, textareas, selects. Inputs and textareas must stay editable and selectable — re-enable with `select-text` if an ancestor sets `select-none`.
+- Do not make enveloping `div`s the interactive target. Put the click on the button/link itself, not on a wrapper around it.
+- Decorative overlays (icons inside inputs, badges over controls) get `pointer-events-none` so they never steal or swallow a click.
+- Opt back in with `select-text` only for content the user plausibly wants to copy — an invoice number, an IBAN, an email address, an error ID. Decide per piece of content, not per screen.
+
 ## Code Style (Go)
 
 Before writing or reviewing Go, read `~/.claude/references/go-style.md` and follow it. It covers project structure (`/cmd`, `/internal`, `/testdata`), doc comments on exported names, a package doc on every package, when `make` and `new` are justified, and the per-package `errors.go` convention with a worked example.
