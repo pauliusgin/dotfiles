@@ -57,6 +57,7 @@
     "inversify",
     "invoiceerrors",
     "invoiceevents",
+    "invoicelineitem",
     "invoicequeries",
     "invoicesrepo",
     "invoiceusecases",
