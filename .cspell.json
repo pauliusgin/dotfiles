@@ -58,6 +58,7 @@
     "invoiceerrors",
     "invoiceevents",
     "invoicelineitem",
+    "invoicelineitems",
     "invoicequeries",
     "invoicesrepo",
     "invoiceusecases",
