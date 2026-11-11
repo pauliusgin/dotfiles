@@ -44,7 +44,8 @@ drifts on. A project's own CLAUDE.md may name concrete packages; where it contra
 
 ## Import aliases
 
-- Alias a domain's errors package `<domain>errors` everywhere outside the domain — handler code and handler
-  tests alike. A short alias (`e`) is fine only inside the domain's own packages.
+- Alias a domain's errors package `e` wherever a file imports a single errors package — domains, adapters,
+  gateways, handlers and their tests alike. Only a file importing two or more errors packages names them
+  `<domain>errors` (all of them, so none is the odd `e`).
 - Adapters alias the domain port package by role (`read`, `write`), never import it bare under the same name
   as their own package.

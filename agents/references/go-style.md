@@ -37,6 +37,9 @@ func ParseFeedWindow(params ParseFeedWindowParams) (FeedWindow, error) {
 
 **Keep it to one line — at most 120 columns, or one sentence, whichever is shorter.**
 
+That includes returned errors and NULL semantics: the name, the types and the error types carry those, not a
+second doc line.
+
 Do not exceed the limit to explain unclear code. If the comment cannot describe the exported identifier
 inside the limit, that is a signal about the name, the API, or the surrounding code — fix those first.
 Prefer making the code and the exported names self-explanatory over adding explanatory prose.
