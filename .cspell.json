@@ -59,6 +59,7 @@
     "invoiceerrors",
     "invoiceevents",
     "invoicelineitem",
+    "invoicelineitemerrors",
     "invoicelineitemevents",
     "invoicelineitemreadmodels",
     "invoicelineitems",
@@ -71,6 +72,7 @@
     "Leetcode",
     "lockring",
     "Longsword",
+    "messagingerrors",
     "messagingrepo",
     "Miyamoto",
     "Moula",
@@ -141,6 +143,7 @@
     "userevents",
     "usermodels",
     "userqueries",
+    "userrepositories",
     "userusecases",
     "VATID",
     "VHOST",
@@ -149,6 +152,7 @@
     "wagslane",
     "webp",
     "WIZZTALK",
+    "writemodels",
     "writerepo"
   ]
 }
