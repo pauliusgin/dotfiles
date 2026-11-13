@@ -125,7 +125,41 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Left Option → Hyper + Space",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_option",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    { "key_code": "left_control" },
+                                    {
+                                        "hold_down_milliseconds": 150,
+                                        "key_code": "spacebar"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Fn → Left Control",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "fn",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "left_control" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Remap ctrl+u and ctrl+d as Page Up and Page Down in browsers",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
