@@ -30,8 +30,9 @@ drifts on. A project's own CLAUDE.md may name concrete packages; where it contra
   handler body — list, get and re-read paths can share it, and it is a grep target.
 - Client errors (4xx) are not logged; they are the client's event, not the server's. Only 5xx log their cause.
 - Handler tests compare error codes through the shared error-code constants, not string literals.
-- A handler's `XDependencies` doc names the collaborators it carries ("carries the create use case and the
-  query re-reading it"), not a template sentence that restates the type name.
+- A handler's or route group's `XDependencies` doc names the collaborators it carries ("carries the create use case
+  and the query re-reading it", "carries the client CRUD handlers and the auth guard"), not a template sentence that
+  restates the type name.
 
 ## Input validation
 
@@ -46,6 +47,7 @@ drifts on. A project's own CLAUDE.md may name concrete packages; where it contra
 
 - Alias a domain's errors package `<domain>errors` (`usererrors`, `invoiceerrors`) in every file — domains,
   adapters, gateways, handlers and their tests alike — never a short `e`, so every reference greps to its domain.
-  Doc comments name the error bare (`ErrUserNotFound`), not through the alias.
+  Doc comments name the error bare (`ErrUserNotFound`), not through the alias — port and interface method docs too,
+  and an error from another domain's package (`ErrInvoiceNotFound`, not `invoices' errors.ErrInvoiceNotFound`).
 - Adapters alias the domain port package by role (`read`, `write`), never import it bare under the same name
   as their own package.
