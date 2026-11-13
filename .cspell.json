@@ -141,6 +141,7 @@
     "uploadevents",
     "uploadmodels",
     "uploadqueries",
+    "uploadrepositories",
     "uploadsrepo",
     "uploadusecases",
     "Usecase",
